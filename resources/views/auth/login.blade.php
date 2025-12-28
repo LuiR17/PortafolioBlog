@@ -1,47 +1,139 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+<!DOCTYPE html>
+<html class="dark" lang="en">
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DevPortfolio // Admin Login</title>
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1313ec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101022",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body
+    class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-white antialiased transition-colors duration-200">
+
+    <div class="relative flex min-h-screen w-full flex-col overflow-hidden">
+
+        <!-- Background -->
+        <div class="absolute inset-0 z-0 opacity-20 dark:opacity-10 pointer-events-none"
+            style="background-image: radial-gradient(#1313ec 1px, transparent 1px); background-size: 32px 32px;">
         </div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+        <!-- Header -->
+        <header class="relative z-10 flex w-full items-center justify-between px-6 py-4 md:px-10 lg:px-20">
+            <div class="flex items-center gap-3">
+                <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/20 text-primary">
+                    <span class="material-symbols-outlined text-xl">terminal</span>
+                </div>
+                <h2 class="text-lg font-bold tracking-tight">
+                    DevPortfolio <span class="text-primary">//</span> Admin
+                </h2>
+            </div>
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
+            <a href="{{ url('/') }}"
+                class="group flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-primary">
+                <span class="material-symbols-outlined text-lg group-hover:-translate-x-1">arrow_back</span>
+                <span class="hidden sm:inline">Regresar</span>
+            </a>
+        </header>
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+        <!-- Main -->
+        <main class="relative z-10 flex flex-1 items-center justify-center px-4 py-10">
 
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
-                <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
-            </label>
-        </div>
+            <div
+                class="w-full max-w-[480px] rounded-2xl border border-slate-200 bg-white/50 p-8 shadow-xl backdrop-blur-sm dark:bg-[#151520]/80">
 
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
+                <!-- Heading -->
+                <div class="mb-8 text-center">
+                    <div
+                        class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-slate-100 dark:bg-[#1c1c27]">
+                        <span class="material-symbols-outlined text-3xl text-primary">lock</span>
+                    </div>
+                    <h1 class="mb-2 text-3xl font-black">Login</h1>
+                    <p class="text-sm text-slate-500">Inicia sesión para administrar</p>
+                </div>
 
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+                <!-- Errors -->
+                @if ($errors->any())
+                    <div class="mb-4 rounded-lg bg-red-500/10 p-3 text-sm text-red-400">
+                        {{ $errors->first() }}
+                    </div>
+                @endif
+
+                <!-- FORM -->
+                <form method="POST" action="{{ route('login') }}" class="flex flex-col gap-5">
+                    @csrf
+
+                    <!-- Email -->
+                    <div class="flex flex-col gap-2">
+                        <label class="text-sm font-semibold">Email</label>
+                        <div class="relative group">
+                            <span
+                                class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary">
+                                person
+                            </span>
+                            <input type="email" name="email" required autocomplete="username"
+                                placeholder="you@email.com"
+                                class="w-full rounded-lg border py-3.5 pl-12 pr-4 bg-slate-50 dark:bg-[#1c1c27] focus:border-primary focus:ring-1 focus:ring-primary">
+                        </div>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="flex flex-col gap-2">
+                        <label class="text-sm font-semibold">Password</label>
+                        <div class="relative group">
+                            <span
+                                class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary">
+                                vpn_key
+                            </span>
+                            <input type="password" name="password" required autocomplete="current-password"
+                                placeholder="••••••••"
+                                class="w-full rounded-lg border py-3.5 pl-12 pr-4 bg-slate-50 dark:bg-[#1c1c27] focus:border-primary focus:ring-1 focus:ring-primary">
+                        </div>
+                    </div>
+
+                    <!-- Submit -->
+                    <button type="submit"
+                        class="group relative flex w-full items-center justify-center rounded-lg bg-primary py-3.5 text-white font-bold shadow-lg hover:bg-blue-700">
+                        Iniciar Sesión
+                        <span class="material-symbols-outlined ml-2">arrow_forward</span>
+                    </button>
+                </form>
+
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>
