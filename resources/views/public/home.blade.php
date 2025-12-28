@@ -45,37 +45,8 @@
 <body
     class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white min-h-screen flex flex-col overflow-x-hidden">
     <!-- Navbar -->
-    <header
-        class="sticky top-0 z-50 w-full border-b border-solid border-b-[#282839] bg-background-dark/80 backdrop-blur-md px-4 sm:px-10 py-3">
-        <div class="max-w-[1280px] mx-auto flex items-center justify-between whitespace-nowrap">
-            <div class="flex items-center gap-4 text-white">
-                <div class="size-8 text-primary">
-                    <span class="material-symbols-outlined text-[32px]">terminal</span>
-                </div>
-                <h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">DevPortfolio</h2>
-            </div>
-            <div class="flex items-center gap-8">
-                <nav class="hidden md:flex items-center gap-9">
-                    <a class="text-white text-sm font-medium hover:text-primary transition-colors leading-normal"
-                        href="#">Home</a>
-                    <a class="text-text-secondary text-sm font-medium hover:text-white transition-colors leading-normal"
-                        href="#">Blog</a>
-                    <a class="text-text-secondary text-sm font-medium hover:text-white transition-colors leading-normal"
-                        href="#">Projects</a>
-                </nav>
-                <div class="flex items-center gap-4">
-                    <a class="hidden md:block text-text-secondary text-xs hover:text-white" href="#"
-                        title="Admin Panel">
-                        <span class="material-symbols-outlined text-[20px]">admin_panel_settings</span>
-                    </a>
-                    <button
-                        class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary hover:bg-blue-700 transition-colors text-white text-sm font-bold leading-normal tracking-[0.015em]">
-                        <span class="truncate">Contact Me</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </header>
+    <x-header />
+    
     <main class="flex-1 flex flex-col items-center w-full">
         <!-- Hero Section -->
         <section class="w-full px-4 sm:px-10 py-12 md:py-20 max-w-[1080px]">
