@@ -6,13 +6,10 @@
              </p>
          </div>
          <div class="flex items-center gap-6">
-             <a class="text-text-secondary hover:text-white transition-colors" href="#">Home</a>
-             <a class="text-text-secondary hover:text-white transition-colors" href="#">Projects</a>
-             <a class="text-text-secondary hover:text-white transition-colors" href="#">Blog</a>
-             <a class="text-text-secondary hover:text-white transition-colors opacity-50 hover:opacity-100"
-                 href="#" title="Admin Login">
-                 <span class="material-symbols-outlined text-[18px]">lock</span>
-             </a>
+             <a class="text-text-secondary hover:text-white transition-colors" href="{{ route('home') }}">Home</a>
+             <a class="text-text-secondary hover:text-white transition-colors" href="{{ route('projects.index') }}">Projects</a>
+             <a class="text-text-secondary hover:text-white transition-colors" href="{{ route('blog.index') }}">Blog</a>
+             
          </div>
      </div>
      <div
