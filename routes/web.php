@@ -65,10 +65,10 @@ Route::middleware(['auth'])
 
         // Profile
         Route::get('profile', [ProfileController::class, 'index'])
-            ->name('admin.profile.index');
+            ->name('profile.index');
 
         Route::patch('profile', [ProfileController::class, 'update'])
-            ->name('admin.profile.update');
+            ->name('profile.update');
     });
 
 

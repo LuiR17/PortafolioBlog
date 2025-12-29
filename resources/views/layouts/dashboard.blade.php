@@ -87,37 +87,37 @@
             <!-- Navigation -->
             <nav class="flex flex-col gap-2">
                 <a class="flex items-center gap-3 px-3 py-3 rounded-lg bg-primary text-white transition-colors group"
-                    href="#">
+                    href="{{ route('admin.dashboard') }}">
                     <span class="material-symbols-outlined shrink-0" style="font-size: 24px;">dashboard</span>
                     <span class="text-sm font-medium hidden lg:block">Dashboard</span>
                 </a>
                 <a class="flex items-center gap-3 px-3 py-3 rounded-lg text-text-secondary hover:bg-surface-hover hover:text-white transition-colors group"
-                    href="#">
+                    href="{{ route('admin.projects.create') }}">
                     <span class="material-symbols-outlined shrink-0" style="font-size: 24px;">folder_open</span>
                     <span class="text-sm font-medium hidden lg:block">Projects</span>
                 </a>
                 <a class="flex items-center gap-3 px-3 py-3 rounded-lg text-text-secondary hover:bg-surface-hover hover:text-white transition-colors group"
-                    href="#">
+                    href="{{ route('admin.blog.create') }}">
                     <span class="material-symbols-outlined shrink-0" style="font-size: 24px;">article</span>
                     <span class="text-sm font-medium hidden lg:block">Blog</span>
                 </a>
                  <a class="flex items-center gap-3 px-3 py-3 rounded-lg text-text-secondary hover:bg-surface-hover hover:text-white transition-colors group"
-                    href="#">
+                    href="{{ route('admin.skills.index') }}">
                     <span class="material-symbols-outlined shrink-0" style="font-size: 24px;">handyman</span>
                     <span class="text-sm font-medium hidden lg:block">skills</span>
                 </a>
                 <a class="flex items-center gap-3 px-3 py-3 rounded-lg text-text-secondary hover:bg-surface-hover hover:text-white transition-colors group"
-                    href="#">
+                    href="{{ route('admin.education.index') }}">
                     <span class="material-symbols-outlined shrink-0" style="font-size: 24px;">school</span>
                     <span class="text-sm font-medium hidden lg:block">Education</span>
                 </a>
                 <a class="flex items-center gap-3 px-3 py-3 rounded-lg text-text-secondary hover:bg-surface-hover hover:text-white transition-colors group"
-                    href="#">
+                    href="{{ route('admin.curriculum.index') }}">
                     <span class="material-symbols-outlined shrink-0" style="font-size: 24px;">description</span>
                     <span class="text-sm font-medium hidden lg:block">Curriculum vitae</span>
                 </a>
                  <a class="flex items-center gap-3 px-3 py-3 rounded-lg text-text-secondary hover:bg-surface-hover hover:text-white transition-colors group"
-                    href="#">
+                    href="{{ route('admin.profile.index') }}">
                     <span class="material-symbols-outlined shrink-0" style="font-size: 24px;">person</span>
                     <span class="text-sm font-medium hidden lg:block">about me</span>
                 </a>
