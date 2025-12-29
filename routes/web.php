@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
@@ -13,7 +12,8 @@ use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
 use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\Admin\EducationController;
 use App\Http\Controllers\Admin\CurriculumController;
-//use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\ProfileController;
+
 
 // ------------------
 // RUTAS PÚBLICAS
@@ -64,7 +64,11 @@ Route::middleware(['auth'])
         Route::get('curriculum', [CurriculumController::class, 'index'])->name('curriculum.index');
 
         // Profile
-        Route::get('profile', [ProfileController::class, 'index'])->name('profile.index');
+        Route::get('admin/profile', [ProfileController::class, 'index'])
+            ->name('admin.profile.index');
+
+        Route::patch('admin/profile', [ProfileController::class, 'update'])
+            ->name('admin.profile.update');
     });
 
 

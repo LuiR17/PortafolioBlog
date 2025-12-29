@@ -12,7 +12,7 @@ class CurriculumController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.curriculum.index');
     }
 
     /**

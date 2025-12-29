@@ -12,7 +12,7 @@ class SkillController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.skills.index');
     }
 
     /**
