@@ -64,10 +64,10 @@ Route::middleware(['auth'])
         Route::get('curriculum', [CurriculumController::class, 'index'])->name('curriculum.index');
 
         // Profile
-        Route::get('admin/profile', [ProfileController::class, 'index'])
+        Route::get('profile', [ProfileController::class, 'index'])
             ->name('admin.profile.index');
 
-        Route::patch('admin/profile', [ProfileController::class, 'update'])
+        Route::patch('profile', [ProfileController::class, 'update'])
             ->name('admin.profile.update');
     });
 
