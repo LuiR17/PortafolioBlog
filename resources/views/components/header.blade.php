@@ -9,11 +9,11 @@
         </div>
         <div class="flex items-center gap-8">
             <nav class="hidden md:flex items-center gap-9">
-                <a class="text-white text-sm font-medium hover:text-primary transition-colors leading-normal"
+                <a class="{{ request()->routeIs('home') ? 'text-white text-sm font-medium hover:text-primary transition-colors leading-normal' : 'text-text-secondary text-sm font-medium hover:text-primary transition-colors leading-normal' }}"
                     href="{{ route('home') }}">Home</a>
-                <a class="text-text-secondary text-sm font-medium hover:text-white transition-colors leading-normal"
+                <a class="{{ request()->routeIs('blog.index') ? 'text-white text-sm font-medium hover:text-primary transition-colors leading-normal' : 'text-text-secondary text-sm font-medium hover:text-primary transition-colors leading-normal' }}"
                     href="{{ route('blog.index') }}">Blog</a>
-                <a class="text-text-secondary text-sm font-medium hover:text-white transition-colors leading-normal"
+                <a class="{{ request()->routeIs('projects.index') ? 'text-white text-sm font-medium hover:text-primary transition-colors leading-normal' : 'text-text-secondary text-sm font-medium hover:text-primary transition-colors leading-normal' }}"
                     href="{{ route('projects.index') }}">Projects</a>
             </nav>
             <div class="flex items-center gap-4">
