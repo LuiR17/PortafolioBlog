@@ -86,42 +86,42 @@
             </div>
             <!-- Navigation -->
             <nav class="flex flex-col gap-2">
-                <a class="flex items-center gap-3 px-3 py-3 rounded-lg bg-primary text-white transition-colors group"
+                <a class="{{ request()->routeIs('admin.dashboard') ? 'bg-primary text-white flex items-center gap-3 px-3 py-3 rounded-lg bg-primary transition-colors group' : 'text-text-secondary flex items-center gap-3 px-3 py-3 rounded-lg transition-colors group' }}"
                     href="{{ route('admin.dashboard') }}">
                     <span class="material-symbols-outlined shrink-0" style="font-size: 24px;">dashboard</span>
                     <span class="text-sm font-medium hidden lg:block">Dashboard</span>
                 </a>
-                <a class="flex items-center gap-3 px-3 py-3 rounded-lg text-text-secondary hover:bg-surface-hover hover:text-white transition-colors group"
+                <a class="{{ request()->routeIs('admin.projects.create') ? 'bg-primary text-white flex items-center gap-3 px-3 py-3 rounded-lg bg-primary transition-colors group' : 'text-text-secondary flex items-center gap-3 px-3 py-3 rounded-lg transition-colors group' }}"
                     href="{{ route('admin.projects.create') }}">
                     <span class="material-symbols-outlined shrink-0" style="font-size: 24px;">folder_open</span>
                     <span class="text-sm font-medium hidden lg:block">Projects</span>
                 </a>
-                <a class="flex items-center gap-3 px-3 py-3 rounded-lg text-text-secondary hover:bg-surface-hover hover:text-white transition-colors group"
+                <a class="{{ request()->routeIs('admin.blog.create') ? 'bg-primary text-white flex items-center gap-3 px-3 py-3 rounded-lg bg-primary transition-colors group' : 'text-text-secondary flex items-center gap-3 px-3 py-3 rounded-lg transition-colors group' }}"
                     href="{{ route('admin.blog.create') }}">
                     <span class="material-symbols-outlined shrink-0" style="font-size: 24px;">article</span>
                     <span class="text-sm font-medium hidden lg:block">Blog</span>
                 </a>
-                 <a class="flex items-center gap-3 px-3 py-3 rounded-lg text-text-secondary hover:bg-surface-hover hover:text-white transition-colors group"
+                 <a class="{{ request()->routeIs('admin.skills.index') ? 'bg-primary text-white flex items-center gap-3 px-3 py-3 rounded-lg bg-primary transition-colors group' : 'text-text-secondary flex items-center gap-3 px-3 py-3 rounded-lg transition-colors group' }}"
                     href="{{ route('admin.skills.index') }}">
                     <span class="material-symbols-outlined shrink-0" style="font-size: 24px;">handyman</span>
                     <span class="text-sm font-medium hidden lg:block">skills</span>
                 </a>
-                <a class="flex items-center gap-3 px-3 py-3 rounded-lg text-text-secondary hover:bg-surface-hover hover:text-white transition-colors group"
+                <a class="{{ request()->routeIs('admin.education.index') ? 'bg-primary text-white flex items-center gap-3 px-3 py-3 rounded-lg bg-primary transition-colors group' : 'text-text-secondary flex items-center gap-3 px-3 py-3 rounded-lg transition-colors group' }}"
                     href="{{ route('admin.education.index') }}">
                     <span class="material-symbols-outlined shrink-0" style="font-size: 24px;">school</span>
                     <span class="text-sm font-medium hidden lg:block">Education</span>
                 </a>
-                <a class="flex items-center gap-3 px-3 py-3 rounded-lg text-text-secondary hover:bg-surface-hover hover:text-white transition-colors group"
+                <a class="{{ request()->routeIs('admin.curriculum.index') ? 'bg-primary text-white flex items-center gap-3 px-3 py-3 rounded-lg bg-primary transition-colors group' : 'text-text-secondary flex items-center gap-3 px-3 py-3 rounded-lg transition-colors group' }}"
                     href="{{ route('admin.curriculum.index') }}">
                     <span class="material-symbols-outlined shrink-0" style="font-size: 24px;">description</span>
                     <span class="text-sm font-medium hidden lg:block">Curriculum vitae</span>
                 </a>
-                 <a class="flex items-center gap-3 px-3 py-3 rounded-lg text-text-secondary hover:bg-surface-hover hover:text-white transition-colors group"
+                 <a class="{{ request()->routeIs('admin.profile.index') ? 'bg-primary text-white flex items-center gap-3 px-3 py-3 rounded-lg bg-primary transition-colors group' : 'text-text-secondary flex items-center gap-3 px-3 py-3 rounded-lg transition-colors group' }}"
                     href="{{ route('admin.profile.index') }}">
                     <span class="material-symbols-outlined shrink-0" style="font-size: 24px;">person</span>
                     <span class="text-sm font-medium hidden lg:block">about me</span>
                 </a>
-                <a class="flex items-center gap-3 px-3 py-3 rounded-lg text-text-secondary hover:bg-surface-hover hover:text-white transition-colors group"
+                <a class="{{ request()->routeIs('') ? 'bg-primary text-white flex items-center gap-3 px-3 py-3 rounded-lg bg-primary transition-colors group' : 'text-text-secondary flex items-center gap-3 px-3 py-3 rounded-lg transition-colors group' }}"
                     href="#">
                     <span class="material-symbols-outlined shrink-0" style="font-size: 24px;">settings</span>
                     <span class="text-sm font-medium hidden lg:block">Settings</span>
