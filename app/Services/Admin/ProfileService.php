@@ -10,13 +10,15 @@ class ProfileService
 {
     public function update(User $user, array $data): void
     {
-        if (isset($data['profile_photo'])){
-            if ($user->profile_photo){
-                Storage::disk('public')->delete($user->profile_photo);
+        if (isset($data['profile_photo'])) {
+
+            // borrar imagen anterior
+            if ($user->profile_photo) {
+                Storage::delete($user->profile_photo);
             }
 
-            $data['profile_photo'] = $data['profile_photo']
-                ->store('profiles', 'public');
+            // guardar nueva imagen
+            $data['profile_photo'] = $data['profile_photo']->store('profiles');
         }
 
         $user->update($data);
