@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\Admin\UpdateProfileRequest;
+use App\Services\Admin\ProfileService;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -54,9 +56,14 @@ class ProfileController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateProfileRequest $request, ProfileService $service)
     {
-        //
+        $service->update(
+            Auth::user(),
+            $request->validated()
+        );
+
+        return back()->with('succes', 'Perfil actualizado correctamente');
     }
 
     /**
