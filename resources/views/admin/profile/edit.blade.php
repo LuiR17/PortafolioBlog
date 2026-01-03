@@ -38,7 +38,7 @@
                         class="p-6 md:p-8 flex flex-col md:flex-row gap-8 items-start border-b border-slate-200 dark:border-[#292938]">
                         <div class="relative group">
                             <div class="w-32 h-32 rounded-full overflow-hidden ring-4 ring-slate-100 dark:ring-[#292938] shadow-md bg-slate-200 dark:bg-[#111117]">
-                                 <img src="{{ asset('storage/' . auth()->user()->profile_photo) }}" alt="foto de perfil" class="background-size: cover; background-position: center">
+                                 <img src="{{ Storage::url(auth()->user()->profile_photo) }}" alt="foto de perfil" class="background-size: cover; background-position: center">
                             </div>
                             <button
                                 class="absolute bottom-1 right-1 p-2 bg-primary text-white rounded-full shadow-lg hover:bg-blue-700 transition-colors"
