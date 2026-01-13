@@ -18,7 +18,7 @@ class ProjectService
                 $data['preview_image']->isValid()
             ) {
                 $data['preview_image'] = $data['preview_image']
-                    ->store('projects');
+                    ->store('projects','s3');
             }
 
             return Project::create($data);
