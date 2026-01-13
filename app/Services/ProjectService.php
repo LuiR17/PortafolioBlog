@@ -17,8 +17,9 @@ class ProjectService
                 $data['preview_image'] instanceof \Illuminate\Http\UploadedFile &&
                 $data['preview_image']->isValid()
             ) {
+                // usa FILESYSTEM_DISK (igual que ProfileService)
                 $data['preview_image'] = $data['preview_image']
-                    ->store('projects','s3');
+                    ->store('projects');
             }
 
             return Project::create($data);
@@ -40,11 +41,11 @@ class ProjectService
                 $data['preview_image']->isValid()
             ) {
                 if ($project->preview_image) {
-                    Storage::disk('s3')->delete($project->preview_image);
+                    Storage::delete($project->preview_image);
                 }
 
                 $data['preview_image'] = $data['preview_image']
-                    ->store('projects', 's3');
+                    ->store('projects');
             }
 
             $project->update($data);
@@ -64,7 +65,7 @@ class ProjectService
     {
         try {
             if ($project->preview_image) {
-                Storage::disk('s3')->delete($project->preview_image);
+                Storage::delete($project->preview_image);
             }
 
             $project->delete();
