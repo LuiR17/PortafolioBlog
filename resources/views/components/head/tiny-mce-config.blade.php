@@ -3,6 +3,9 @@
   tinymce.init({
     selector: 'textarea#editor-container', // Replace this CSS selector to match the placeholder element for TinyMCE
     plugins: 'code table lists',
-    toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code | table'
+    toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code | table',
+    images_upload_url: '{{ route('admin.projects.upload-image') }}',
+    images_upload_credentials: true,
+    paste_data_images: false,
   });
 </script>

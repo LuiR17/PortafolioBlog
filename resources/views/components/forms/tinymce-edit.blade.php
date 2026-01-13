@@ -11,6 +11,7 @@ tinymce.init({
   toolbar: 'undo redo | blocks | bold italic | bullist numlist | image link | code',
   images_upload_url: '{{ route('admin.projects.upload-image') }}',
   images_upload_credentials: true,
+  paste_data_images: false,
 });
 </script>
 
