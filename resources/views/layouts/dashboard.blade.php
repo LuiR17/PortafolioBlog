@@ -46,6 +46,7 @@
             },
         }
     </script>
+    @vite(['resources/js/Admin/ImageProjects.js'])
     <style>
         /* Custom scrollbar for webkit */
         ::-webkit-scrollbar {
@@ -66,6 +67,7 @@
             background: #3b3b54;
         }
     </style>
+    <x-head.tiny-mce-config/> 
 </head>
 
 <body
@@ -91,8 +93,8 @@
                     <span class="material-symbols-outlined shrink-0" style="font-size: 24px;">dashboard</span>
                     <span class="text-sm font-medium hidden lg:block">Dashboard</span>
                 </a>
-                <a class="{{ request()->routeIs('admin.projects.create') ? 'bg-primary text-white flex items-center gap-3 px-3 py-3 rounded-lg bg-primary transition-colors group' : 'text-text-secondary flex items-center gap-3 px-3 py-3 rounded-lg transition-colors group' }}"
-                    href="{{ route('admin.projects.create') }}">
+                <a class="{{ request()->routeIs('admin.projects.index') ? 'bg-primary text-white flex items-center gap-3 px-3 py-3 rounded-lg bg-primary transition-colors group' : 'text-text-secondary flex items-center gap-3 px-3 py-3 rounded-lg transition-colors group' }}"
+                    href="{{ route('admin.projects.index') }}">
                     <span class="material-symbols-outlined shrink-0" style="font-size: 24px;">folder_open</span>
                     <span class="text-sm font-medium hidden lg:block">Projects</span>
                 </a>

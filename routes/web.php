@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\BlogController as AdminBlogController;
 use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
 use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\Admin\EducationController;
+use App\Http\Controllers\Admin\AdminProjectImageController;
 use App\Http\Controllers\Admin\CurriculumController;
 use App\Http\Controllers\Admin\ProfileController;
 
@@ -53,6 +54,9 @@ Route::middleware(['auth'])
         // Projects
         Route::resource('projects', AdminProjectController::class)
             ->except(['show']);
+
+        Route::post('projects/upload-image',[AdminProjectImageController::class, 'store']
+        )->name('projects.upload-image');
 
         // Skills
         Route::get('skills', [SkillController::class, 'index'])->name('skills.index');
