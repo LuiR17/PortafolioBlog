@@ -57,7 +57,7 @@
                                 <td class="px-6 py-4 align-middle">
                                     <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-10 ring-1 ring-white/10"
                                         data-alt="{{ $project->name }} preview image"
-                                        style="background-image: url('{{ $project->preview_image ?? 'https://via.placeholder.com/150' }}')">
+                                        style="background-image: url('{{ $project->preview_image ? Storage::url($project->preview_image) : 'https://via.placeholder.com/150' }}')">
                                     </div>
                                 </td>
                                 <td class="px-6 py-4 align-middle">
