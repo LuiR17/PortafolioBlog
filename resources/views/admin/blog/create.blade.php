@@ -170,7 +170,10 @@
             editor.on('change', function () {
                 editor.save();
             });
-        }
+        },
+        images_upload_url: '{{ route('admin.projects.upload-image') }}',
+        images_upload_credentials: true,
+        paste_data_images: false,
     });
 
     // Sincronizar contenido de TinyMCE antes de enviar el formulario
