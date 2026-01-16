@@ -59,10 +59,10 @@ Route::middleware(['auth'])
         )->name('projects.upload-image');
 
         // Skills
-        Route::get('skills', [SkillController::class, 'index'])->name('skills.index');
+        Route::resource('skills', SkillController::class);
 
         // Education
-        Route::get('education', [EducationController::class, 'index'])->name('education.index');
+        Route::resource('education', EducationController::class);
 
         // Curriculum
         Route::get('curriculum', [CurriculumController::class, 'index'])->name('curriculum.index');

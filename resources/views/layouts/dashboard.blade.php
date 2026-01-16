@@ -82,7 +82,7 @@
                     style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAIyNOPab0g05MQJzQcVhs9_Z21IhZUwHI4EExjFwWJ75pRUp3K2L70cWUwAW_kJCYvuf3OkSrALruvo1DOblCNQ3G4Zrqde5zU1jt3DNiA_Qk6L8O1wnbmjy4ZkSllfOY7pZ6lsv2EbsFCTTU-9Nhl6lezn6_WtI5gv_BeUv29pXBMstq8b_xJlthkXD4N7CIZk-wXgx-h0eMQGoYAIknvAykRVm8fTujXRCOzD3JTlsUIB_mi7iLTu3LpxVzOQNu9_IfwJYzE2FMV");'>
                 </div>
                 <div class="flex flex-col hidden lg:flex">
-                    <h1 class="text-white text-base font-bold leading-tight">Alex Dev</h1>
+                    <h1 class="text-white text-base font-bold leading-tight">{{ auth()->user()->name }}</h1>
                     <p class="text-text-secondary text-xs font-normal">Admin Panel</p>
                 </div>
             </div>
@@ -98,8 +98,8 @@
                     <span class="material-symbols-outlined shrink-0" style="font-size: 24px;">folder_open</span>
                     <span class="text-sm font-medium hidden lg:block">Projects</span>
                 </a>
-                <a class="{{ request()->routeIs('admin.blog.create') ? 'bg-primary text-white flex items-center gap-3 px-3 py-3 rounded-lg bg-primary transition-colors group' : 'text-text-secondary flex items-center gap-3 px-3 py-3 rounded-lg transition-colors group' }}"
-                    href="{{ route('admin.blog.create') }}">
+                <a class="{{ request()->routeIs('admin.blog.index') ? 'bg-primary text-white flex items-center gap-3 px-3 py-3 rounded-lg bg-primary transition-colors group' : 'text-text-secondary flex items-center gap-3 px-3 py-3 rounded-lg transition-colors group' }}"
+                    href="{{ route('admin.blog.index') }}">
                     <span class="material-symbols-outlined shrink-0" style="font-size: 24px;">article</span>
                     <span class="text-sm font-medium hidden lg:block">Blog</span>
                 </a>

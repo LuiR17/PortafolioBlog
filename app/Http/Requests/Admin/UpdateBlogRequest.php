@@ -1,0 +1,36 @@
+<?php
+
+namespace App\Http\Requests\Admin;
+
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+
+class UpdateBlogRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     */
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     */
+    public function rules(): array
+    {
+        return [
+            'title' => ['required', 'string', 'max:255'],
+            'slug' => ['required', 'string', 'max:255', Rule::unique('blog_posts')->ignore($this->route('blog'))],
+            'excerpt' => ['nullable', 'string'],
+            'content' => ['required', 'string'],
+            'status' => ['required', 'in:draft,published'],
+            'visibility' => ['required', 'in:public,private'],
+            'published_at' => ['nullable', 'date'],
+            'preview_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+        ];
+    }
+}

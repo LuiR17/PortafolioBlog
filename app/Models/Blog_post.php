@@ -15,7 +15,13 @@ class Blog_post extends Model
        'visibility',
        'excerpt',
        'content',
-       'published_at', 
+       'published_at',
+    ];
+
+    protected $dates = [
+        'published_at',
+        'created_at',
+        'updated_at',
     ];
 
     public function tags(): MorphToMany
