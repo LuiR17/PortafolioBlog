@@ -9,7 +9,7 @@ tinymce.init({
   selector: '#editor-container',
   plugins: 'code table lists image link',
   toolbar: 'undo redo | blocks | bold italic | bullist numlist | image link | code',
-  images_upload_url: '{{ route('admin.projects.upload-image') }}',
+  images_upload_url: '{{ route('admin.blogs.upload-image') }}',
   images_upload_credentials: true,
   paste_data_images: true,
 });

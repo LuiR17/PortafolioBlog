@@ -63,7 +63,10 @@
                             <!-- Editor Container -->
                             <div class="flex flex-col flex-1 min-h-[500px] overflow-hidden shadow-sm">
                                 <!-- tinyMCE -->
-                                <textarea name="content" id="editor-container">{{ old('content', $blogPost->content) }}</textarea>
+                                <x-forms.tinymce-blog-edit :content="old('content', $blogPost->content)" />
+                                @error('content')
+                                    <p class="text-red-400 text-xs mt-1">{{ $message }}</p>
+                                @enderror
                             </div>
                         </div>
                         <!-- Right Column: Sidebar (4 cols) -->
@@ -125,18 +128,4 @@
     </main>
 @endsection
 
-@push('scripts')
-<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-<script>
-    tinymce.init({
-        selector: '#editor-container',
-        height: 500,
-        menubar: false,
-        plugins: 'lists link image code',
-        toolbar: 'bold italic underline | bullist numlist | link image | code',
-        skin: 'oxide-dark',
-        content_css: 'dark'
-    });
-</script>
-@endpush
 

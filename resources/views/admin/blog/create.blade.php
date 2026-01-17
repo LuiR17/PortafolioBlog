@@ -81,7 +81,7 @@
                             <!-- Editor Container -->
                             <div class="flex flex-col flex-1 min-h-[500px] overflow-hidden shadow-sm">
                                 <!-- tinyMCE -->
-                                <textarea name="content" id="editor-container">{{ old('content') }}</textarea>
+                                <x-forms.tinymce-blog-create />
                                 @error('content')
                                     <p class="text-red-400 text-xs mt-1">{{ $message }}</p>
                                 @enderror
@@ -155,33 +155,4 @@
     </main>
 @endsection
 
-@push('scripts')
-<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-<script>
-    tinymce.init({
-        selector: '#editor-container',
-        height: 500,
-        menubar: false,
-        plugins: 'lists link image code',
-        toolbar: 'bold italic underline | bullist numlist | link image | code',
-        skin: 'oxide-dark',
-        content_css: 'dark',
-        setup: function (editor) {
-            editor.on('change', function () {
-                editor.save();
-            });
-        },
-        images_upload_url: '{{ route('admin.projects.upload-image') }}',
-        images_upload_credentials: true,
-        paste_data_images: false,
-    });
-
-    // Sincronizar contenido de TinyMCE antes de enviar el formulario
-    document.querySelector('form').addEventListener('submit', function() {
-        if (tinymce.activeEditor) {
-            tinymce.activeEditor.save();
-        }
-    });
-</script>
-@endpush
 

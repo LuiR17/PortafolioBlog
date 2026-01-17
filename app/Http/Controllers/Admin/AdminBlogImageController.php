@@ -6,8 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-
-class AdminProjectImageController extends Controller
+class AdminBlogImageController extends Controller
 {
     public function store(Request $request)
     {
@@ -16,7 +15,7 @@ class AdminProjectImageController extends Controller
         ]);
 
         $path = $request->file('image')
-            ->store('projects/content', 'public');
+            ->store('blogs/content', 'public');
 
         return response()->json([
             'url' => asset('storage/' . $path),
