@@ -11,7 +11,7 @@
                 <a class="text-slate-500 dark:text-[#9eb1b7] hover:text-primary transition-colors font-medium"
                     href="#">Skills &amp; Tools</a>
                 <span class="text-slate-400 dark:text-[#9eb1b7] font-medium">/</span>
-                <span class="text-slate-900 dark:text-white font-medium">Add New</span>
+                <span class="text-slate-900 dark:text-white font-medium">Edit Skill</span>
             </div>
             <!-- Page Header -->
             <div
@@ -19,11 +19,11 @@
                 <div class="flex flex-col gap-2">
                     <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">Manage Tech
                         Stack</h2>
-                    <p class="text-slate-500 dark:text-[#9eb1b7] text-base font-normal max-w-2xl">Add a new language,
-                        framework, or tool to your portfolio to showcase your expertise.</p>
+                    <p class="text-slate-500 dark:text-[#9eb1b7] text-base font-normal max-w-2xl">Edit the language,
+                        framework, or tool in your portfolio to update your expertise.</p>
                 </div>
                 <div class="flex gap-3">
-                    <a href="{{ route('admin.skills.index') }}"
+                    <a href="{{ route('skills.index') }}"
                         class="px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors font-medium">
                         Cancel
                     </a>
@@ -51,8 +51,9 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('admin.skills.store') }}" method="POST" enctype="multipart/form-data" class="flex flex-col gap-6">
+                    <form action="{{ route('skills.update', $skill) }}" method="POST" enctype="multipart/form-data" class="flex flex-col gap-6">
                         @csrf
+                        @method('PUT')
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <!-- Name Input -->
                         <div class="flex flex-col gap-2">
@@ -61,7 +62,7 @@
                                 id="name"
                                 name="name"
                                 class="w-full rounded-lg border border-slate-300 dark:border-[#3d4d52] bg-slate-50 dark:bg-[#111d21] px-4 py-3 text-base text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-[#9eb1b7] focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all @error('name') border-red-500 @enderror"
-                                placeholder="e.g., TypeScript" type="text" value="{{ old('name') }}" />
+                                placeholder="e.g., TypeScript" type="text" value="{{ old('name', $skill->name) }}" />
                             @error('name')
                                 <span class="text-red-500 text-sm">{{ $message }}</span>
                             @enderror
@@ -74,10 +75,10 @@
                                     id="category"
                                     name="category"
                                     class="w-full appearance-none rounded-lg border border-slate-300 dark:border-[#3d4d52] bg-slate-50 dark:bg-[#111d21] px-4 py-3 text-base text-slate-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all pr-10 @error('category') border-red-500 @enderror">
-                                    <option value="" {{ old('category') == '' ? 'selected' : '' }}>Select category</option>
-                                    <option value="language" {{ old('category') == 'language' ? 'selected' : '' }}>Language</option>
-                                    <option value="framework" {{ old('category') == 'framework' ? 'selected' : '' }}>Framework</option>
-                                    <option value="tool" {{ old('category') == 'tool' ? 'selected' : '' }}>Tool (Software, Platform)</option>
+                                    <option value="" {{ old('category', $skill->category) == '' ? 'selected' : '' }}>Select category</option>
+                                    <option value="language" {{ old('category', $skill->category) == 'language' ? 'selected' : '' }}>Language</option>
+                                    <option value="framework" {{ old('category', $skill->category) == 'framework' ? 'selected' : '' }}>Framework</option>
+                                    <option value="tool" {{ old('category', $skill->category) == 'tool' ? 'selected' : '' }}>Tool (Software, Platform)</option>
                                 </select>
                                 <div
                                     class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500 dark:text-[#9eb1b7]">
@@ -97,7 +98,7 @@
                             id="order"
                             name="order"
                             class="w-full rounded-lg border border-slate-300 dark:border-[#3d4d52] bg-slate-50 dark:bg-[#111d21] px-4 py-3 text-base text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-[#9eb1b7] focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
-                            placeholder="e.g., 1" type="number" min="0" value="{{ old('order') }}" />
+                            placeholder="e.g., 1" type="number" min="0" value="{{ old('order', $skill->order) }}" />
                         @error('order')
                             <span class="text-red-500 text-sm">{{ $message }}</span>
                         @enderror
@@ -105,14 +106,14 @@
                     <div class="h-px bg-slate-200 dark:bg-slate-700 my-2"></div>
                     <!-- Submit Actions -->
                     <div class="flex justify-end gap-4">
-                        <a href="{{ route('admin.skills.index') }}"
+                        <a href="{{ route('skills.index') }}"
                             class="px-6 py-3 rounded-lg text-slate-600 dark:text-slate-300 font-medium hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
                             Cancel
                         </a>
                         <button type="submit"
                             class="px-6 py-3 rounded-lg bg-primary text-white font-bold hover:bg-opacity-90 transition-all shadow-lg shadow-primary/20 flex items-center gap-2">
                             <span class="material-symbols-outlined text-[20px]">check</span>
-                            Save Skill
+                            Update Skill
                         </button>
                     </div>
                     </form>
@@ -144,13 +145,22 @@
                             </div>
                         </div>
                         <!-- Current File Preview -->
-                        <div id="imagePreview" class="hidden flex items-center gap-3 p-3 bg-slate-50 dark:bg-[#111d21] rounded-lg border border-slate-200 dark:border-slate-700">
+                        <div id="imagePreview" class="@if($skill->icon) flex @else hidden @endif items-center gap-3 p-3 bg-slate-50 dark:bg-[#111d21] rounded-lg border border-slate-200 dark:border-slate-700">
                             <div class="w-10 h-10 rounded bg-white dark:bg-black/20 flex items-center justify-center p-2">
-                                <img id="previewImg" src="" alt="Preview" class="w-full h-full object-contain">
+                                @if($skill->icon)
+                                    <img src="{{ asset('storage/' . $skill->icon) }}" alt="Current icon" class="w-full h-full object-contain">
+                                @else
+                                    <img id="previewImg" src="" alt="Preview" class="w-full h-full object-contain">
+                                @endif
                             </div>
                             <div class="flex-1 min-w-0">
-                                <p id="fileName" class="text-sm font-medium text-slate-900 dark:text-white truncate"></p>
-                                <p id="fileSize" class="text-xs text-slate-500"></p>
+                                @if($skill->icon)
+                                    <p class="text-sm font-medium text-slate-900 dark:text-white truncate">Current icon</p>
+                                    <p class="text-xs text-slate-500">Uploaded file</p>
+                                @else
+                                    <p id="fileName" class="text-sm font-medium text-slate-900 dark:text-white truncate"></p>
+                                    <p id="fileSize" class="text-xs text-slate-500"></p>
+                                @endif
                             </div>
                             <button type="button" onclick="clearImage()" class="text-slate-400 hover:text-red-400">
                                 <span class="material-symbols-outlined text-[20px]">close</span>

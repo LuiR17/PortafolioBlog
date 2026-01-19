@@ -42,11 +42,11 @@
                         </p>
                     </div>
                     <!-- Mobile Add Button -->
-                    <button
-                        class="md:hidden flex items-center gap-2 h-10 px-5 rounded-lg bg-primary text-white text-sm font-bold shadow-lg shadow-primary/25 hover:bg-blue-600 transition-all">
-                        <span class="material-symbols-outlined text-[20px]">add</span>
-                        <span>Add New Skill</span>
-                    </button>
+                        <a href="{{ route('admin.skills.create') }}"
+                            class="md:hidden flex items-center gap-2 h-10 px-5 rounded-lg bg-primary text-white text-sm font-bold shadow-lg shadow-primary/25 hover:bg-blue-600 transition-all">
+                            <span class="material-symbols-outlined text-[20px]">add</span>
+                            <span>Add New Skill</span>
+                        </a>
                 </div>
                 <!-- Stats Row -->
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -56,7 +56,7 @@
                             <span
                                 class="material-symbols-outlined text-primary bg-primary/10 p-1.5 rounded-lg text-[20px]">code</span>
                         </div>
-                        <p class="text-white text-3xl font-bold mt-2">24</p>
+                        <p class="text-white text-3xl font-bold mt-2">{{ $skills->count() }}</p>
                     </div>
                     <div class="bg-surface-dark border border-border-dark rounded-xl p-5 flex flex-col gap-1 shadow-sm">
                         <div class="flex justify-between items-start">
@@ -64,7 +64,7 @@
                             <span
                                 class="material-symbols-outlined text-yellow-500 bg-yellow-500/10 p-1.5 rounded-lg text-[20px] icon-filled">star</span>
                         </div>
-                        <p class="text-white text-3xl font-bold mt-2">8</p>
+                        <p class="text-white text-3xl font-bold mt-2">{{ $skills->where('category', 'language')->count() }}</p>
                     </div>
                     <div class="bg-surface-dark border border-border-dark rounded-xl p-5 flex flex-col gap-1 shadow-sm">
                         <div class="flex justify-between items-start">
@@ -72,7 +72,7 @@
                             <span
                                 class="material-symbols-outlined text-purple-500 bg-purple-500/10 p-1.5 rounded-lg text-[20px]">category</span>
                         </div>
-                        <p class="text-white text-3xl font-bold mt-2">4</p>
+                        <p class="text-white text-3xl font-bold mt-2">{{ $skills->pluck('category')->unique()->count() }}</p>
                     </div>
                 </div>
                 <!-- Filter & Actions Toolbar -->
@@ -110,228 +110,66 @@
                 </div>
                 <!-- Skills Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
-                    <!-- Skill Card 1 (Featured) -->
-                    <div
-                        class="group relative bg-surface-dark rounded-xl border border-border-dark p-5 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/5">
-                        <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity flex gap-2">
-                            <button class="p-1.5 rounded-md hover:bg-background-dark text-text-secondary hover:text-white"
-                                title="Edit">
-                                <span class="material-symbols-outlined text-[18px]">edit</span>
-                            </button>
-                            <button class="p-1.5 rounded-md hover:bg-red-500/20 text-text-secondary hover:text-red-500"
-                                title="Delete">
-                                <span class="material-symbols-outlined text-[18px]">delete</span>
-                            </button>
-                        </div>
-                        <div class="flex items-start gap-4 mb-4">
-                            <div class="size-12 rounded-lg bg-[#F7DF1E]/10 flex items-center justify-center p-2">
-                                <img alt="JavaScript Logo" class="w-full h-full object-contain"
-                                    data-alt="JavaScript yellow shield logo"
-                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUJUchi7TVQySzPPSL9fyNrzKDkVaNWq5Eo8QpV51Uy6o14VMX2EYFmPJjEyPjAhj7RVguvLZOfwHrONh-AAt8JiTG8TKOdpE98a74j2N3MidNKTFoK_bN1gBIZLyxYXYnFTC9you9bQNLXUGG1yS57RTkEuV3gp8rJf4T2TCALRG8U0PzRiS-SouB5Ve9kUCCMb-iP-T58n5oW9MFWgjPNmDwFMXBxF91YY3fV5tBiN1fA3BCbjQMIzvqE3S8AK8e1MJ63raNmxhQ" />
+                    @if($skills->count() > 0)
+                        @foreach($skills as $skill)
+                            <div
+                                class="group relative bg-surface-dark rounded-xl border border-border-dark p-5 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/5">
+                                <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity flex gap-2">
+                                    <a href="{{ route('admin.skills.edit', $skill) }}" class="p-1.5 rounded-md hover:bg-background-dark text-text-secondary hover:text-white"
+                                        title="Edit">
+                                        <span class="material-symbols-outlined text-[18px]">edit</span>
+                                    </a>
+                                    <form action="{{ route('admin.skills.destroy', $skill) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this skill?')">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="p-1.5 rounded-md hover:bg-red-500/20 text-text-secondary hover:text-red-500"
+                                            title="Delete">
+                                            <span class="material-symbols-outlined text-[18px]">delete</span>
+                                        </button>
+                                    </form>
+                                </div>
+                                <div class="flex items-start gap-4 mb-4">
+                                    <div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center p-2">
+                                        @if($skill->icon)
+                                            <img src="{{ asset('storage/' . $skill->icon) }}" alt="{{ $skill->name }} Logo" class="w-full h-full object-contain">
+                                        @else
+                                            <span class="material-symbols-outlined text-primary text-3xl">code</span>
+                                        @endif
+                                    </div>
+                                    <div>
+                                        <h3 class="text-white font-bold text-lg">{{ $skill->name }}</h3>
+                                        <span
+                                            class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-border-dark text-text-secondary mt-1">
+                                            {{ ucfirst($skill->category) }}
+                                        </span>
+                                    </div>
+                                </div>
+                                @if($skill->order)
+                                    <div class="space-y-2">
+                                        <div class="flex justify-between text-xs font-medium">
+                                            <span class="text-text-secondary">Order</span>
+                                            <span class="text-white">#{{ $skill->order }}</span>
+                                        </div>
+                                        <div class="w-full bg-background-dark rounded-full h-2 overflow-hidden">
+                                            <div class="bg-primary h-2 rounded-full" style="width: {{ min(100, $skill->order * 10) }}%"></div>
+                                        </div>
+                                    </div>
+                                @endif
                             </div>
-                            <div>
-                                <h3 class="text-white font-bold text-lg">JavaScript</h3>
-                                <span
-                                    class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-border-dark text-text-secondary mt-1">Language</span>
-                            </div>
-                        </div>
-                        <div class="space-y-2">
-                            <div class="flex justify-between text-xs font-medium">
-                                <span class="text-text-secondary">Proficiency</span>
-                                <span class="text-white">95%</span>
-                            </div>
-                            <div class="w-full bg-background-dark rounded-full h-2 overflow-hidden">
-                                <div class="bg-[#F7DF1E] h-2 rounded-full" style="width: 95%"></div>
-                            </div>
-                        </div>
-                        <div class="mt-4 flex items-center gap-2">
-                            <span class="material-symbols-outlined text-[16px] text-yellow-500 icon-filled">star</span>
-                            <span class="text-xs text-yellow-500 font-medium">Featured on Home</span>
-                        </div>
-                    </div>
-                    <!-- Skill Card 2 -->
-                    <div
-                        class="group relative bg-surface-dark rounded-xl border border-border-dark p-5 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/5">
-                        <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity flex gap-2">
-                            <button class="p-1.5 rounded-md hover:bg-background-dark text-text-secondary hover:text-white"
-                                title="Edit">
-                                <span class="material-symbols-outlined text-[18px]">edit</span>
-                            </button>
-                            <button class="p-1.5 rounded-md hover:bg-red-500/20 text-text-secondary hover:text-red-500"
-                                title="Delete">
-                                <span class="material-symbols-outlined text-[18px]">delete</span>
-                            </button>
-                        </div>
-                        <div class="flex items-start gap-4 mb-4">
-                            <div class="size-12 rounded-lg bg-[#61DAFB]/10 flex items-center justify-center p-2">
-                                <img alt="React Logo" class="w-full h-full object-contain" data-alt="React blue atom logo"
-                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOiLQ3I1z2yrNnmewr1hRsU-tsa7xxOn2Bczk0eZN7zhTaDlMWUX2tSPRDzuyTGiqeR62rsyiSVIjEzA3RDAAurmBizA-k9tFqgT-b8OTbTSWTqWskASNE9catBABJv_rlnhkYmQLZlwz8L_zTN36JKfkShJ35TvvmMXYxpGusr31PIpT-ELsvB_skPeiuLrlvkN11m0jZV-_NbobInXv4Hmro0HG-3-qA_Dko1HIQcq1vJXkT3suJ88mypTbIgk2RgknXc2QVTOB4" />
-                            </div>
-                            <div>
-                                <h3 class="text-white font-bold text-lg">React</h3>
-                                <span
-                                    class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-border-dark text-text-secondary mt-1">Framework</span>
+                        @endforeach
+                    @else
+                        <div class="col-span-full text-center py-12">
+                            <div class="flex flex-col items-center gap-4">
+                                <span class="material-symbols-outlined text-6xl text-text-secondary">code_off</span>
+                                <h3 class="text-xl font-semibold text-white">No skills found</h3>
+                                <p class="text-text-secondary">Get started by adding your first skill.</p>
+                                <a href="{{ route('admin.skills.create') }}" class="inline-flex items-center gap-2 h-10 px-5 rounded-lg bg-primary text-white text-sm font-bold shadow-lg shadow-primary/25 hover:bg-blue-600 transition-all">
+                                    <span class="material-symbols-outlined text-[20px]">add</span>
+                                    <span>Add Your First Skill</span>
+                                </a>
                             </div>
                         </div>
-                        <div class="space-y-2">
-                            <div class="flex justify-between text-xs font-medium">
-                                <span class="text-text-secondary">Proficiency</span>
-                                <span class="text-white">90%</span>
-                            </div>
-                            <div class="w-full bg-background-dark rounded-full h-2 overflow-hidden">
-                                <div class="bg-[#61DAFB] h-2 rounded-full" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        <div class="mt-4 flex items-center gap-2">
-                            <span class="material-symbols-outlined text-[16px] text-yellow-500 icon-filled">star</span>
-                            <span class="text-xs text-yellow-500 font-medium">Featured on Home</span>
-                        </div>
-                    </div>
-                    <!-- Skill Card 3 -->
-                    <div
-                        class="group relative bg-surface-dark rounded-xl border border-border-dark p-5 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/5">
-                        <div
-                            class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity flex gap-2">
-                            <button class="p-1.5 rounded-md hover:bg-background-dark text-text-secondary hover:text-white"
-                                title="Edit">
-                                <span class="material-symbols-outlined text-[18px]">edit</span>
-                            </button>
-                            <button class="p-1.5 rounded-md hover:bg-red-500/20 text-text-secondary hover:text-red-500"
-                                title="Delete">
-                                <span class="material-symbols-outlined text-[18px]">delete</span>
-                            </button>
-                        </div>
-                        <div class="flex items-start gap-4 mb-4">
-                            <div class="size-12 rounded-lg bg-blue-500/10 flex items-center justify-center p-2">
-                                <span class="material-symbols-outlined text-blue-500 text-3xl">css</span>
-                            </div>
-                            <div>
-                                <h3 class="text-white font-bold text-lg">Tailwind CSS</h3>
-                                <span
-                                    class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-border-dark text-text-secondary mt-1">Framework</span>
-                            </div>
-                        </div>
-                        <div class="space-y-2">
-                            <div class="flex justify-between text-xs font-medium">
-                                <span class="text-text-secondary">Proficiency</span>
-                                <span class="text-white">100%</span>
-                            </div>
-                            <div class="w-full bg-background-dark rounded-full h-2 overflow-hidden">
-                                <div class="bg-blue-500 h-2 rounded-full" style="width: 100%"></div>
-                            </div>
-                        </div>
-                        <div class="mt-4 h-5"></div> <!-- Spacer for non-featured alignment -->
-                    </div>
-                    <!-- Skill Card 4 -->
-                    <div
-                        class="group relative bg-surface-dark rounded-xl border border-border-dark p-5 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/5">
-                        <div
-                            class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity flex gap-2">
-                            <button class="p-1.5 rounded-md hover:bg-background-dark text-text-secondary hover:text-white"
-                                title="Edit">
-                                <span class="material-symbols-outlined text-[18px]">edit</span>
-                            </button>
-                            <button class="p-1.5 rounded-md hover:bg-red-500/20 text-text-secondary hover:text-red-500"
-                                title="Delete">
-                                <span class="material-symbols-outlined text-[18px]">delete</span>
-                            </button>
-                        </div>
-                        <div class="flex items-start gap-4 mb-4">
-                            <div class="size-12 rounded-lg bg-orange-500/10 flex items-center justify-center p-2">
-                                <span class="material-symbols-outlined text-orange-500 text-3xl">terminal</span>
-                            </div>
-                            <div>
-                                <h3 class="text-white font-bold text-lg">Git</h3>
-                                <span
-                                    class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-border-dark text-text-secondary mt-1">Tool</span>
-                            </div>
-                        </div>
-                        <div class="space-y-2">
-                            <div class="flex justify-between text-xs font-medium">
-                                <span class="text-text-secondary">Proficiency</span>
-                                <span class="text-white">85%</span>
-                            </div>
-                            <div class="w-full bg-background-dark rounded-full h-2 overflow-hidden">
-                                <div class="bg-orange-500 h-2 rounded-full" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        <div class="mt-4 h-5"></div>
-                    </div>
-                    <!-- Skill Card 5 -->
-                    <div
-                        class="group relative bg-surface-dark rounded-xl border border-border-dark p-5 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/5">
-                        <div
-                            class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity flex gap-2">
-                            <button class="p-1.5 rounded-md hover:bg-background-dark text-text-secondary hover:text-white"
-                                title="Edit">
-                                <span class="material-symbols-outlined text-[18px]">edit</span>
-                            </button>
-                            <button class="p-1.5 rounded-md hover:bg-red-500/20 text-text-secondary hover:text-red-500"
-                                title="Delete">
-                                <span class="material-symbols-outlined text-[18px]">delete</span>
-                            </button>
-                        </div>
-                        <div class="flex items-start gap-4 mb-4">
-                            <div class="size-12 rounded-lg bg-[#3776AB]/10 flex items-center justify-center p-2">
-                                <img alt="Python Logo" class="w-full h-full object-contain"
-                                    data-alt="Python blue and yellow snakes logo"
-                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYfRBCUUtS9u07vEUtt-6sCxajd3SY6n89e8xnckrY1EtkTRuRa4_5c0xBR9S4LUjadjv_idiiiRwtkdRpPPblpiQGIVDtLZg-0gaSVDkVRO3SeLFRuiST_HQTdK8aue25ahwdITdyiDcaOnWYGgUFA8HrH8jxvxu07weLG3atsNmfnCz5Ks2auhevhx-J4wO6K8Xx1Ndnj_PqJ4eqyeYOoxt2FYX17tOAzUS1h5--gQ-L1JqVhKwkYFKH4M0Fl5kFsgja29kdGEcc" />
-                            </div>
-                            <div>
-                                <h3 class="text-white font-bold text-lg">Python</h3>
-                                <span
-                                    class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-border-dark text-text-secondary mt-1">Language</span>
-                            </div>
-                        </div>
-                        <div class="space-y-2">
-                            <div class="flex justify-between text-xs font-medium">
-                                <span class="text-text-secondary">Proficiency</span>
-                                <span class="text-white">75%</span>
-                            </div>
-                            <div class="w-full bg-background-dark rounded-full h-2 overflow-hidden">
-                                <div class="bg-[#3776AB] h-2 rounded-full" style="width: 75%"></div>
-                            </div>
-                        </div>
-                        <div class="mt-4 flex items-center gap-2">
-                            <span class="material-symbols-outlined text-[16px] text-yellow-500 icon-filled">star</span>
-                            <span class="text-xs text-yellow-500 font-medium">Featured on Home</span>
-                        </div>
-                    </div>
-                    <!-- Skill Card 6 -->
-                    <div
-                        class="group relative bg-surface-dark rounded-xl border border-border-dark p-5 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/5">
-                        <div
-                            class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity flex gap-2">
-                            <button class="p-1.5 rounded-md hover:bg-background-dark text-text-secondary hover:text-white"
-                                title="Edit">
-                                <span class="material-symbols-outlined text-[18px]">edit</span>
-                            </button>
-                            <button class="p-1.5 rounded-md hover:bg-red-500/20 text-text-secondary hover:text-red-500"
-                                title="Delete">
-                                <span class="material-symbols-outlined text-[18px]">delete</span>
-                            </button>
-                        </div>
-                        <div class="flex items-start gap-4 mb-4">
-                            <div class="size-12 rounded-lg bg-purple-600/10 flex items-center justify-center p-2">
-                                <span class="material-symbols-outlined text-purple-600 text-3xl">design_services</span>
-                            </div>
-                            <div>
-                                <h3 class="text-white font-bold text-lg">Figma</h3>
-                                <span
-                                    class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-border-dark text-text-secondary mt-1">Design</span>
-                            </div>
-                        </div>
-                        <div class="space-y-2">
-                            <div class="flex justify-between text-xs font-medium">
-                                <span class="text-text-secondary">Proficiency</span>
-                                <span class="text-white">80%</span>
-                            </div>
-                            <div class="w-full bg-background-dark rounded-full h-2 overflow-hidden">
-                                <div class="bg-purple-600 h-2 rounded-full" style="width: 80%"></div>
-                            </div>
-                        </div>
-                        <div class="mt-4 h-5"></div>
-                    </div>
+                    @endif
                 </div>
             </div>
         </div>
