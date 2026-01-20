@@ -1,5 +1,6 @@
 @extends('layouts.dashboard')
 
+
 @section('content')
     <main class="flex-1 flex flex-col h-screen overflow-y-auto relative">
         <div class="w-full max-w-[1200px] mx-auto px-6 py-8 md:px-12 md:py-10 flex flex-col gap-8">
@@ -23,7 +24,7 @@
                         framework, or tool in your portfolio to update your expertise.</p>
                 </div>
                 <div class="flex gap-3">
-                    <a href="{{ route('skills.index') }}"
+                    <a href="{{ route('admin.skills.index') }}"
                         class="px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors font-medium">
                         Cancel
                     </a>
@@ -51,7 +52,7 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('skills.update', $skill) }}" method="POST" enctype="multipart/form-data" class="flex flex-col gap-6">
+                    <form action="{{ route('admin.skills.update', $skill) }}" method="POST" enctype="multipart/form-data" class="flex flex-col gap-6">
                         @csrf
                         @method('PUT')
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -106,7 +107,7 @@
                     <div class="h-px bg-slate-200 dark:bg-slate-700 my-2"></div>
                     <!-- Submit Actions -->
                     <div class="flex justify-end gap-4">
-                        <a href="{{ route('skills.index') }}"
+                        <a href="{{ route('admin.skills.index') }}"
                             class="px-6 py-3 rounded-lg text-slate-600 dark:text-slate-300 font-medium hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
                             Cancel
                         </a>
