@@ -149,7 +149,7 @@
                         <div id="imagePreview" class="@if($skill->icon) flex @else hidden @endif items-center gap-3 p-3 bg-slate-50 dark:bg-[#111d21] rounded-lg border border-slate-200 dark:border-slate-700">
                             <div class="w-10 h-10 rounded bg-white dark:bg-black/20 flex items-center justify-center p-2">
                                 @if($skill->icon)
-                                    <img src="{{ asset('storage/' . $skill->icon) }}" alt="Current icon" class="w-full h-full object-contain">
+                                    <img src="{{ Storage::url($skill->icon) }}" alt="Current icon" class="w-full h-full object-contain">
                                 @else
                                     <img id="previewImg" src="" alt="Preview" class="w-full h-full object-contain">
                                 @endif
