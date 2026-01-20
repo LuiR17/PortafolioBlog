@@ -72,7 +72,7 @@
                             <div class="flex items-start justify-between mb-4">
                                 <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center p-2">
                                     @if($skill->icon)
-                                        <img src="{{ Storage::url($skill->icon) }}" alt="{{ $skill->name }} Logo" class="w-full h-full object-contain">
+                                        <img src="{{ $skill->icon }}" alt="{{ $skill->name }} Logo" class="w-full h-full object-contain">
                                     @else
                                         <span class="material-symbols-outlined text-primary text-3xl">code</span>
                                     @endif
