@@ -18,7 +18,7 @@ class SkillService
                 $data['icon']->isValid()
             ) {
                 $data['icon'] = $data['icon']
-                    ->store('skills', 'public');
+                    ->store('skills');
             }
 
             return Skill::create($data);
@@ -40,11 +40,11 @@ class SkillService
                 $data['icon']->isValid()
             ) {
                 if ($skill->icon) {
-                    Storage::disk('public')->delete($skill->icon);
+                    Storage::delete($skill->icon);
                 }
 
                 $data['icon'] = $data['icon']
-                    ->store('skills', 'public');
+                    ->store('skills');
             }
 
             $skill->update($data);
@@ -64,7 +64,7 @@ class SkillService
     {
         try {
             if ($skill->icon) {
-                Storage::disk('public')->delete($skill->icon);
+                Storage::delete($skill->icon);
             }
 
             $skill->delete();
