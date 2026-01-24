@@ -69,7 +69,10 @@ Route::middleware(['auth'])
         Route::resource('education', EducationController::class);
 
         // Curriculum
-        Route::get('curriculum', [CurriculumController::class, 'index'])->name('curriculum.index');
+        Route::get('curriculum/download', [CurriculumController::class, 'download'])->name('curriculum.download');
+        Route::get('curriculum', [CurriculumController::class, 'edit'])->name('curriculum.edit');
+        Route::patch('curriculum', [CurriculumController::class, 'update'])->name('curriculum.update');
+        Route::delete('curriculum', [CurriculumController::class, 'destroy'])->name('curriculum.destroy');
 
         // Profile
         Route::get('profile', [ProfileController::class, 'index'])

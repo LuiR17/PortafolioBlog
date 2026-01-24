@@ -113,8 +113,8 @@
                     <span class="material-symbols-outlined shrink-0" style="font-size: 24px;">school</span>
                     <span class="text-sm font-medium hidden lg:block">Education</span>
                 </a>
-                <a class="{{ request()->routeIs('admin.curriculum.index') ? 'bg-primary text-white flex items-center gap-3 px-3 py-3 rounded-lg bg-primary transition-colors group' : 'text-text-secondary flex items-center gap-3 px-3 py-3 rounded-lg transition-colors group' }}"
-                    href="{{ route('admin.curriculum.index') }}">
+                <a class="{{ request()->routeIs('admin.curriculum.edit') ? 'bg-primary text-white flex items-center gap-3 px-3 py-3 rounded-lg bg-primary transition-colors group' : 'text-text-secondary flex items-center gap-3 px-3 py-3 rounded-lg transition-colors group' }}"
+                    href="{{ route('admin.curriculum.edit') }}">
                     <span class="material-symbols-outlined shrink-0" style="font-size: 24px;">description</span>
                     <span class="text-sm font-medium hidden lg:block">Curriculum vitae</span>
                 </a>
