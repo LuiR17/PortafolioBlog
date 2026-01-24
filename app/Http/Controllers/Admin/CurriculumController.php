@@ -8,6 +8,7 @@ use App\Models\Curriculum;
 use App\Services\CurriculumService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class CurriculumController extends Controller
 {
@@ -106,14 +107,19 @@ class CurriculumController extends Controller
                     ->with('error', 'No curriculum file available for download.');
             }
             
-            $filePath = storage_path('app/public/' . $curriculum->file_path);
-            
-            if (!file_exists($filePath)) {
+            // Check if file exists in storage
+            if (!Storage::exists($curriculum->file_path)) {
                 return redirect()->back()
                     ->with('error', 'Curriculum file not found.');
             }
             
-            return response()->download($filePath, $curriculum->file_name);
+            // Get file from storage and return as download
+            $file = Storage::get($curriculum->file_path);
+            $mimeType = Storage::mimeType($curriculum->file_path);
+            
+            return response($file)
+                ->header('Content-Type', $mimeType)
+                ->header('Content-Disposition', 'attachment; filename="' . $curriculum->file_name . '"');
             
         } catch (\Exception $e) {
             Log::error('Error downloading curriculum: ' . $e->getMessage());
