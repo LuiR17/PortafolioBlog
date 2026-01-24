@@ -47,8 +47,8 @@
                         </p>
                         <span class="material-symbols-outlined text-primary bg-primary/10 p-1.5 rounded-md">school</span>
                     </div>
-                    <p class="text-slate-900 dark:text-white text-3xl font-bold">2</p>
-                    <p class="text-slate-400 dark:text-slate-500 text-xs">Bachelor's &amp; Master's</p>
+                    <p class="text-slate-900 dark:text-white text-3xl font-bold">{{ $educations->count() }}</p>
+                    <p class="text-slate-400 dark:text-slate-500 text-xs">Total Education Records</p>
                 </div>
                 <!-- Stat Card 2 -->
                 <div
@@ -59,8 +59,8 @@
                         <span
                             class="material-symbols-outlined text-emerald-500 bg-emerald-500/10 p-1.5 rounded-md">verified</span>
                     </div>
-                    <p class="text-slate-900 dark:text-white text-3xl font-bold">5</p>
-                    <p class="text-slate-400 dark:text-slate-500 text-xs">Active credentials</p>
+                    <p class="text-slate-900 dark:text-white text-3xl font-bold">{{ $educations->where('end_year', null)->count() }}</p>
+                    <p class="text-slate-400 dark:text-slate-500 text-xs">Current Studies</p>
                 </div>
                 <!-- Stat Card 3 -->
                 <div
@@ -71,8 +71,8 @@
                         <span
                             class="material-symbols-outlined text-purple-500 bg-purple-500/10 p-1.5 rounded-md">cast_for_education</span>
                     </div>
-                    <p class="text-slate-900 dark:text-white text-3xl font-bold">12</p>
-                    <p class="text-slate-400 dark:text-slate-500 text-xs">Continuing education</p>
+                    <p class="text-slate-900 dark:text-white text-3xl font-bold">{{ $educations->pluck('career')->unique()->count() }}</p>
+                    <p class="text-slate-400 dark:text-slate-500 text-xs">Different Careers</p>
                 </div>
             </div>
             <!-- List Content -->
@@ -91,137 +91,79 @@
                     </div>
                 </div>
                 <div class="flex flex-col gap-3">
-                    <!-- Item 1 -->
-                    <div
-                        class="group flex flex-col sm:flex-row gap-4 bg-white dark:bg-[#111418] border border-slate-200 dark:border-slate-800 p-4 rounded-xl hover:border-primary/50 transition-colors shadow-sm">
-                        <!-- Image/Logo -->
-                        <div class="bg-center bg-no-repeat bg-cover rounded-lg w-full sm:w-[80px] h-[80px] shrink-0 border border-slate-100 dark:border-slate-700"
-                            data-alt="University campus building with modern architecture"
-                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCcuj_78C8rhgiHOenMa__Q0YQnbF2tGivdqjNvPoDQjddKwgtAgGq-9MajGpPhpPYTRlO2vutlT9aWq0cYL8Q_Qr7Ryy_Q-xPfknt8NtIQDS84cKsajggmv1F-G9OjSkrlFN04HGdPk5M33N3KRZmGN75i2Se27jejsXBTdw4ifprybXz6fKNnLbiG8kzQhGQhp5TI0jzwgb5a1NrV8i0qKYZyLHL1NIO9Uue82HHvSO59VX4Yg9D_KubonY2uMNQrb1WgJfp8F51d");'>
-                        </div>
-                        <!-- Content -->
-                        <div class="flex flex-1 flex-col justify-center gap-1">
-                            <div class="flex flex-wrap justify-between items-start gap-2">
-                                <h4 class="text-slate-900 dark:text-white text-lg font-bold leading-tight">Master of
-                                    Business Administration</h4>
-                                <span
-                                    class="inline-flex items-center rounded-md bg-green-50 dark:bg-green-500/10 px-2 py-1 text-xs font-medium text-green-700 dark:text-green-400 ring-1 ring-inset ring-green-600/20">Completed</span>
-                            </div>
-                            <p class="text-slate-700 dark:text-slate-300 text-sm font-medium">Harvard Business School</p>
-                            <div class="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-xs mt-1">
-                                <span class="material-symbols-outlined text-[16px]">calendar_month</span>
-                                <span>2020 - 2022</span>
-                                <span class="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-600"></span>
-                                <span>Boston, MA</span>
-                            </div>
-                            <p class="text-slate-500 dark:text-slate-400 text-sm mt-2 line-clamp-2">
-                                Focus on Strategic Management and Entrepreneurship. Graduated with Distinction. Led the
-                                Annual Tech Symposium.
-                            </p>
-                        </div>
-                        <!-- Actions -->
+                    @forelse ($educations as $education)
                         <div
-                            class="flex sm:flex-col items-center justify-center sm:border-l border-slate-200 dark:border-slate-800 sm:pl-4 gap-2 pt-4 sm:pt-0 mt-2 sm:mt-0 border-t sm:border-t-0">
-                            <button aria-label="Edit"
-                                class="flex items-center justify-center size-9 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors">
-                                <span class="material-symbols-outlined text-[20px]">edit</span>
-                            </button>
-                            <button aria-label="Delete"
-                                class="flex items-center justify-center size-9 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 text-slate-500 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-400 transition-colors">
-                                <span class="material-symbols-outlined text-[20px]">delete</span>
-                            </button>
-                        </div>
-                    </div>
-                    <!-- Item 2 -->
-                    <div
-                        class="group flex flex-col sm:flex-row gap-4 bg-white dark:bg-[#111418] border border-slate-200 dark:border-slate-800 p-4 rounded-xl hover:border-primary/50 transition-colors shadow-sm">
-                        <!-- Image/Logo -->
-                        <div class="bg-center bg-no-repeat bg-cover rounded-lg w-full sm:w-[80px] h-[80px] shrink-0 border border-slate-100 dark:border-slate-700"
-                            data-alt="Abstract geometric logo representing technology"
-                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBINqmxUvsKXw19q-bw4LL1xqVIMjAoErhf9fYsfZhPvmu4SxEUlzi6puyooRxp_dZ4BwCHEdDnImHwVf23rQ_q4Gkgmt_fC6_oR89p5-6JHpPPnpQQeAyLcvD9RP4OlXEW1yzXkWn7w34QCuN_DKhKOi437J9Atb3C9sSkvG_YFsYSZg7Re4PIupREwAgDbYC4XbtwNssSl3vHq4iv_tCV1uHG6il7891w_LVe-cayc0o4wVNLfOVY8ejwjRpoCYDera1iN3lKA2pg");'>
-                        </div>
-                        <!-- Content -->
-                        <div class="flex flex-1 flex-col justify-center gap-1">
-                            <div class="flex flex-wrap justify-between items-start gap-2">
-                                <h4 class="text-slate-900 dark:text-white text-lg font-bold leading-tight">Bachelor of
-                                    Science in Computer Science</h4>
-                                <span
-                                    class="inline-flex items-center rounded-md bg-green-50 dark:bg-green-500/10 px-2 py-1 text-xs font-medium text-green-700 dark:text-green-400 ring-1 ring-inset ring-green-600/20">Completed</span>
+                            class="group flex flex-col sm:flex-row gap-4 bg-white dark:bg-[#111418] border border-slate-200 dark:border-slate-800 p-4 rounded-xl hover:border-primary/50 transition-colors shadow-sm">
+                            <!-- Image/Logo -->
+                            <div class="bg-center bg-no-repeat bg-cover rounded-lg w-full sm:w-[80px] h-[80px] shrink-0 border border-slate-100 dark:border-slate-700 @if($education->institution_logo) bg-gray-100 dark:bg-slate-800 @endif"
+                                @if($education->institution_logo)
+                                    style="background-image: url('{{ Storage::url($education->institution_logo) }}')"
+                                @else
+                                    style="background-image: url('https://via.placeholder.com/80x80/e2e8f0/64748b?text={{ substr($education->institution_name, 0, 1) }}')"
+                                @endif>
                             </div>
-                            <p class="text-slate-700 dark:text-slate-300 text-sm font-medium">University of Technology</p>
-                            <div class="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-xs mt-1">
-                                <span class="material-symbols-outlined text-[16px]">calendar_month</span>
-                                <span>2015 - 2019</span>
-                                <span class="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-600"></span>
-                                <span>San Francisco, CA</span>
+                            <!-- Content -->
+                            <div class="flex flex-1 flex-col justify-center gap-1">
+                                <div class="flex flex-wrap justify-between items-start gap-2">
+                                    <h4 class="text-slate-900 dark:text-white text-lg font-bold leading-tight">{{ $education->degree_title }}</h4>
+                                    <span
+                                        class="inline-flex items-center rounded-md @if($education->end_year) bg-green-50 dark:bg-green-500/10 text-green-700 dark:text-green-400 @else bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 @endif px-2 py-1 text-xs font-medium ring-1 ring-inset @if($education->end_year) ring-green-600/20 @else ring-slate-500/10 @endif">
+                                        {{ $education->end_year ? 'Completed' : 'In Progress' }}
+                                    </span>
+                                </div>
+                                <p class="text-slate-700 dark:text-slate-300 text-sm font-medium">{{ $education->institution_name }}</p>
+                                @if($education->career)
+                                    <p class="text-slate-600 dark:text-slate-400 text-sm">{{ $education->career }}</p>
+                                @endif
+                                <div class="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-xs mt-1">
+                                    <span class="material-symbols-outlined text-[16px]">calendar_month</span>
+                                    <span>{{ $education->start_year }}{{ $education->end_year ? ' - ' . $education->end_year : ' - Present' }}</span>
+                                </div>
+                                @if($education->description)
+                                    <p class="text-slate-500 dark:text-slate-400 text-sm mt-2 line-clamp-2">
+                                        {{ Str::limit($education->description, 150) }}
+                                    </p>
+                                @endif
                             </div>
-                            <p class="text-slate-500 dark:text-slate-400 text-sm mt-2 line-clamp-2">
-                                Specialized in Artificial Intelligence and Machine Learning. Capstone project focused on
-                                Neural Networks for Image Recognition.
+                            <!-- Actions -->
+                            <div
+                                class="flex sm:flex-col items-center justify-center sm:border-l border-slate-200 dark:border-slate-800 sm:pl-4 gap-2 pt-4 sm:pt-0 mt-2 sm:mt-0 border-t sm:border-t-0">
+                                <a href="{{ route('admin.education.edit', $education) }}" aria-label="Edit"
+                                    class="flex items-center justify-center size-9 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors">
+                                    <span class="material-symbols-outlined text-[20px]">edit</span>
+                                </a>
+                                <form action="{{ route('admin.education.destroy', $education) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this education record?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" aria-label="Delete"
+                                        class="flex items-center justify-center size-9 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 text-slate-500 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-400 transition-colors">
+                                        <span class="material-symbols-outlined text-[20px]">delete</span>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    @empty
+                        <div class="flex flex-col items-center justify-center py-12 text-center">
+                            <div class="w-16 h-16 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center mb-4">
+                                <span class="material-symbols-outlined text-2xl text-slate-400 dark:text-slate-600">school</span>
+                            </div>
+                            <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-2">No Education Records</h3>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 max-w-md">
+                                You haven't added any education records yet. Start by adding your first degree, certification, or course.
                             </p>
+                            <a href="{{ route('admin.education.create') }}"
+                                class="inline-flex items-center gap-2 bg-primary hover:bg-blue-600 text-white px-4 py-2 rounded-lg font-medium text-sm shadow-lg shadow-blue-500/20 transition-all">
+                                <span class="material-symbols-outlined text-[20px]">add</span>
+                                <span>Add Education</span>
+                            </a>
                         </div>
-                        <!-- Actions -->
-                        <div
-                            class="flex sm:flex-col items-center justify-center sm:border-l border-slate-200 dark:border-slate-800 sm:pl-4 gap-2 pt-4 sm:pt-0 mt-2 sm:mt-0 border-t sm:border-t-0">
-                            <button aria-label="Edit"
-                                class="flex items-center justify-center size-9 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors">
-                                <span class="material-symbols-outlined text-[20px]">edit</span>
-                            </button>
-                            <button aria-label="Delete"
-                                class="flex items-center justify-center size-9 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 text-slate-500 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-400 transition-colors">
-                                <span class="material-symbols-outlined text-[20px]">delete</span>
-                            </button>
-                        </div>
-                    </div>
-                    <!-- Item 3 -->
-                    <div
-                        class="group flex flex-col sm:flex-row gap-4 bg-white dark:bg-[#111418] border border-slate-200 dark:border-slate-800 p-4 rounded-xl hover:border-primary/50 transition-colors shadow-sm">
-                        <!-- Image/Logo -->
-                        <div class="bg-center bg-no-repeat bg-cover rounded-lg w-full sm:w-[80px] h-[80px] shrink-0 border border-slate-100 dark:border-slate-700"
-                            data-alt="Minimalist design representing online code editor"
-                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCfO0TZ5YQuXgFhNrh17Df1f8zNV19_DsGnxTjrJYfaeUQcJboUka4siRX16dQPha4g6mGDUykksVIgbzbSMyqB5mhNq4FijGPJgH0iEQ2EJNMjCF8JKuAqhPRNL-yFWMq9AuPxpX7kpanZ2TmEB35KV8qyoBVTC1WDist2T-bzfdPWLWkqe4MYiUxuKmuz6O6t0xmf7J8-qMMybS2biD9fXeTa4-s2gzU0tNbaaraGqQr803DDx3v7F4r02dRCi2r-Lu0wLhm4IX0h");'>
-                        </div>
-                        <!-- Content -->
-                        <div class="flex flex-1 flex-col justify-center gap-1">
-                            <div class="flex flex-wrap justify-between items-start gap-2">
-                                <h4 class="text-slate-900 dark:text-white text-lg font-bold leading-tight">Full Stack Web
-                                    Development Bootcamp</h4>
-                                <span
-                                    class="inline-flex items-center rounded-md bg-slate-100 dark:bg-slate-800 px-2 py-1 text-xs font-medium text-slate-600 dark:text-slate-400 ring-1 ring-inset ring-slate-500/10">Certification</span>
-                            </div>
-                            <p class="text-slate-700 dark:text-slate-300 text-sm font-medium">CodeAcademy Pro</p>
-                            <div class="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-xs mt-1">
-                                <span class="material-symbols-outlined text-[16px]">calendar_month</span>
-                                <span>2023</span>
-                                <span class="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-600"></span>
-                                <span>Remote</span>
-                            </div>
-                            <p class="text-slate-500 dark:text-slate-400 text-sm mt-2 line-clamp-2">
-                                Intensive 12-week program covering React, Node.js, PostgreSQL, and AWS deployment
-                                strategies.
-                            </p>
-                        </div>
-                        <!-- Actions -->
-                        <div
-                            class="flex sm:flex-col items-center justify-center sm:border-l border-slate-200 dark:border-slate-800 sm:pl-4 gap-2 pt-4 sm:pt-0 mt-2 sm:mt-0 border-t sm:border-t-0">
-                            <button aria-label="Edit"
-                                class="flex items-center justify-center size-9 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors">
-                                <span class="material-symbols-outlined text-[20px]">edit</span>
-                            </button>
-                            <button aria-label="Delete"
-                                class="flex items-center justify-center size-9 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 text-slate-500 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-400 transition-colors">
-                                <span class="material-symbols-outlined text-[20px]">delete</span>
-                            </button>
-                        </div>
-                    </div>
+                    @endforelse
                 </div>
             </div>
             <!-- Footer / Pagination (Simulated) -->
             <div class="flex items-center justify-between border-t border-slate-200 dark:border-slate-800 pt-4 pb-8">
                 <p class="text-sm text-slate-500 dark:text-slate-400">Showing <span
-                        class="font-medium text-slate-900 dark:text-white">1</span> to <span
-                        class="font-medium text-slate-900 dark:text-white">3</span> of <span
-                        class="font-medium text-slate-900 dark:text-white">3</span> results</p>
+                        class="font-medium text-slate-900 dark:text-white">{{ $educations->count() }}</span> education record{{ $educations->count() != 1 ? 's' : '' }}</p>
                 <nav aria-label="Pagination" class="isolate inline-flex -space-x-px rounded-md shadow-sm">
                     <a class="relative inline-flex items-center rounded-l-md px-2 py-2 text-slate-400 ring-1 ring-inset ring-slate-300 dark:ring-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 focus:z-20 focus:outline-offset-0"
                         href="#">

@@ -3,63 +3,77 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\StoreEducationRequest;
+use App\Http\Requests\Admin\UpdateEducationRequest;
+use App\Models\Education;
+use App\Services\EducationService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 
 class EducationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    protected EducationService $educationService;
+
+    public function __construct(EducationService $educationService)
     {
-        return view('admin.education.index');
+        $this->educationService = $educationService;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    public function index()
+    {
+        $educations = Education::orderBy('start_year', 'desc')->get();
+        return view('admin.education.index', compact('educations'));
+    }
+
     public function create()
     {
         return view('admin.education.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function store(StoreEducationRequest $request)
     {
-        //
+        try {
+            $this->educationService->store($request->validated());
+            Session::flash('success', 'Education created successfully!');
+            return Redirect::route('admin.education.index');
+        } catch (\Exception $e) {
+            Session::flash('error', 'Error creating education: ' . $e->getMessage());
+            return Redirect::back()->withInput();
+        }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show(Education $education)
     {
-        //
+        return view('admin.education.show', compact('education'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit(Education $education)
     {
-        //
+        return view('admin.education.edit', compact('education'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(UpdateEducationRequest $request, Education $education)
     {
-        //
+        try {
+            $this->educationService->update($education, $request->validated());
+            Session::flash('success', 'Education updated successfully!');
+            return Redirect::route('admin.education.index');
+        } catch (\Exception $e) {
+            Session::flash('error', 'Error updating education: ' . $e->getMessage());
+            return Redirect::back()->withInput();
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(Education $education)
     {
-        //
+        try {
+            $this->educationService->delete($education);
+            Session::flash('success', 'Education deleted successfully!');
+            return Redirect::route('admin.education.index');
+        } catch (\Exception $e) {
+            Session::flash('error', 'Error deleting education: ' . $e->getMessage());
+            return Redirect::back();
+        }
     }
 }

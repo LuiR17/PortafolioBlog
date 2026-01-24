@@ -9,8 +9,8 @@
                     <div class="flex flex-col gap-1">
                         <h2
                             class="text-3xl md:text-4xl font-black leading-tight tracking-tight text-gray-900 dark:text-white">
-                            Add New Education</h2>
-                        <p class="text-gray-500 dark:text-text-secondary text-base">Add details about your degree,
+                            Edit Education</h2>
+                        <p class="text-gray-500 dark:text-text-secondary text-base">Update details about your degree,
                             certificate, or bootcamp.</p>
                     </div>
                     <a href="{{ route('admin.education.index') }}"
@@ -48,8 +48,9 @@
                             </div>
                         @endif
 
-                    <form action="{{ route('admin.education.store') }}" method="POST" enctype="multipart/form-data" class="flex flex-col gap-8">
+                    <form action="{{ route('admin.education.update', $education) }}" method="POST" enctype="multipart/form-data" class="flex flex-col gap-8">
                         @csrf
+                        @method('PUT')
                         <!-- Section: Basic Info -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <label class="flex flex-col gap-2">
@@ -58,7 +59,7 @@
                                     name="institution_name"
                                     required
                                     class="form-input w-full rounded-lg border border-gray-300 dark:border-border-dark bg-gray-50 dark:bg-[#111621] px-4 py-3 text-base text-gray-900 dark:text-white placeholder-gray-400 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-shadow @error('institution_name') border-red-500 @enderror"
-                                    placeholder="e.g. Stanford University" type="text" value="{{ old('institution_name') }}" />
+                                    placeholder="e.g. Stanford University" type="text" value="{{ old('institution_name', $education->institution_name) }}" />
                                 @error('institution_name')
                                     <span class="text-red-500 text-sm">{{ $message }}</span>
                                 @enderror
@@ -69,7 +70,7 @@
                                     name="degree_title"
                                     required
                                     class="form-input w-full rounded-lg border border-gray-300 dark:border-border-dark bg-gray-50 dark:bg-[#111621] px-4 py-3 text-base text-gray-900 dark:text-white placeholder-gray-400 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-shadow @error('degree_title') border-red-500 @enderror"
-                                    placeholder="e.g. Master of Computer Science" type="text" value="{{ old('degree_title') }}" />
+                                    placeholder="e.g. Master of Computer Science" type="text" value="{{ old('degree_title', $education->degree_title) }}" />
                                 @error('degree_title')
                                     <span class="text-red-500 text-sm">{{ $message }}</span>
                                 @enderror
@@ -79,7 +80,7 @@
                                 <input
                                     name="career"
                                     class="form-input w-full rounded-lg border border-gray-300 dark:border-border-dark bg-gray-50 dark:bg-[#111621] px-4 py-3 text-base text-gray-900 dark:text-white placeholder-gray-400 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-shadow @error('career') border-red-500 @enderror"
-                                    placeholder="e.g. Software Engineering" type="text" value="{{ old('career') }}" />
+                                    placeholder="e.g. Software Engineering" type="text" value="{{ old('career', $education->career) }}" />
                                 @error('career')
                                     <span class="text-red-500 text-sm">{{ $message }}</span>
                                 @enderror
@@ -94,7 +95,7 @@
                                         name="start_year"
                                         required
                                         class="form-input w-full rounded-lg border border-gray-300 dark:border-border-dark bg-gray-50 dark:bg-[#111621] px-4 py-3 text-base text-gray-900 dark:text-white placeholder-gray-400 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-shadow @error('start_year') border-red-500 @enderror"
-                                        type="number" min="1950" max="2050" placeholder="e.g. 2023" value="{{ old('start_year') }}" />
+                                        type="number" min="1950" max="2050" placeholder="e.g. 2023" value="{{ old('start_year', $education->start_year) }}" />
                                     @error('start_year')
                                         <span class="text-red-500 text-sm">{{ $message }}</span>
                                     @enderror
@@ -105,7 +106,7 @@
                                         <input
                                             name="end_year"
                                             class="form-input w-full rounded-lg border border-gray-300 dark:border-border-dark bg-gray-50 dark:bg-[#111621] px-4 py-3 text-base text-gray-900 dark:text-white placeholder-gray-400 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-shadow @error('end_year') border-red-500 @enderror"
-                                            type="number" min="1950" max="2050" placeholder="e.g. 2024" value="{{ old('end_year') }}" />
+                                            type="number" min="1950" max="2050" placeholder="e.g. 2024" value="{{ old('end_year', $education->end_year) }}" />
                                         @error('end_year')
                                             <span class="text-red-500 text-sm">{{ $message }}</span>
                                         @enderror
@@ -121,7 +122,7 @@
                                 <textarea
                                     name="description"
                                     class="form-textarea w-full resize-y rounded-lg border border-gray-300 dark:border-border-dark bg-gray-50 dark:bg-[#111621] px-4 py-3 text-base text-gray-900 dark:text-white placeholder-gray-400 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-shadow @error('description') border-red-500 @enderror"
-                                    placeholder="Describe your education, achievements, or relevant coursework..." rows="6">{{ old('description') }}</textarea>
+                                    placeholder="Describe your education, achievements, or relevant coursework..." rows="6">{{ old('description', $education->description) }}</textarea>
                                 @error('description')
                                     <span class="text-red-500 text-sm">{{ $message }}</span>
                                 @enderror
@@ -146,13 +147,22 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div id="imagePreview" class="hidden items-center gap-3 p-3 bg-gray-50 dark:bg-[#111621] rounded-lg border border-gray-200 dark:border-border-dark">
+                                <div id="imagePreview" class="@if($education->institution_logo) flex @else hidden @endif items-center gap-3 p-3 bg-gray-50 dark:bg-[#111621] rounded-lg border border-gray-200 dark:border-border-dark">
                                     <div class="w-10 h-10 rounded bg-white dark:bg-black/20 flex items-center justify-center p-2">
-                                        <img id="previewImg" src="" alt="Preview" class="w-full h-full object-contain">
+                                        @if($education->institution_logo)
+                                            <img src="{{ Storage::url($education->institution_logo) }}" alt="Current logo" class="w-full h-full object-contain">
+                                        @else
+                                            <img id="previewImg" src="" alt="Preview" class="w-full h-full object-contain">
+                                        @endif
                                     </div>
                                     <div class="flex-1 min-w-0">
-                                        <p id="fileName" class="text-sm font-medium text-gray-900 dark:text-white truncate"></p>
-                                        <p id="fileSize" class="text-xs text-gray-500"></p>
+                                        @if($education->institution_logo)
+                                            <p class="text-sm font-medium text-gray-900 dark:text-white truncate">Current logo</p>
+                                            <p class="text-xs text-gray-500">Uploaded file</p>
+                                        @else
+                                            <p id="fileName" class="text-sm font-medium text-gray-900 dark:text-white truncate"></p>
+                                            <p id="fileSize" class="text-xs text-gray-500"></p>
+                                        @endif
                                     </div>
                                     <button type="button" onclick="clearImage()" class="text-gray-400 hover:text-red-400">
                                         <span class="material-symbols-outlined text-[20px]">close</span>
@@ -173,7 +183,7 @@
                         </a>
                         <button type="submit"
                             class="h-10 rounded-lg bg-primary px-6 text-sm font-bold text-white shadow-lg shadow-primary/30 hover:bg-primary/90 hover:shadow-primary/50 transition-all">
-                            Save Education
+                            Update Education
                         </button>
                     </div>
                     </form>
@@ -186,11 +196,11 @@
 <script>
 // Debug: Verificar que el formulario se está enviando
 document.addEventListener('DOMContentLoaded', function() {
-    const form = document.querySelector('form[action*="education.store"]');
+    const form = document.querySelector('form[action*="education.update"]');
     
     if (form) {
         form.addEventListener('submit', function(e) {
-            console.log('Formulario de educación siendo enviado');
+            console.log('Formulario de edición siendo enviado');
             console.log('Datos del formulario:', new FormData(this));
             
             // Verificar campos requeridos
@@ -215,7 +225,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!startYear.value) {
                 console.error('El campo start_year está vacío');
                 e.preventDefault();
-                alert('Please fill in the Start Date field');
+                alert('Please fill in the Start Year field');
                 return;
             }
             
