@@ -6,12 +6,12 @@
              </p>
          </div>
          <div class="flex items-center gap-6">
-             <a class="{{ request()->routeIs('home') ? 'text-white text-sm font-medium hover:text-primary transition-colors leading-normal' : 'text-text-secondary text-sm font-medium hover:text-primary transition-colors leading-normal' }}"
-                 href="{{ route('home') }}">Home</a>
-             <a class="{{ request()->routeIs('blog.index') ? 'text-white text-sm font-medium hover:text-primary transition-colors leading-normal' : 'text-text-secondary text-sm font-medium hover:text-primary transition-colors leading-normal' }}"
-                 href="{{ route('blog.index') }}">Blog</a>
-             <a class="{{ request()->routeIs('projects.index') ? 'text-white text-sm font-medium hover:text-primary transition-colors leading-normal' : 'text-text-secondary text-sm font-medium hover:text-primary transition-colors leading-normal' }}"
-                 href="{{ route('projects.index') }}">Projects</a>
+             <a class="{{ request()->routeIs('public.home') ? 'text-white text-sm font-medium hover:text-primary transition-colors leading-normal' : 'text-text-secondary text-sm font-medium hover:text-primary transition-colors leading-normal' }}"
+                 href="{{ route('public.home') }}">Home</a>
+             <a class="{{ request()->routeIs('public.blog.index') ? 'text-white text-sm font-medium hover:text-primary transition-colors leading-normal' : 'text-text-secondary text-sm font-medium hover:text-primary transition-colors leading-normal' }}"
+                 href="{{ route('public.blog.index') }}">Blog</a>
+             <a class="{{ request()->routeIs('public.projects.index') ? 'text-white text-sm font-medium hover:text-primary transition-colors leading-normal' : 'text-text-secondary text-sm font-medium hover:text-primary transition-colors leading-normal' }}"
+                 href="{{ route('public.projects.index') }}">Projects</a>
          </div>
      </div>
      <div

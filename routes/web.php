@@ -15,21 +15,22 @@ use App\Http\Controllers\Admin\AdminProjectImageController;
 use App\Http\Controllers\Admin\AdminBlogImageController;
 use App\Http\Controllers\Admin\CurriculumController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\PublicController;
 
 
 // ------------------
 // RUTAS PÚBLICAS
 // ------------------
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [PublicController::class, 'home'])->name('public.home');
 
 // Blog
-Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
-Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
+Route::get('/blog', [PublicController::class, 'blogIndex'])->name('public.blog.index');
+Route::get('/blog/{slug}', [PublicController::class, 'blogShow'])->name('public.blog.show');
 
 // Proyectos
-Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
-Route::get('/projects/{slug}', [ProjectController::class, 'show'])->name('projects.show');
+Route::get('/projects', [PublicController::class, 'projectsIndex'])->name('public.projects.index');
+Route::get('/projects/{slug}', [PublicController::class, 'projectShow'])->name('public.projects.show');
 
 // Contacto
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');

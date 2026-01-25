@@ -81,12 +81,12 @@
         <!-- Breadcrumbs -->
         <div class="flex flex-wrap gap-2 py-4 items-center">
             <a class="text-text-secondary hover:text-primary text-sm font-medium leading-normal transition-colors"
-                href="#">Home</a>
+               href="{{ route('public.home') }}">Home</a>
             <span class="text-text-secondary text-sm font-medium leading-normal">/</span>
             <a class="text-text-secondary hover:text-primary text-sm font-medium leading-normal transition-colors"
-                href="#">Portfolio</a>
+               href="{{ route('public.projects.index') }}">Portfolio</a>
             <span class="text-text-secondary text-sm font-medium leading-normal">/</span>
-            <span class="text-slate-900 dark:text-white text-sm font-medium leading-normal">E-Commerce Dashboard</span>
+            <span class="text-slate-900 dark:text-white text-sm font-medium leading-normal">{{ $project->name }}</span>
         </div>
         <!-- Hero Section -->
         <div class="mt-4 mb-12 @container">
@@ -96,53 +96,39 @@
                     <div class="flex flex-col gap-3">
                         <h1
                             class="text-slate-900 dark:text-white text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-[-0.02em] font-display">
-                            E-Commerce Analytics Dashboard
+                            {{ $project->name }}
                         </h1>
                         <p
                             class="text-text-secondary text-lg md:text-xl font-normal leading-relaxed max-w-2xl font-body">
-                            A high-performance real-time analytics tool designed for shop owners to visualize sales
-                            data, track inventory, and maximize conversion rates seamlessly.
+                            {{ $project->short_description }}
                         </p>
                     </div>
                     <!-- Tech Stack Chips -->
                     <div class="flex flex-wrap gap-2">
-                        <div
-                            class="flex items-center gap-1.5 rounded-full border border-border-dark bg-surface-dark/50 px-3 py-1">
-                            <span class="material-symbols-outlined text-primary text-[18px]">code</span>
-                            <span class="text-xs font-medium text-white font-display">React</span>
-                        </div>
-                        <div
-                            class="flex items-center gap-1.5 rounded-full border border-border-dark bg-surface-dark/50 px-3 py-1">
-                            <span class="material-symbols-outlined text-green-500 text-[18px]">dns</span>
-                            <span class="text-xs font-medium text-white font-display">Node.js</span>
-                        </div>
-                        <div
-                            class="flex items-center gap-1.5 rounded-full border border-border-dark bg-surface-dark/50 px-3 py-1">
-                            <span class="material-symbols-outlined text-blue-400 text-[18px]">javascript</span>
-                            <span class="text-xs font-medium text-white font-display">TypeScript</span>
-                        </div>
-                        <div
-                            class="flex items-center gap-1.5 rounded-full border border-border-dark bg-surface-dark/50 px-3 py-1">
-                            <span class="material-symbols-outlined text-sky-400 text-[18px]">brush</span>
-                            <span class="text-xs font-medium text-white font-display">Tailwind CSS</span>
-                        </div>
-                        <div
-                            class="flex items-center gap-1.5 rounded-full border border-border-dark bg-surface-dark/50 px-3 py-1">
-                            <span class="material-symbols-outlined text-orange-400 text-[18px]">storage</span>
-                            <span class="text-xs font-medium text-white font-display">PostgreSQL</span>
-                        </div>
+                        @if($project->tags)
+                            @foreach($project->tags as $tag)
+                            <div class="flex items-center gap-1.5 rounded-full border border-border-dark bg-surface-dark/50 px-3 py-1">
+                                <span class="material-symbols-outlined text-primary text-[18px]">label</span>
+                                <span class="text-xs font-medium text-white font-display">{{ $tag->name }}</span>
+                            </div>
+                            @endforeach
+                        @endif
                     </div>
                     <div class="flex flex-wrap gap-4 mt-2">
-                        <button
-                            class="flex items-center justify-center gap-2 rounded-lg h-12 px-6 bg-primary hover:bg-blue-700 text-white text-base font-bold transition-all shadow-lg shadow-primary/20 hover:shadow-primary/40">
+                        @if($project->demo_url)
+                        <a href="{{ $project->demo_url }}" target="_blank"
+                           class="flex items-center justify-center gap-2 rounded-lg h-12 px-6 bg-primary hover:bg-blue-700 text-white text-base font-bold transition-all shadow-lg shadow-primary/20 hover:shadow-primary/40">
                             <span class="material-symbols-outlined">rocket_launch</span>
                             <span>View Live Demo</span>
-                        </button>
-                        <button
-                            class="flex items-center justify-center gap-2 rounded-lg h-12 px-6 bg-transparent border border-border-dark hover:border-white/40 text-slate-900 dark:text-white text-base font-bold transition-all hover:bg-surface-dark">
+                        </a>
+                        @endif
+                        @if($project->repository_url)
+                        <a href="{{ $project->repository_url }}" target="_blank"
+                           class="flex items-center justify-center gap-2 rounded-lg h-12 px-6 bg-transparent border border-border-dark hover:border-white/40 text-slate-900 dark:text-white text-base font-bold transition-all hover:bg-surface-dark">
                             <span class="material-symbols-outlined">code</span>
                             <span>Source Code</span>
-                        </button>
+                        </a>
+                        @endif
                     </div>
                 </div>
                 <!-- Hero Image -->
@@ -154,8 +140,11 @@
                             class="absolute -inset-1 bg-gradient-to-r from-primary to-purple-600 opacity-20 blur-xl group-hover:opacity-30 transition duration-1000">
                         </div>
                         <div class="relative w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                            data-alt="Modern dashboard interface with graphs and data tables on a laptop screen"
-                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuANoWrWen4wJA-zITAD6K3eUxO-3j80RRsTriiITkUuWomIOHCYY4ZBsx7_B-KPmq8FjXYPF0aAOeq2ITe3gYBWrM5uAm5Vc-V2nmwiKNpvzPFYF5NBJVev2PhbedN31K0xfa1wF0YDZfqOBW7sRgj9j6xhcipGxWGUtdozEKuDy5O5LV179RB-NsuaAS3wkYVyur6TYMOSOk3VaNgkEhx-4W2B_z4GM9ddq2gZ4CZorshiu2eIU2z5VegVOeo2HOFK-qURfdCzTcgx');">
+                             @if($project->preview_image)
+                             style="background-image: url('{{ Storage::url($project->preview_image) }}')">
+                             @else
+                             style="background-image: url('https://via.placeholder.com/800x500/1c1c27/ffffff?text={{ urlencode($project->name) }}')">
+                             @endif>
                             <!-- Overlay for better contrast if image fails or is light -->
                             <div class="absolute inset-0 bg-black/10"></div>
                         </div>
@@ -174,10 +163,7 @@
                             <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4 font-display">Project
                                 Overview</h2>
                             <p class="text-text-secondary leading-relaxed font-body">
-                                This project addressed the critical need for small business owners to visualize their
-                                sales data without navigating complex enterprise tools. The primary focus was on speed,
-                                clarity, and providing real-time updates using WebSockets to ensure inventory counts
-                                were always accurate during flash sales events.
+                                {!! $project->full_description ?? $project->short_description !!}
                             </p>
                         </div>
                         <!-- 3 Column Cards for Problem/Approach/Features -->
@@ -189,10 +175,9 @@
                                     class="mb-4 size-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
                                     <span class="material-symbols-outlined">warning</span>
                                 </div>
-                                <h3 class="text-lg font-bold text-white mb-2 font-display">The Problem</h3>
+                                <h3 class="text-lg font-bold text-white mb-2 font-display">Problem Solved</h3>
                                 <p class="text-sm text-text-secondary leading-normal font-body">
-                                    Shop owners lacked real-time visibility into inventory levels during high-traffic
-                                    sales, leading to overselling and customer frustration.
+                                    {{ $project->problem_solved ?? 'No problem description available.' }}
                                 </p>
                             </div>
                             <!-- Card 2 -->
@@ -202,10 +187,10 @@
                                     class="mb-4 size-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
                                     <span class="material-symbols-outlined">architecture</span>
                                 </div>
-                                <h3 class="text-lg font-bold text-white mb-2 font-display">The Approach</h3>
+                                <h3 class="text-lg font-bold text-white mb-2 font-display">Role & Platform</h3>
                                 <p class="text-sm text-text-secondary leading-normal font-body">
-                                    I architected a microservices backend to handle high-concurrency requests and a
-                                    reactive frontend using React Query for optimistic UI updates.
+                                    <strong>Role:</strong> {{ $project->role ?? 'Developer' }}<br>
+                                    <strong>Platform:</strong> {{ $project->platform ?? 'Web Application' }}
                                 </p>
                             </div>
                             <!-- Card 3 (Spans full on mobile, normal on md) -->
@@ -216,13 +201,9 @@
                                     <span class="material-symbols-outlined">stars</span>
                                 </div>
                                 <h3 class="text-lg font-bold text-white mb-2 font-display">Key Features</h3>
-                                <ul
-                                    class="text-sm text-text-secondary leading-normal list-disc list-inside space-y-1 font-body ml-1">
-                                    <li>Real-time stock alerts via WebSockets</li>
-                                    <li>Interactive sales heatmaps using D3.js</li>
-                                    <li>Automated reordering triggers based on sales velocity</li>
-                                    <li>Role-based access control (RBAC) for staff management</li>
-                                </ul>
+                                <div class="text-sm text-text-secondary leading-normal font-body">
+                                    {!! $project->content ?? '<p>No additional features description available.</p>' !!}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -310,22 +291,22 @@
                                 <div
                                     class="flex justify-between items-center border-b border-white/5 pb-3 last:border-0 last:pb-0">
                                     <span class="text-slate-300 font-medium">Client</span>
-                                    <span class="text-text-secondary text-sm">RetailFlow Inc.</span>
+                                    <span class="text-text-secondary text-sm">{{ $project->client_name ?? 'Personal Project' }}</span>
                                 </div>
                                 <div
                                     class="flex justify-between items-center border-b border-white/5 pb-3 last:border-0 last:pb-0">
                                     <span class="text-slate-300 font-medium">Timeline</span>
-                                    <span class="text-text-secondary text-sm">3 Months (2023)</span>
+                                    <span class="text-text-secondary text-sm">{{ $project->development_time ?? 'Ongoing' }}</span>
                                 </div>
                                 <div
                                     class="flex justify-between items-center border-b border-white/5 pb-3 last:border-0 last:pb-0">
                                     <span class="text-slate-300 font-medium">Role</span>
-                                    <span class="text-text-secondary text-sm">Full Stack Developer</span>
+                                    <span class="text-text-secondary text-sm">{{ $project->role ?? 'Full Stack Developer' }}</span>
                                 </div>
                                 <div
                                     class="flex justify-between items-center border-b border-white/5 pb-3 last:border-0 last:pb-0">
                                     <span class="text-slate-300 font-medium">Platform</span>
-                                    <span class="text-text-secondary text-sm">Web / Responsive</span>
+                                    <span class="text-text-secondary text-sm">{{ $project->platform ?? 'Web Application' }}</span>
                                 </div>
                             </div>
                         </div>
@@ -333,18 +314,13 @@
                             <h3 class="text-sm font-bold text-text-secondary uppercase tracking-wider mb-3">
                                 Technologies</h3>
                             <div class="flex flex-wrap gap-2">
-                                <span class="text-xs font-medium text-slate-300 bg-white/5 px-2 py-1 rounded">React
-                                    18</span>
-                                <span
-                                    class="text-xs font-medium text-slate-300 bg-white/5 px-2 py-1 rounded">Next.js</span>
-                                <span
-                                    class="text-xs font-medium text-slate-300 bg-white/5 px-2 py-1 rounded">Supabase</span>
-                                <span
-                                    class="text-xs font-medium text-slate-300 bg-white/5 px-2 py-1 rounded">Vercel</span>
-                                <span class="text-xs font-medium text-slate-300 bg-white/5 px-2 py-1 rounded">Framer
-                                    Motion</span>
-                                <span
-                                    class="text-xs font-medium text-slate-300 bg-white/5 px-2 py-1 rounded">Jest</span>
+                                @if($project->tags)
+                                    @foreach($project->tags as $tag)
+                                    <span class="text-xs font-medium text-slate-300 bg-white/5 px-2 py-1 rounded">{{ $tag->name }}</span>
+                                    @endforeach
+                                @else
+                                    <span class="text-xs font-medium text-slate-300 bg-white/5 px-2 py-1 rounded">Web Development</span>
+                                @endif
                             </div>
                         </div>
                     </div>

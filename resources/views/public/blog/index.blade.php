@@ -137,253 +137,54 @@
         </section>
         <!-- Blog Grid -->
         <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 pb-12">
-            <!-- Card 1 -->
-            <article
-                class="group flex flex-col bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-border-dark overflow-hidden hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 hover:shadow-xl dark:hover:shadow-primary/5 hover:-translate-y-1">
+            @forelse($posts as $post)
+            <article class="group flex flex-col bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-border-dark overflow-hidden hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 hover:shadow-xl dark:hover:shadow-primary/5 hover:-translate-y-1">
                 <div class="h-48 overflow-hidden relative">
                     <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                        data-alt="Code syntax on a dark screen with glowing blue accents"
-                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAJpIrXwIt_5TwGOEg0xnY7s5OACxHuwIVn0QLp48cLA5ERj_0XuaJLdx2wNBEK7gGjHI3UticPpwCh2l12BUvlyEeo21xQbtdrX5H2ttKFlSfeoyXMZTXJQZJ88kb7Dkbl3pHmLokotgmZ8NeaxeSXySheUeYpZNjgConkw1QruUc31wQdFezomfBcfjoicJF1uL8A0BTCPnk5XWq21va4bLvwuS-mkluhq0oh9PTcW6ckczng8QMeZ6f9MQBNptgakilolsXFSG6n");'>
+                         @if($post->preview_image)
+                         style="background-image: url('{{ Storage::url($post->preview_image) }}')">
+                         @else
+                         style="background-image: url('https://via.placeholder.com/400x225/1c1c27/ffffff?text={{ urlencode($post->title) }}')">
+                         @endif>
                     </div>
                     <div class="absolute top-4 left-4">
-                        <span
-                            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/90 text-white backdrop-blur-sm">
-                            React
+                        @if($post->tags && $post->tags->first())
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/90 text-white backdrop-blur-sm">
+                            {{ $post->tags->first()->name }}
                         </span>
+                        @endif
                     </div>
                 </div>
                 <div class="flex flex-col flex-1 p-5 gap-3">
                     <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 font-mono gap-2">
                         <span class="material-symbols-outlined text-[16px]">calendar_today</span>
-                        <span>Oct 24, 2023</span>
+                        <span>{{ \Carbon\Carbon::parse($post->published_at ?? $post->updated_at)->format('M d, Y') }}</span>
                         <span class="w-1 h-1 rounded-full bg-gray-500"></span>
-                        <span>5 min read</span>
+                        <span>{{ Str::wordCount(strip_tags($post->content)) }} min read</span>
                     </div>
-                    <h3
-                        class="text-xl font-bold text-gray-900 dark:text-white leading-tight group-hover:text-primary transition-colors">
-                        State Management in 2024
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white leading-tight group-hover:text-primary transition-colors">
+                        {{ $post->title }}
                     </h3>
                     <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-3">
-                        Exploring the differences between Redux Toolkit, Zustand, and Jotai in large-scale applications.
-                        Is simplicity always the answer?
+                        {{ $post->excerpt }}
                     </p>
                     <div class="mt-auto pt-4 flex items-center text-primary font-bold text-sm">
-                        <span>Read Article</span>
-                        <span
-                            class="material-symbols-outlined text-[18px] ml-1 transition-transform group-hover:translate-x-1">arrow_forward</span>
+                        <a href="{{ route('public.blog.show', $post->slug) }}" class="flex items-center gap-2">
+                            <span>Read Article</span>
+                            <span class="material-symbols-outlined text-[18px] ml-1 transition-transform group-hover:translate-x-1">arrow_forward</span>
+                        </a>
                     </div>
                 </div>
             </article>
-            <!-- Card 2 -->
-            <article
-                class="group flex flex-col bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-border-dark overflow-hidden hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 hover:shadow-xl dark:hover:shadow-primary/5 hover:-translate-y-1">
-                <div class="h-48 overflow-hidden relative">
-                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                        data-alt="Server rack with green indicator lights in a dark room"
-                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBbZ3loPpoSH9BXcKjdW2-akGyzNNtLAHAtyDiJReIVSRjuaMM1lW9FrA5PcjT_4eTKNNZKyAtALLzArArzrlsJD6tW9wYg11T1UI1OFe3cp6a911qKR2Z8ioj1uVGwOAfbaWsRn_-9qptKhZQttu_C5dUDc8O1_fdiocI8prvIWQnUkc-Azkk9SgtFXJb97DwEeV6h2hx60xu0DTo9oNWR9imE9PEqxEpwG4ZZVBcXC71CP_iAhaonHJFz__3bHN69THTMsfFKuSRd");'>
-                    </div>
-                    <div class="absolute top-4 left-4">
-                        <span
-                            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-600/90 text-white backdrop-blur-sm">
-                            Backend
-                        </span>
-                    </div>
-                </div>
-                <div class="flex flex-col flex-1 p-5 gap-3">
-                    <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 font-mono gap-2">
-                        <span class="material-symbols-outlined text-[16px]">calendar_today</span>
-                        <span>Sep 15, 2023</span>
-                        <span class="w-1 h-1 rounded-full bg-gray-500"></span>
-                        <span>8 min read</span>
-                    </div>
-                    <h3
-                        class="text-xl font-bold text-gray-900 dark:text-white leading-tight group-hover:text-primary transition-colors">
-                        Building Scalable APIs with Node.js
-                    </h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-3">
-                        Best practices for structuring your Express applications and handling database connections
-                        efficiently under high load.
-                    </p>
-                    <div class="mt-auto pt-4 flex items-center text-primary font-bold text-sm">
-                        <span>Read Article</span>
-                        <span
-                            class="material-symbols-outlined text-[18px] ml-1 transition-transform group-hover:translate-x-1">arrow_forward</span>
-                    </div>
-                </div>
-            </article>
-            <!-- Card 3 -->
-            <article
-                class="group flex flex-col bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-border-dark overflow-hidden hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 hover:shadow-xl dark:hover:shadow-primary/5 hover:-translate-y-1">
-                <div class="h-48 overflow-hidden relative">
-                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                        data-alt="Abstract gradient mesh with purple and pink hues"
-                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuARMQ3fv-QxM53FO6bxBava9_gEhUVBw9WwEDkwsBkNITF03UxsZIJyDNdTpU74hegxJeKoGjL8-2bMB2CjkxnbEMVjgMmG5xoovYCMyUsMnuLmeRk7zA_tXw31svre0Oizdz65nwMgMnUl-P7J_OjTOn4_TMfuLTROeDCFxKLCr5u1zIN3rfP2Qkj0l9Vhx3WwdwIibkNjRY3evyT8n2HjeCEPZPsyLqbFO2xOnEOVdLYNbbizAvzJooTF-6BLSkpwO8m5sPYs8dEZ");'>
-                    </div>
-                    <div class="absolute top-4 left-4">
-                        <span
-                            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-pink-600/90 text-white backdrop-blur-sm">
-                            UI/UX
-                        </span>
-                    </div>
-                </div>
-                <div class="flex flex-col flex-1 p-5 gap-3">
-                    <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 font-mono gap-2">
-                        <span class="material-symbols-outlined text-[16px]">calendar_today</span>
-                        <span>Aug 02, 2023</span>
-                        <span class="w-1 h-1 rounded-full bg-gray-500"></span>
-                        <span>4 min read</span>
-                    </div>
-                    <h3
-                        class="text-xl font-bold text-gray-900 dark:text-white leading-tight group-hover:text-primary transition-colors">
-                        Designing for Dark Mode
-                    </h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-3">
-                        Why simply inverting colors isn't enough. A deep dive into contrast ratios, elevation, and color
-                        saturation.
-                    </p>
-                    <div class="mt-auto pt-4 flex items-center text-primary font-bold text-sm">
-                        <span>Read Article</span>
-                        <span
-                            class="material-symbols-outlined text-[18px] ml-1 transition-transform group-hover:translate-x-1">arrow_forward</span>
-                    </div>
-                </div>
-            </article>
-            <!-- Card 4 -->
-            <article
-                class="group flex flex-col bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-border-dark overflow-hidden hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 hover:shadow-xl dark:hover:shadow-primary/5 hover:-translate-y-1">
-                <div class="h-48 overflow-hidden relative">
-                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                        data-alt="Container ship loaded with cargo representing docker containers"
-                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD3_pEkruqJiBhfr1_DmfWDSmMlIyR9z7VxveWSUm2DV_Utc2hKZPmOcGYZMaztuN8pZUcdO0W332twuBPeTCyqrc0Zzqi9pPuuMnxhxVdnahABJz-ZZaLXctB_IRUFBmm5L3sPxiqKdK2iPajt94IEeTCp5PAHWi6x4c-YBku1tPoIAbA2dqlXuHi7NSg3rkiBOD8S3ndkS437u94z-ve4_tBmLYxy6kUXDGu0fsyhH6ytT293gsKceZxY1IfFDJLIIQlraPKpIc2z");'>
-                    </div>
-                    <div class="absolute top-4 left-4">
-                        <span
-                            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-600/90 text-white backdrop-blur-sm">
-                            DevOps
-                        </span>
-                    </div>
-                </div>
-                <div class="flex flex-col flex-1 p-5 gap-3">
-                    <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 font-mono gap-2">
-                        <span class="material-symbols-outlined text-[16px]">calendar_today</span>
-                        <span>Jul 10, 2023</span>
-                        <span class="w-1 h-1 rounded-full bg-gray-500"></span>
-                        <span>12 min read</span>
-                    </div>
-                    <h3
-                        class="text-xl font-bold text-gray-900 dark:text-white leading-tight group-hover:text-primary transition-colors">
-                        Kubernetes for Frontend Developers
-                    </h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-3">
-                        Demystifying pods, services, and ingress. How to deploy your Next.js application to a K8s
-                        cluster without tears.
-                    </p>
-                    <div class="mt-auto pt-4 flex items-center text-primary font-bold text-sm">
-                        <span>Read Article</span>
-                        <span
-                            class="material-symbols-outlined text-[18px] ml-1 transition-transform group-hover:translate-x-1">arrow_forward</span>
-                    </div>
-                </div>
-            </article>
-            <!-- Card 5 -->
-            <article
-                class="group flex flex-col bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-border-dark overflow-hidden hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 hover:shadow-xl dark:hover:shadow-primary/5 hover:-translate-y-1">
-                <div class="h-48 overflow-hidden relative">
-                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                        data-alt="Minimalist desk setup with laptop and coffee"
-                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCsVyoJHGSgacZas7DAOxKn2IeGF65nuI5wSeUuwl0MZsRAJfdABSu0jQSv4wQCejxuondsq9T5UXh4UFv-FBTSywqVPY4m1g183UY_xx9vKKxqAg2Y3yjBmfQVKmebtTaAx5gIOLsJQkuTxVIGGowt2S40DgmajCuJ_NFWUVB4ISIfXitvRnQ9W7-wKLONURDPOa3bO9yNpaszXxhCnfoMI_1-PffbwNB1qTU8l3WsMbSDD-xqS8y9EXPV5jiFrwK8IWaUIQck9FXW");'>
-                    </div>
-                    <div class="absolute top-4 left-4">
-                        <span
-                            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-600/90 text-white backdrop-blur-sm">
-                            Career
-                        </span>
-                    </div>
-                </div>
-                <div class="flex flex-col flex-1 p-5 gap-3">
-                    <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 font-mono gap-2">
-                        <span class="material-symbols-outlined text-[16px]">calendar_today</span>
-                        <span>Jun 28, 2023</span>
-                        <span class="w-1 h-1 rounded-full bg-gray-500"></span>
-                        <span>6 min read</span>
-                    </div>
-                    <h3
-                        class="text-xl font-bold text-gray-900 dark:text-white leading-tight group-hover:text-primary transition-colors">
-                        From Junior to Senior Engineer
-                    </h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-3">
-                        It's not just about code. Soft skills, mentorship, and system design thinking are key to
-                        leveling up your career.
-                    </p>
-                    <div class="mt-auto pt-4 flex items-center text-primary font-bold text-sm">
-                        <span>Read Article</span>
-                        <span
-                            class="material-symbols-outlined text-[18px] ml-1 transition-transform group-hover:translate-x-1">arrow_forward</span>
-                    </div>
-                </div>
-            </article>
-            <!-- Card 6 -->
-            <article
-                class="group flex flex-col bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-border-dark overflow-hidden hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 hover:shadow-xl dark:hover:shadow-primary/5 hover:-translate-y-1">
-                <div class="h-48 overflow-hidden relative">
-                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                        data-alt="Typescript code on a monitor with syntax highlighting"
-                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBFYgX8fUnk0Nv_l0LgCNAQjX7uIecBKllKLzOriKKr2ECFKI07BfVuIfnXWVks8Ub7yvz-M4V2Ya4v1THoecTjPgAVCyGWBTKRRcsLkVdnaBvSKKpTChtEE-zRzqQ1HeK__dXYfhJHo3Mwa-C9etHcHIdscK91I_1YHjmRwepm8LG0G24r7_6HWEEoPNIHJqdtaRAiNfxOw57RR141JPHpOcd3dXIazqwCSJoutt926I2p4KgvHp5ynUYn0xCuEg18GDS-wF0R4IUV");'>
-                    </div>
-                    <div class="absolute top-4 left-4">
-                        <span
-                            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-500/90 text-white backdrop-blur-sm">
-                            TypeScript
-                        </span>
-                    </div>
-                </div>
-                <div class="flex flex-col flex-1 p-5 gap-3">
-                    <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 font-mono gap-2">
-                        <span class="material-symbols-outlined text-[16px]">calendar_today</span>
-                        <span>May 12, 2023</span>
-                        <span class="w-1 h-1 rounded-full bg-gray-500"></span>
-                        <span>10 min read</span>
-                    </div>
-                    <h3
-                        class="text-xl font-bold text-gray-900 dark:text-white leading-tight group-hover:text-primary transition-colors">
-                        Advanced TypeScript Patterns
-                    </h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-3">
-                        Mastering generics, conditional types, and utility types to write safer, self-documenting code.
-                    </p>
-                    <div class="mt-auto pt-4 flex items-center text-primary font-bold text-sm">
-                        <span>Read Article</span>
-                        <span
-                            class="material-symbols-outlined text-[18px] ml-1 transition-transform group-hover:translate-x-1">arrow_forward</span>
-                    </div>
-                </div>
-            </article>
+            @empty
+            <div class="col-span-full text-center py-12">
+                <p class="text-gray-500 dark:text-gray-400">No blog posts available yet. Check back soon!</p>
+            </div>
+            @endforelse
         </section>
         <!-- Pagination -->
         <div class="flex justify-center pb-12">
-            <nav class="flex items-center gap-2">
-                <button
-                    class="flex items-center justify-center w-10 h-10 rounded-lg border border-gray-200 dark:border-border-dark bg-white dark:bg-surface-dark text-gray-500 hover:text-primary disabled:opacity-50">
-                    <span class="material-symbols-outlined">chevron_left</span>
-                </button>
-                <button
-                    class="flex items-center justify-center w-10 h-10 rounded-lg bg-primary text-white font-bold text-sm">
-                    1
-                </button>
-                <button
-                    class="flex items-center justify-center w-10 h-10 rounded-lg border border-gray-200 dark:border-border-dark bg-white dark:bg-surface-dark text-gray-700 dark:text-gray-300 font-medium text-sm hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
-                    2
-                </button>
-                <button
-                    class="flex items-center justify-center w-10 h-10 rounded-lg border border-gray-200 dark:border-border-dark bg-white dark:bg-surface-dark text-gray-700 dark:text-gray-300 font-medium text-sm hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
-                    3
-                </button>
-                <span class="flex items-center justify-center w-10 h-10 text-gray-500">...</span>
-                <button
-                    class="flex items-center justify-center w-10 h-10 rounded-lg border border-gray-200 dark:border-border-dark bg-white dark:bg-surface-dark text-gray-500 hover:text-primary">
-                    <span class="material-symbols-outlined">chevron_right</span>
-                </button>
-            </nav>
+            {{ $posts->links() }}
         </div>
     </main>
     <!-- Footer -->

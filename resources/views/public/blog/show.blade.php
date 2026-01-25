@@ -181,38 +181,31 @@
             <main class="flex-1 min-w-0 max-w-[800px] mx-auto">
                 <!-- Breadcrumbs -->
                 <nav class="flex flex-wrap items-center gap-2 text-sm text-gray-500 mb-8">
-                    <a class="hover:text-primary transition-colors" href="#">Home</a>
+                    <a class="hover:text-primary transition-colors" href="{{ route('public.home') }}">Home</a>
                     <span class="material-symbols-outlined text-[16px]">chevron_right</span>
-                    <a class="hover:text-primary transition-colors" href="#">Blog</a>
+                    <a class="hover:text-primary transition-colors" href="{{ route('public.blog.index') }}">Blog</a>
                     <span class="material-symbols-outlined text-[16px]">chevron_right</span>
-                    <span class="text-white truncate max-w-[200px] sm:max-w-none">Understanding React Server
-                        Components</span>
+                    <span class="text-white truncate max-w-[200px] sm:max-w-none">{{ $post->title }}</span>
                 </nav>
                 <!-- Hero Section -->
                 <header class="mb-10">
                     <div class="flex gap-2 mb-6 flex-wrap">
-                        <span
-                            class="inline-flex items-center rounded-full bg-primary/10 border border-primary/20 px-3 py-1 text-xs font-medium text-primary ring-1 ring-inset ring-primary/20">
-                            React
-                        </span>
-                        <span
-                            class="inline-flex items-center rounded-full bg-[#282839] border border-[#333] px-3 py-1 text-xs font-medium text-gray-300">
-                            Web Development
-                        </span>
-                        <span
-                            class="inline-flex items-center rounded-full bg-[#282839] border border-[#333] px-3 py-1 text-xs font-medium text-gray-300">
-                            Performance
-                        </span>
+                        @if($post->tags)
+                            @foreach($post->tags as $tag)
+                            <span class="inline-flex items-center rounded-full bg-primary/10 border border-primary/20 px-3 py-1 text-xs font-medium text-primary ring-1 ring-inset ring-primary/20">
+                                {{ $tag->name }}
+                            </span>
+                            @endforeach
+                        @endif
                     </div>
                     <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.1] mb-6">
-                        Understanding React Server Components: A Deep Dive
+                        {{ $post->title }}
                     </h1>
                     <div class="flex flex-wrap items-center justify-between gap-6 border-b border-[#282839] pb-8">
                         <div class="flex items-center gap-4">
                             <div class="relative h-12 w-12 rounded-full overflow-hidden ring-2 ring-[#282839]">
                                 <img alt="Portrait of Alex Dev, the author" class="h-full w-full object-cover"
-                                    data-alt="Portrait of Alex Dev, the author"
-                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbbqLkxwVaTy82DYQAM1UfBHS5WY5XFWw5uozPCSvPbxogznyOH4pMzeuLBH-W9w5pqOoecmBsmDKwiaMZ4OrijU5w_FmsYebELyxteTRSAve_-PXMcFbn1lIOpLf3KcSkoTA81sT2MiJ_P1FcDOQX9v0jkUoYEuamjn8NTTf8YX7DDAKqVbIKMPIwtUWBYPV7EDVDe7yHGtEeL45D5XW9GiHeC5C8OSVSNsGSbuiX70LVS19U1Mx9KzswptO4PYaXw3HCIC3dX462" />
+                                     src="https://via.placeholder.com/48x48/1c1c27/ffffff?text=AD" />
                             </div>
                             <div>
                                 <p class="text-sm font-bold text-white">Alex Dev</p>
@@ -222,116 +215,32 @@
                         <div class="flex items-center gap-4 text-sm text-gray-500">
                             <div class="flex items-center gap-1.5">
                                 <span class="material-symbols-outlined text-[18px]">calendar_today</span>
-                                <span>Oct 24, 2023</span>
+                                <span>{{ \Carbon\Carbon::parse($post->published_at ?? $post->updated_at)->format('M d, Y') }}</span>
                             </div>
                             <div class="flex items-center gap-1.5">
                                 <span class="material-symbols-outlined text-[18px]">schedule</span>
-                                <span>8 min read</span>
+                                <span>{{ Str::wordCount(strip_tags($post->content)) }} min read</span>
                             </div>
                         </div>
                     </div>
                 </header>
                 <!-- Featured Image -->
-                <div
-                    class="relative mb-10 overflow-hidden rounded-2xl bg-[#1e1e2e] aspect-video border border-[#282839]">
-                    <img alt="Abstract digital representation of react server components network"
-                        class="w-full h-full object-cover opacity-90"
-                        data-alt="Abstract digital representation of react server components network"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQwDJEgGtfXUw5CFXQ0d4bTn0VvUmYFKcauSjMu5XJ094d7TlYXNtO9hvN0aRNK96tq7-UithxCZz3igLhdvRhzdWsDZkvk483kCwKId8x7pZ2O2xRkbCH_i1OFO6KerZkQlx23BeWQMOgqi8EdA2_uEHACkyL_zkBgas3dIHSbpgL15HWd1f2N2Ddy8dBJMJlB-cmEiEDJDkur1_k4uF7PQJiiYxeW5vpX4aMlykAM3XSpLbsmnEpHRv46y61uFnCe_7Kfa3OtmSK" />
+                @if($post->preview_image)
+                <div class="relative mb-10 overflow-hidden rounded-2xl bg-[#1e1e2e] aspect-video border border-[#282839]">
+                    <img alt="{{ $post->title }}"
+                         class="w-full h-full object-cover opacity-90"
+                         src="{{ Storage::url($post->preview_image) }}" />
                     <div class="absolute inset-0 bg-gradient-to-t from-background-dark/80 to-transparent"></div>
                 </div>
+                @endif
                 <!-- Article Body -->
                 <article class="prose prose-invert prose-lg max-w-none">
+                    @if($post->excerpt)
                     <p class="lead text-xl text-gray-300">
-                        React Server Components (RSC) represent a paradigm shift in how we build React applications.
-                        They allow us to leverage the server's capabilities while maintaining the rich interactivity of
-                        the client.
+                        {{ $post->excerpt }}
                     </p>
-                    <p>
-                        For years, we've been balancing the trade-offs between Server-Side Rendering (SSR) and
-                        Client-Side Rendering (CSR). RSCs aim to give us the best of both worlds by allowing components
-                        to render exclusively on the server. This reduces the bundle size sent to the client and
-                        improves initial load performance significantly.
-                    </p>
-                    <h2 id="what-are-server-components">What are Server Components?</h2>
-                    <p>
-                        Unlike traditional React components that hydrate on the client, Server Components never leave
-                        the server. Their output is serialized and sent to the client, which then reconciles it with the
-                        existing DOM. This means you can directly access your database or filesystem right from your
-                        component logic.
-                    </p>
-                    <div class="relative my-8 group">
-                        <div class="absolute right-4 top-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                            <button
-                                class="p-2 rounded bg-[#282c34] hover:bg-[#3e4451] text-gray-400 hover:text-white transition-colors"
-                                title="Copy code">
-                                <span class="material-symbols-outlined text-[18px]">content_copy</span>
-                            </button>
-                        </div>
-                        <div class="bg-[#1e1e2e] border border-[#282839] rounded-xl overflow-hidden shadow-2xl">
-                            <div class="flex items-center gap-2 px-4 py-3 bg-[#181825] border-b border-[#282839]">
-                                <div class="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
-                                <div class="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
-                                <div class="w-3 h-3 rounded-full bg-[#27c93f]"></div>
-                                <span class="ml-2 text-xs text-gray-500 font-mono">db-component.js</span>
-                            </div>
-                            <div class="p-5 overflow-x-auto custom-scrollbar">
-                                <pre class="font-mono text-sm leading-relaxed"><code><span class="syntax-keyword">import</span> { db } <span class="syntax-keyword">from</span> <span class="syntax-string">'./database'</span>;
-
-<span class="syntax-comment">// This component runs *only* on the server</span>
-<span class="syntax-keyword">async function</span> <span class="syntax-func">NoteList</span>({ <span class="syntax-tag">userId</span> }) {
-  <span class="syntax-comment">// Direct database access! No API needed.</span>
-  <span class="syntax-keyword">const</span> notes = <span class="syntax-keyword">await</span> db.notes.getAll(userId);
-
-  <span class="syntax-keyword">return</span> (
-    &lt;<span class="syntax-tag">div</span> className=<span class="syntax-string">"notes-list"</span>&gt;
-      {notes.map((note) =&gt; (
-        &lt;<span class="syntax-tag">NoteItem</span> key={note.id} note={note} /&gt;
-      ))}
-    &lt;/<span class="syntax-tag">div</span>&gt;
-  );
-}</code></pre>
-                            </div>
-                        </div>
-                        <p class="text-xs text-center text-gray-500 mt-2">Example of a server-only component accessing
-                            a database directly.</p>
-                    </div>
-                    <p>
-                        Notice how we imported the database directly? In a traditional client-side React app, this would
-                        be impossible (and a security risk). But with RSCs, this code never reaches the user's browser.
-                    </p>
-                    <blockquote
-                        class="border-l-4 border-primary bg-primary/5 p-6 rounded-r-lg italic text-gray-300 my-8">
-                        "Server Components allow developers to build apps that span the server and client, combining the
-                        rich interactivity of client-side apps with the improved performance of traditional server
-                        rendering."
-                        <footer class="text-sm font-bold text-primary mt-2 not-italic">— React Documentation</footer>
-                    </blockquote>
-                    <h2 id="benefits">Key Benefits</h2>
-                    <ul class="space-y-2">
-                        <li class="flex items-start gap-3">
-                            <span class="material-symbols-outlined text-green-400 mt-1">check_circle</span>
-                            <span><strong>Zero Bundle Size:</strong> Dependencies used in Server Components aren't
-                                included in the client bundle.</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <span class="material-symbols-outlined text-green-400 mt-1">check_circle</span>
-                            <span><strong>Backend Access:</strong> Query databases, access file systems, and use
-                                internal microservices directly.</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <span class="material-symbols-outlined text-green-400 mt-1">check_circle</span>
-                            <span><strong>Automatic Code Splitting:</strong> Client components imported by Server
-                                components are automatically code-split.</span>
-                        </li>
-                    </ul>
-                    <h2 id="conclusion">Conclusion</h2>
-                    <p>
-                        While React Server Components introduce a new mental model, the performance benefits and
-                        simplified data fetching architecture make them a compelling choice for modern web development.
-                        As the ecosystem matures, we can expect this pattern to become the standard for building
-                        data-heavy applications.
-                    </p>
+                    @endif
+                    {!! $post->content !!}
                 </article>
                 <hr class="border-[#282839] my-12" />
                 <!-- Author Bio Card -->
@@ -424,83 +333,42 @@
         <section class="mt-20 pt-10 border-t border-[#282839]">
             <div class="flex items-center justify-between mb-8">
                 <h2 class="text-2xl font-bold text-white">More from the Blog</h2>
-                <a class="text-sm font-bold text-primary hover:text-white transition-colors" href="#">View all
+                <a class="text-sm font-bold text-primary hover:text-white transition-colors" href="{{ route('public.blog.index') }}">View all
                     posts</a>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Post Card 1 -->
-                <article
-                    class="group flex flex-col h-full bg-surface-dark border border-[#282839] rounded-2xl overflow-hidden hover:shadow-xl hover:shadow-primary/5 transition-all hover:-translate-y-1">
+                @forelse($relatedPosts as $relatedPost)
+                <article class="group flex flex-col h-full bg-surface-dark border border-[#282839] rounded-2xl overflow-hidden hover:shadow-xl hover:shadow-primary/5 transition-all hover:-translate-y-1">
                     <div class="h-48 overflow-hidden">
-                        <img alt="Computer screen displaying code editor"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                            data-alt="Computer screen displaying code editor"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBM4hylSuuH8rSA_J-DzRxdkBj-VZ4VNHriIqqG7b4I06MIOfUom2o-oTeq7Pa9RPVwLQs95cgnzaKEi_ATC8WPUq58p0r9oj_Or5iXj7sBU13Sa6zTTrv05RX2VaKVs7THpMisUahJeT4xB-dn1Ou8d1TKGoOaAo1IYSZ6DNAD5Kd-viMtwqF1EfSoxlZ6oSWKkzrCA4_zd2XVSDkQ-vJ4O09sGIJQhzcdw6VD-2fORchCKNeaTGpjevdgm2SsY8RvTQqTg7YyASLC" />
+                        @if($relatedPost->preview_image)
+                        <img alt="{{ $relatedPost->title }}"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                             src="{{ Storage::url($relatedPost->preview_image) }}" />
+                        @else
+                        <div class="w-full h-full bg-gradient-to-br from-primary/20 to-transparent flex items-center justify-center">
+                            <span class="text-gray-500">No image</span>
+                        </div>
+                        @endif
                     </div>
                     <div class="flex-1 p-6 flex flex-col">
+                        @if($relatedPost->tags && $relatedPost->tags->first())
                         <div class="flex gap-2 mb-3">
-                            <span
-                                class="text-xs font-medium text-primary bg-primary/10 px-2 py-0.5 rounded">Development</span>
+                            <span class="text-xs font-medium text-primary bg-primary/10 px-2 py-0.5 rounded">{{ $relatedPost->tags->first()->name }}</span>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-2 leading-tight">Optimizing Next.js for Performance
-                        </h3>
-                        <p class="text-gray-400 text-sm mb-4 line-clamp-2">Learn practical tips and tricks to make your
-                            Next.js applications fly.</p>
-                        <div
-                            class="mt-auto flex items-center justify-between text-xs text-gray-500 pt-4 border-t border-[#282839]">
-                            <span>Oct 20, 2023</span>
-                            <span>6 min read</span>
+                        @endif
+                        <h3 class="text-xl font-bold text-white mb-2 leading-tight">{{ $relatedPost->title }}</h3>
+                        <p class="text-gray-400 text-sm mb-4 line-clamp-2">{{ $relatedPost->excerpt }}</p>
+                        <div class="mt-auto flex items-center justify-between text-xs text-gray-500 pt-4 border-t border-[#282839]">
+                            <span>{{ \Carbon\Carbon::parse($relatedPost->published_at ?? $relatedPost->updated_at)->format('M d, Y') }}</span>
+                            <span>{{ Str::wordCount(strip_tags($relatedPost->content)) }} min read</span>
                         </div>
                     </div>
                 </article>
-                <!-- Post Card 2 -->
-                <article
-                    class="group flex flex-col h-full bg-surface-dark border border-[#282839] rounded-2xl overflow-hidden hover:shadow-xl hover:shadow-primary/5 transition-all hover:-translate-y-1">
-                    <div class="h-48 overflow-hidden">
-                        <img alt="Abstract network nodes connecting together"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                            data-alt="Abstract network nodes connecting together"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBG3ysPLNR3_0kWfCyIsPVMi5MrgBlfx4OZxk1yoVMlnRy8QvfP7EHwLEKQJwNYffj2BrZMPBmt8dEe4mhpgnSm2wMlRH5HgKZMwMwoKpOPR8owIh6vbfyvjj0gJoBQnQ2XW6sCpJ_or0jZpUu6a-MmGp6su3_l2YWyyr_ELXiUehR3Ex7SP2GZFApNUqnZHQJZ0j0g48dLZGhVmfK8UBYnuY9kr4PpquOyVZxq3046WqAYC4Yn-P9RVrMXIQRmbhpSQUUAr_9F2F64" />
-                    </div>
-                    <div class="flex-1 p-6 flex flex-col">
-                        <div class="flex gap-2 mb-3">
-                            <span class="text-xs font-medium text-primary bg-primary/10 px-2 py-0.5 rounded">CSS</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2 leading-tight">Tailwind CSS vs Styled Components
-                        </h3>
-                        <p class="text-gray-400 text-sm mb-4 line-clamp-2">A comprehensive comparison of two popular
-                            styling solutions for React.</p>
-                        <div
-                            class="mt-auto flex items-center justify-between text-xs text-gray-500 pt-4 border-t border-[#282839]">
-                            <span>Oct 15, 2023</span>
-                            <span>10 min read</span>
-                        </div>
-                    </div>
-                </article>
-                <!-- Post Card 3 -->
-                <article
-                    class="group flex flex-col h-full bg-surface-dark border border-[#282839] rounded-2xl overflow-hidden hover:shadow-xl hover:shadow-primary/5 transition-all hover:-translate-y-1">
-                    <div class="h-48 overflow-hidden">
-                        <img alt="Developer typing on a keyboard with code on screen"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                            data-alt="Developer typing on a keyboard with code on screen"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRPf-ZH3504P1OA0akiLIeO0LOft1bTvmzDfbz1b7Q70oq1AfZ9097dx4nEuinnba0z2rkIKAOe0H65DjJvg2x2j11Z-zMDaXtFjUO9GAEweDWInWltEwjTgLyJCXuM8y10uDIYhAdGey7lWHx7ExWTj95l0LW6Gga6fxMSHzMSiQeCZBnkICQlOFmgvyRtqW61eHVo02o4gsoPsqcTUxtlOGEvhqSEHzt8YD4SQPF3_LjbKOrLmkQV5OaS8UV5xwDg-9nlW07W_a7" />
-                    </div>
-                    <div class="flex-1 p-6 flex flex-col">
-                        <div class="flex gap-2 mb-3">
-                            <span
-                                class="text-xs font-medium text-primary bg-primary/10 px-2 py-0.5 rounded">Career</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2 leading-tight">Navigating the Tech Job Market</h3>
-                        <p class="text-gray-400 text-sm mb-4 line-clamp-2">Insights on how to stand out and land your
-                            dream developer role in 2024.</p>
-                        <div
-                            class="mt-auto flex items-center justify-between text-xs text-gray-500 pt-4 border-t border-[#282839]">
-                            <span>Sep 28, 2023</span>
-                            <span>5 min read</span>
-                        </div>
-                    </div>
-                </article>
+                @empty
+                <div class="col-span-full text-center py-12">
+                    <p class="text-gray-500">No related posts available.</p>
+                </div>
+                @endforelse
             </div>
         </section>
     </div>

@@ -10,67 +10,53 @@
                 <header class="flex flex-wrap justify-between items-end gap-4">
                     <div class="flex flex-col gap-2">
                         <p class="text-text-secondary text-sm font-medium uppercase tracking-wider">Overview</p>
-                        <h1 class="text-white text-3xl md:text-4xl font-bold leading-tight tracking-tight">Welcome back,
-                            Alex</h1>
-                        <p class="text-text-secondary text-base">Here is what is happening with your portfolio today.
-                        </p>
+                        <h1 class="text-white text-3xl md:text-4xl font-bold leading-tight tracking-tight">Welcome back, Alex</h1>
+                        <p class="text-text-secondary text-base">Here is what is happening with your portfolio today.</p>
                     </div>
-                    <div
-                        class="flex items-center gap-2 text-text-secondary text-sm bg-surface-dark px-3 py-1.5 rounded-full border border-border-dark">
+                    <div class="flex items-center gap-2 text-text-secondary text-sm bg-surface-dark px-3 py-1.5 rounded-full border border-border-dark">
                         <span class="material-symbols-outlined text-[18px]">calendar_today</span>
-                        <span>Oct 24, 2023</span>
+                        <span>{{ now()->format('M d, Y') }}</span>
                     </div>
                 </header>
                 <!-- Stats Cards -->
                 <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                     <!-- Stat 1 -->
-                    <div
-                        class="flex flex-col gap-4 rounded-xl p-6 bg-surface-dark border border-border-dark shadow-sm hover:border-primary/50 transition-colors group">
+                    <div class="flex flex-col gap-4 rounded-xl p-6 bg-surface-dark border border-border-dark shadow-sm hover:border-primary/50 transition-colors group">
                         <div class="flex justify-between items-start">
-                            <div
-                                class="bg-primary/10 p-2.5 rounded-lg text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                            <div class="bg-primary/10 p-2.5 rounded-lg text-primary group-hover:bg-primary group-hover:text-white transition-colors">
                                 <span class="material-symbols-outlined block">folder_special</span>
                             </div>
-                            <span
-                                class="flex items-center text-[#0bda68] text-xs font-medium bg-[#0bda68]/10 px-2 py-1 rounded-full">+2
-                                this week</span>
+                            <span class="flex items-center text-[#0bda68] text-xs font-medium bg-[#0bda68]/10 px-2 py-1 rounded-full">+2 this week</span>
                         </div>
                         <div>
                             <p class="text-text-secondary text-sm font-medium mb-1">Total Projects</p>
-                            <p class="text-white text-3xl font-bold tracking-tight">12</p>
+                            <p class="text-white text-3xl font-bold tracking-tight">{{ $totalProjects }}</p>
                         </div>
                     </div>
                     <!-- Stat 2 -->
-                    <div
-                        class="flex flex-col gap-4 rounded-xl p-6 bg-surface-dark border border-border-dark shadow-sm hover:border-primary/50 transition-colors group">
+                    <div class="flex flex-col gap-4 rounded-xl p-6 bg-surface-dark border border-border-dark shadow-sm hover:border-primary/50 transition-colors group">
                         <div class="flex justify-between items-start">
-                            <div
-                                class="bg-primary/10 p-2.5 rounded-lg text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                            <div class="bg-primary/10 p-2.5 rounded-lg text-primary group-hover:bg-primary group-hover:text-white transition-colors">
                                 <span class="material-symbols-outlined block">article</span>
                             </div>
-                            <span
-                                class="flex items-center text-[#0bda68] text-xs font-medium bg-[#0bda68]/10 px-2 py-1 rounded-full">+5
-                                this month</span>
+                            <span class="flex items-center text-[#0bda68] text-xs font-medium bg-[#0bda68]/10 px-2 py-1 rounded-full">+5 this month</span>
                         </div>
                         <div>
                             <p class="text-text-secondary text-sm font-medium mb-1">Published Posts</p>
-                            <p class="text-white text-3xl font-bold tracking-tight">45</p>
+                            <p class="text-white text-3xl font-bold tracking-tight">{{ $publishedPosts }}</p>
                         </div>
                     </div>
                     <!-- Stat 3 -->
-                    <div
-                        class="flex flex-col gap-4 rounded-xl p-6 bg-surface-dark border border-border-dark shadow-sm hover:border-primary/50 transition-colors group">
+                    <div class="flex flex-col gap-4 rounded-xl p-6 bg-surface-dark border border-border-dark shadow-sm hover:border-primary/50 transition-colors group">
                         <div class="flex justify-between items-start">
-                            <div
-                                class="bg-primary/10 p-2.5 rounded-lg text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                            <div class="bg-primary/10 p-2.5 rounded-lg text-primary group-hover:bg-primary group-hover:text-white transition-colors">
                                 <span class="material-symbols-outlined block">visibility</span>
                             </div>
-                            <span
-                                class="flex items-center text-[#0bda68] text-xs font-medium bg-[#0bda68]/10 px-2 py-1 rounded-full">+15%</span>
+                            <span class="flex items-center text-[#0bda68] text-xs font-medium bg-[#0bda68]/10 px-2 py-1 rounded-full">+15%</span>
                         </div>
                         <div>
-                            <p class="text-text-secondary text-sm font-medium mb-1">Total Site Visits</p>
-                            <p class="text-white text-3xl font-bold tracking-tight">12.5K</p>
+                            <p class="text-text-secondary text-sm font-medium mb-1">Total Education</p>
+                            <p class="text-white text-3xl font-bold tracking-tight">{{ $totalEducation }}</p>
                         </div>
                     </div>
                 </section>
@@ -136,113 +122,42 @@
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y divide-border-dark text-white">
+                                    @forelse($recentContent as $content)
                                     <tr class="hover:bg-background-dark/30 transition-colors">
-                                        <td class="px-6 py-4 font-medium">Building a Scalable API</td>
+                                        <td class="px-6 py-4 font-medium">{{ $content['title'] }}</td>
                                         <td class="px-6 py-4 text-text-secondary">
                                             <div class="flex items-center gap-2">
-                                                <span class="material-symbols-outlined text-[16px]">article</span> Blog
+                                                <span class="material-symbols-outlined text-[16px]">
+                                                    {{ $content['type'] === 'Blog' ? 'article' : 'folder' }}
+                                                </span> 
+                                                {{ $content['type'] }}
                                             </div>
                                         </td>
-                                        <td class="px-6 py-4 text-text-secondary">Oct 22, 2023</td>
+                                        <td class="px-6 py-4 text-text-secondary">{{ $content['updated_at']->format('M d, Y') }}</td>
                                         <td class="px-6 py-4">
-                                            <span
-                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/20 text-primary-light text-blue-300 border border-primary/20">
-                                                Published
-                                            </span>
+                                            @if($content['status'] === 'published')
+                                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/20 text-primary-light text-blue-300 border border-primary/20">
+                                                    Published
+                                                </span>
+                                            @else
+                                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-700/50 text-gray-300 border border-gray-600/30">
+                                                    Draft
+                                                </span>
+                                            @endif
                                         </td>
                                         <td class="px-6 py-4 text-right">
-                                            <button
-                                                class="text-text-secondary hover:text-white p-1 rounded hover:bg-[#2d2d3f]">
+                                            <button class="text-text-secondary hover:text-white p-1 rounded hover:bg-[#2d2d3f]">
                                                 <span class="material-symbols-outlined text-[20px]">more_vert</span>
                                             </button>
                                         </td>
                                     </tr>
-                                    <tr class="hover:bg-background-dark/30 transition-colors">
-                                        <td class="px-6 py-4 font-medium">E-commerce Dashboard UI</td>
-                                        <td class="px-6 py-4 text-text-secondary">
-                                            <div class="flex items-center gap-2">
-                                                <span class="material-symbols-outlined text-[16px]">folder</span>
-                                                Project
-                                            </div>
-                                        </td>
-                                        <td class="px-6 py-4 text-text-secondary">Oct 20, 2023</td>
-                                        <td class="px-6 py-4">
-                                            <span
-                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-700/50 text-gray-300 border border-gray-600/30">
-                                                Draft
-                                            </span>
-                                        </td>
-                                        <td class="px-6 py-4 text-right">
-                                            <button
-                                                class="text-text-secondary hover:text-white p-1 rounded hover:bg-[#2d2d3f]">
-                                                <span class="material-symbols-outlined text-[20px]">more_vert</span>
-                                            </button>
+                                    @empty
+                                    <tr>
+                                        <td colspan="5" class="px-6 py-8 text-center text-text-secondary">
+                                            No recent content found. Start creating your first project or blog post!
                                         </td>
                                     </tr>
-                                    <tr class="hover:bg-background-dark/30 transition-colors">
-                                        <td class="px-6 py-4 font-medium">Understanding React Hooks</td>
-                                        <td class="px-6 py-4 text-text-secondary">
-                                            <div class="flex items-center gap-2">
-                                                <span class="material-symbols-outlined text-[16px]">article</span> Blog
-                                            </div>
-                                        </td>
-                                        <td class="px-6 py-4 text-text-secondary">Oct 18, 2023</td>
-                                        <td class="px-6 py-4">
-                                            <span
-                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/20 text-blue-300 border border-primary/20">
-                                                Published
-                                            </span>
-                                        </td>
-                                        <td class="px-6 py-4 text-right">
-                                            <button
-                                                class="text-text-secondary hover:text-white p-1 rounded hover:bg-[#2d2d3f]">
-                                                <span class="material-symbols-outlined text-[20px]">more_vert</span>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr class="hover:bg-background-dark/30 transition-colors">
-                                        <td class="px-6 py-4 font-medium">Portfolio V2 Redesign</td>
-                                        <td class="px-6 py-4 text-text-secondary">
-                                            <div class="flex items-center gap-2">
-                                                <span class="material-symbols-outlined text-[16px]">folder</span>
-                                                Project
-                                            </div>
-                                        </td>
-                                        <td class="px-6 py-4 text-text-secondary">Oct 15, 2023</td>
-                                        <td class="px-6 py-4">
-                                            <span
-                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/20 text-blue-300 border border-primary/20">
-                                                Published
-                                            </span>
-                                        </td>
-                                        <td class="px-6 py-4 text-right">
-                                            <button
-                                                class="text-text-secondary hover:text-white p-1 rounded hover:bg-[#2d2d3f]">
-                                                <span class="material-symbols-outlined text-[20px]">more_vert</span>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr class="hover:bg-background-dark/30 transition-colors">
-                                        <td class="px-6 py-4 font-medium">CSS Grid vs Flexbox</td>
-                                        <td class="px-6 py-4 text-text-secondary">
-                                            <div class="flex items-center gap-2">
-                                                <span class="material-symbols-outlined text-[16px]">article</span> Blog
-                                            </div>
-                                        </td>
-                                        <td class="px-6 py-4 text-text-secondary">Oct 10, 2023</td>
-                                        <td class="px-6 py-4">
-                                            <span
-                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-700/50 text-gray-300 border border-gray-600/30">
-                                                Draft
-                                            </span>
-                                        </td>
-                                        <td class="px-6 py-4 text-right">
-                                            <button
-                                                class="text-text-secondary hover:text-white p-1 rounded hover:bg-[#2d2d3f]">
-                                                <span class="material-symbols-outlined text-[20px]">more_vert</span>
-                                            </button>
-                                        </td>
-                                    </tr>
+                                    @endforelse
                                 </tbody>
                             </table>
                         </div>
