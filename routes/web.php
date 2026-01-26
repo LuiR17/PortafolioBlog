@@ -24,6 +24,9 @@ use App\Http\Controllers\PublicController;
 
 Route::get('/', [PublicController::class, 'home'])->name('public.home');
 
+// CV Download (público)
+Route::get('/download-cv', [App\Http\Controllers\Admin\CurriculumController::class, 'download'])->name('curriculum.download');
+
 // Blog
 Route::get('/blog', [PublicController::class, 'blogIndex'])->name('public.blog.index');
 Route::get('/blog/{slug}', [PublicController::class, 'blogShow'])->name('public.blog.show');

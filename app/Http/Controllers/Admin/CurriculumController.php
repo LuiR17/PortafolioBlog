@@ -100,31 +100,25 @@ class CurriculumController extends Controller
     public function download()
     {
         try {
-            $curriculum = $this->curriculumService->getActive();
+            $curriculum = Curriculum::active()->firstOrFail();
             
-            if (!$curriculum || !$curriculum->file_path) {
-                return redirect()->back()
-                    ->with('error', 'No curriculum file available for download.');
+            if (!$curriculum->file_path) {
+                abort(404, 'No curriculum file available for download.');
             }
             
             // Check if file exists in storage
             if (!Storage::exists($curriculum->file_path)) {
-                return redirect()->back()
-                    ->with('error', 'Curriculum file not found.');
+                abort(404, 'Curriculum file not found.');
             }
             
-            // Get file from storage and return as download
-            $file = Storage::get($curriculum->file_path);
-            $mimeType = Storage::mimeType($curriculum->file_path);
+            // Download using Storage::download with forced filename
+            return Storage::download($curriculum->file_path, 'CV-Luis-Romero.pdf');
             
-            return response($file)
-                ->header('Content-Type', $mimeType)
-                ->header('Content-Disposition', 'attachment; filename="' . $curriculum->file_name . '"');
-            
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            abort(404, 'No active curriculum found.');
         } catch (\Exception $e) {
             Log::error('Error downloading curriculum: ' . $e->getMessage());
-            return redirect()->back()
-                ->with('error', 'Failed to download curriculum. Please try again.');
+            abort(500, 'Failed to download curriculum.');
         }
     }
 }

@@ -70,7 +70,7 @@
                         </div>
                         <div class="flex gap-4 mt-2">
                             @if($curriculum && $curriculum->file_path)
-                            <a href="{{ route('admin.curriculum.download') }}" 
+                            <a href="{{ route('curriculum.download') }}" 
                                class="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary hover:bg-blue-700 transition-all text-white text-base font-bold leading-normal tracking-[0.015em]">
                                 <span class="material-symbols-outlined mr-2 text-[20px]">download</span>
                                 <span>Download CV</span>
