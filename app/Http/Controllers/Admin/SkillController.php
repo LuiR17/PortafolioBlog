@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreSkillRequest;
 use App\Http\Requests\Admin\UpdateSkillRequest;
 use App\Models\Skill;
-use App\Services\Admin\SkillService;
+use App\Services\SkillService;
 use Illuminate\Http\Request;
 
 class SkillController extends Controller

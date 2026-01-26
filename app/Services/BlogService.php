@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Admin;
+namespace App\Services;
 
 use App\Models\Blog_post;
 use Illuminate\Support\Facades\Log;
@@ -18,7 +18,7 @@ class BlogService
                 $data['preview_image']->isValid()
             ) {
                 $data['preview_image'] = $data['preview_image']
-                    ->store('projects', 'public');
+                    ->store('blog');
             }
 
             return Blog_post::create($data);
@@ -40,11 +40,11 @@ class BlogService
                 $data['preview_image']->isValid()
             ) {
                 if ($blogPost->preview_image) {
-                    Storage::disk('public')->delete($blogPost->preview_image);
+                    Storage::delete($blogPost->preview_image);
                 }
 
                 $data['preview_image'] = $data['preview_image']
-                    ->store('projects', 'public');
+                    ->store('blog');
             }
 
             $blogPost->update($data);
@@ -64,7 +64,7 @@ class BlogService
     {
         try {
             if ($blogPost->preview_image) {
-                Storage::disk('public')->delete($blogPost->preview_image);
+                Storage::delete($blogPost->preview_image);
             }
 
             $blogPost->delete();

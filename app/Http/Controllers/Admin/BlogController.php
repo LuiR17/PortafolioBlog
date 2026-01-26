@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Blog_post;
 use App\Http\Requests\Admin\StoreBlogRequest;
 use App\Http\Requests\Admin\UpdateBlogRequest;
-use App\Services\Admin\BlogService;
+use App\Services\BlogService;
 
 class BlogController extends Controller
 {
