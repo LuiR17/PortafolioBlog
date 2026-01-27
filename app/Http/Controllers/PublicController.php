@@ -79,22 +79,12 @@ class PublicController extends Controller
         return view('public.projects.index', compact('projects'));
     }
 
-    public function projectShow($slug)
+    public function projectShow(Project $project)
     {
-        // Convert slug back to name format (replace hyphens with spaces)
-        $projectName = str_replace('-', ' ', $slug);
-        
-        // Debug logging
-        \Log::info('Searching for project:', [
-            'slug' => $slug,
-            'projectName' => $projectName,
-            'all_projects' => Project::published()->pluck('name')->toArray()
-        ]);
-        
-        // Search for project by name (case-insensitive)
-        $project = Project::published()
-            ->whereRaw('LOWER(name) = ?', [strtolower($projectName)])
-            ->firstOrFail();
+        // Verify project is published (Route Model Binding already gets the project by slug)
+        if (!$project->isPublished()) {
+            abort(404);
+        }
 
         // Get related projects
         $relatedProjects = Project::published()

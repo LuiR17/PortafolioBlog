@@ -12,6 +12,11 @@ class ProjectService
     public function store(array $data): Project
     {
         try {
+            // Generate slug from name if not provided
+            if (!isset($data['slug']) || empty($data['slug'])) {
+                $data['slug'] = \Illuminate\Support\Str::slug($data['name']);
+            }
+
             if (
                 isset($data['preview_image']) &&
                 $data['preview_image'] instanceof \Illuminate\Http\UploadedFile &&
@@ -35,6 +40,13 @@ class ProjectService
     public function update(Project $project, array $data): Project
     {
         try {
+            // Generate slug from name if name changed and slug not provided
+            if (isset($data['name']) && $data['name'] !== $project->name) {
+                if (!isset($data['slug']) || empty($data['slug'])) {
+                    $data['slug'] = \Illuminate\Support\Str::slug($data['name']);
+                }
+            }
+
             if (
                 isset($data['preview_image']) &&
                 $data['preview_image'] instanceof \Illuminate\Http\UploadedFile &&

@@ -175,7 +175,7 @@
                                     @endif
                                 </div>
                                 <div class="mt-auto pt-4 flex items-center text-primary font-bold text-sm">
-                                    <a href="{{ route('public.projects.show', Str::slug($project->name)) }}" class="flex items-center gap-2">
+                                    <a href="{{ route('public.projects.show', $project->slug) }}" class="flex items-center gap-2">
                                         <span>Read Project</span>
                                         <span class="material-symbols-outlined text-[18px] ml-1 transition-transform group-hover:translate-x-1">arrow_forward</span>
                                     </a>

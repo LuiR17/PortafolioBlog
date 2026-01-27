@@ -9,6 +9,7 @@ class Project extends Model
 {
     protected $fillable = [
         'name',
+        'slug',
         'client_name',
         'preview_image',
         'development_time',
@@ -23,6 +24,14 @@ class Project extends Model
         'status',
     ];
 
+    /**
+     * Get the route key for the model.
+     */
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
     public function tags(): MorphToMany
     {
         return $this->morphToMany(Tag::class, 'taggable');
@@ -31,6 +40,14 @@ class Project extends Model
     public function scopePublished($query)
     {
         return $query->where('status', 'published');
+    }
+
+    /**
+     * Check if the project is published.
+     */
+    public function isPublished(): bool
+    {
+        return $this->status === 'published';
     }
 
 }
