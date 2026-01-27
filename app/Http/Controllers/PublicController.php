@@ -81,9 +81,19 @@ class PublicController extends Controller
 
     public function projectShow($slug)
     {
-        // For now, assume projects are identified by name/slug
+        // Convert slug back to name format (replace hyphens with spaces)
+        $projectName = str_replace('-', ' ', $slug);
+        
+        // Debug logging
+        \Log::info('Searching for project:', [
+            'slug' => $slug,
+            'projectName' => $projectName,
+            'all_projects' => Project::published()->pluck('name')->toArray()
+        ]);
+        
+        // Search for project by name (case-insensitive)
         $project = Project::published()
-            ->where('name', 'LIKE', '%' . str_replace('-', ' ', $slug) . '%')
+            ->whereRaw('LOWER(name) = ?', [strtolower($projectName)])
             ->firstOrFail();
 
         // Get related projects
