@@ -37,7 +37,15 @@
                                     Title</span>
                                 <input
                                     class="w-full rounded-lg border border-[#3b3b54] bg-[#111118] text-white placeholder-[#9d9db9] focus:border-primary focus:ring-1 focus:ring-primary p-3 text-base"
-                                    placeholder="e.g. Fintech Dashboard Redesign" name="name" value="{{ old('name', $project->name) }}" />
+                                    placeholder="e.g. Fintech Dashboard Redesign" name="name" value="{{ old('name', $project->name) }}" id="project-name" />
+                            </label>
+                            <!-- Slug Input -->
+                            <label class="flex flex-col gap-2">
+                                <span class="text-[#e0e0e0] text-sm font-medium uppercase tracking-wide">URL Slug</span>
+                                <input
+                                    class="w-full rounded-lg border border-[#3b3b54] bg-[#111118] text-white placeholder-[#9d9db9] focus:border-primary focus:ring-1 focus:ring-primary p-3 text-base"
+                                    placeholder="auto-generated-from-title" name="slug" value="{{ old('slug', $project->slug) }}" id="project-slug" />
+                                <span class="text-xs text-[#9d9db9]">Auto-generated from title (can be edited)</span>
                             </label>
                             <!-- Short Description -->
                             <label class="flex flex-col gap-2">
@@ -159,3 +167,40 @@
 
     </main>
 @endsection
+
+@push('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const nameInput = document.getElementById('project-name');
+    const slugInput = document.getElementById('project-slug');
+    let originalSlug = slugInput.value;
+    
+    function generateSlug(text) {
+        return text
+            .toString()
+            .toLowerCase()
+            .trim()
+            .replace(/\s+/g, '-')         // Replace spaces with -
+            .replace(/[^\w\-]+/g, '')     // Remove all non-word chars
+            .replace(/\-\-+/g, '-')       // Replace multiple - with single -
+            .replace(/^-+/, '')           // Trim - from start of text
+            .replace(/-+$/, '');          // Trim - from end of text
+    }
+    
+    nameInput.addEventListener('input', function() {
+        // Only auto-generate if slug hasn't been manually edited
+        if (slugInput.value === originalSlug || slugInput.value === '') {
+            const slug = generateSlug(this.value);
+            slugInput.value = slug;
+        }
+    });
+    
+    // Track manual edits to slug
+    slugInput.addEventListener('input', function() {
+        if (this.value !== originalSlug) {
+            originalSlug = this.value; // Update original to prevent auto-generation
+        }
+    });
+});
+</script>
+@endpush
