@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="en">
+<html class="dark" lang="es">
 
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Blog List - Developer Portfolio</title>
+    <title>Lista de Blog - Portafolio de Desarrollador</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
@@ -66,11 +66,11 @@
                 <div class="flex flex-col gap-4 text-left mb-8">
                     <h1
                         class="text-white text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-[-0.033em]">
-                        Thoughts &amp; Tutorials
+                        Pensamientos y Tutoriales
                     </h1>
                     <h2 class="text-gray-200 text-lg md:text-xl font-normal leading-relaxed max-w-2xl">
-                        A collection of thoughts on software architecture, frontend development, and the tools I use to
-                        build scalable products.
+                        Una colección de pensamientos sobre arquitectura de software, desarrollo frontend y las herramientas que uso
+                        para construir productos escalables.
                     </h2>
                 </div>
                 <!-- Search Bar -->
@@ -82,12 +82,12 @@
                         </div>
                         <input
                             class="flex w-full min-w-0 flex-1 bg-surface-dark text-white placeholder:text-gray-500 border-y border-border-dark focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary px-3 text-base"
-                            placeholder="Search articles, topics, or keywords..." />
+                            placeholder="Buscar artículos, temas o palabras clave..." />
                         <div
                             class="flex items-center justify-center rounded-r-lg border border-l-0 border-border-dark bg-surface-dark pr-2 pl-1">
                             <button
                                 class="h-9 md:h-10 px-5 rounded-md bg-primary hover:bg-primary/90 text-white text-sm font-bold transition-colors">
-                                Search
+                                Buscar
                             </button>
                         </div>
                     </div>
@@ -97,21 +97,21 @@
         <!-- Filters Section -->
         <section class="flex flex-col gap-4">
             <div class="flex items-center justify-between">
-                <h3 class="text-gray-900 dark:text-white text-xl font-bold">Latest Posts</h3>
+                <h3 class="text-gray-900 dark:text-white text-xl font-bold">Últimas Publicaciones</h3>
                 <div class="hidden sm:flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
-                    <span>Sort by:</span>
+                    <span>Ordenar por:</span>
                     <select
                         class="bg-transparent border-none text-gray-900 dark:text-white font-medium focus:ring-0 cursor-pointer p-0 pr-6">
-                        <option>Newest First</option>
-                        <option>Oldest First</option>
-                        <option>Most Popular</option>
+                        <option>Más Recientes Primero</option>
+                        <option>Más Antiguos Primero</option>
+                        <option>Más Populares</option>
                     </select>
                 </div>
             </div>
             <div class="flex gap-3 flex-wrap">
                 <button
                     class="flex h-9 items-center justify-center px-4 rounded-full bg-primary text-white text-sm font-medium transition-transform hover:scale-105">
-                    All
+                    Todos
                 </button>
                 <button
                     class="flex h-9 items-center justify-center px-4 rounded-full bg-white dark:bg-surface-dark border border-gray-200 dark:border-border-dark text-gray-700 dark:text-gray-300 hover:border-primary/50 hover:text-primary dark:hover:text-primary text-sm font-medium transition-all hover:scale-105">
@@ -160,7 +160,7 @@
                         <span class="material-symbols-outlined text-[16px]">calendar_today</span>
                         <span>{{ \Carbon\Carbon::parse($post->published_at ?? $post->updated_at)->format('M d, Y') }}</span>
                         <span class="w-1 h-1 rounded-full bg-gray-500"></span>
-                        <span>{{ Str::wordCount(strip_tags($post->content)) }} min read</span>
+                        <span>{{ Str::wordCount(strip_tags($post->content)) }} min lectura</span>
                     </div>
                     <h3 class="text-xl font-bold text-gray-900 dark:text-white leading-tight group-hover:text-primary transition-colors">
                         {{ $post->title }}
@@ -170,7 +170,7 @@
                     </p>
                     <div class="mt-auto pt-4 flex items-center text-primary font-bold text-sm">
                         <a href="{{ route('public.blog.show', $post->slug) }}" class="flex items-center gap-2">
-                            <span>Read Article</span>
+                            <span>Leer Artículo</span>
                             <span class="material-symbols-outlined text-[18px] ml-1 transition-transform group-hover:translate-x-1">arrow_forward</span>
                         </a>
                     </div>
@@ -178,7 +178,7 @@
             </article>
             @empty
             <div class="col-span-full text-center py-12">
-                <p class="text-gray-500 dark:text-gray-400">No blog posts available yet. Check back soon!</p>
+                <p class="text-gray-500 dark:text-gray-400">¡No hay publicaciones de blog disponibles aún! Vuelve pronto.</p>
             </div>
             @endforelse
         </section>

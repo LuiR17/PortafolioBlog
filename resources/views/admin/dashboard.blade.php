@@ -9,9 +9,9 @@
                 <!-- Page Heading -->
                 <header class="flex flex-wrap justify-between items-end gap-4">
                     <div class="flex flex-col gap-2">
-                        <p class="text-text-secondary text-sm font-medium uppercase tracking-wider">Overview</p>
-                        <h1 class="text-white text-3xl md:text-4xl font-bold leading-tight tracking-tight">Welcome back, Alex</h1>
-                        <p class="text-text-secondary text-base">Here is what is happening with your portfolio today.</p>
+                        <p class="text-text-secondary text-sm font-medium uppercase tracking-wider">Resumen</p>
+                        <h1 class="text-white text-3xl md:text-4xl font-bold leading-tight tracking-tight">Bienvenido de nuevo, Luis</h1>
+                        <p class="text-text-secondary text-base">Aquí está lo que está sucediendo con tu portafolio hoy.</p>
                     </div>
                     <div class="flex items-center gap-2 text-text-secondary text-sm bg-surface-dark px-3 py-1.5 rounded-full border border-border-dark">
                         <span class="material-symbols-outlined text-[18px]">calendar_today</span>
@@ -26,10 +26,10 @@
                             <div class="bg-primary/10 p-2.5 rounded-lg text-primary group-hover:bg-primary group-hover:text-white transition-colors">
                                 <span class="material-symbols-outlined block">folder_special</span>
                             </div>
-                            <span class="flex items-center text-[#0bda68] text-xs font-medium bg-[#0bda68]/10 px-2 py-1 rounded-full">+2 this week</span>
+                            <span class="flex items-center text-[#0bda68] text-xs font-medium bg-[#0bda68]/10 px-2 py-1 rounded-full">+2 esta semana</span>
                         </div>
                         <div>
-                            <p class="text-text-secondary text-sm font-medium mb-1">Total Projects</p>
+                            <p class="text-text-secondary text-sm font-medium mb-1">Total de Proyectos</p>
                             <p class="text-white text-3xl font-bold tracking-tight">{{ $totalProjects }}</p>
                         </div>
                     </div>
@@ -39,10 +39,10 @@
                             <div class="bg-primary/10 p-2.5 rounded-lg text-primary group-hover:bg-primary group-hover:text-white transition-colors">
                                 <span class="material-symbols-outlined block">article</span>
                             </div>
-                            <span class="flex items-center text-[#0bda68] text-xs font-medium bg-[#0bda68]/10 px-2 py-1 rounded-full">+5 this month</span>
+                            <span class="flex items-center text-[#0bda68] text-xs font-medium bg-[#0bda68]/10 px-2 py-1 rounded-full">+5 este mes</span>
                         </div>
                         <div>
-                            <p class="text-text-secondary text-sm font-medium mb-1">Published Posts</p>
+                            <p class="text-text-secondary text-sm font-medium mb-1">Artículos Publicados</p>
                             <p class="text-white text-3xl font-bold tracking-tight">{{ $publishedPosts }}</p>
                         </div>
                     </div>
@@ -55,14 +55,14 @@
                             <span class="flex items-center text-[#0bda68] text-xs font-medium bg-[#0bda68]/10 px-2 py-1 rounded-full">+15%</span>
                         </div>
                         <div>
-                            <p class="text-text-secondary text-sm font-medium mb-1">Total Education</p>
+                            <p class="text-text-secondary text-sm font-medium mb-1">Total de Educación</p>
                             <p class="text-white text-3xl font-bold tracking-tight">{{ $totalEducation }}</p>
                         </div>
                     </div>
                 </section>
                 <!-- Main Actions & Quick Access -->
                 <section class="flex flex-col gap-6">
-                    <h2 class="text-white text-xl font-bold tracking-tight">Manage Content</h2>
+                    <h2 class="text-white text-xl font-bold tracking-tight">Gestionar Contenido</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <!-- Action: New Article -->
                         <button
@@ -73,9 +73,9 @@
                                     style="font-size: 28px;">edit_square</span>
                             </div>
                             <div class="flex flex-col gap-1">
-                                <span class="text-white text-lg font-bold">Write new Article</span>
-                                <span class="text-text-secondary text-sm">Draft a new technical blog post for your
-                                    audience.</span>
+                                <span class="text-white text-lg font-bold">Escribir nuevo Artículo</span>
+                                <span class="text-text-secondary text-sm">Redacta una nueva publicación de blog técnico para tu
+                                    audiencia.</span>
                             </div>
                             <div
                                 class="hidden sm:block ml-auto opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-[-10px] group-hover:translate-x-0">
@@ -91,9 +91,9 @@
                                     style="font-size: 28px;">add_to_photos</span>
                             </div>
                             <div class="flex flex-col gap-1">
-                                <span class="text-white text-lg font-bold">Add new Project</span>
-                                <span class="text-text-secondary text-sm">Showcase a new application or library you
-                                    built.</span>
+                                <span class="text-white text-lg font-bold">Agregar nuevo Proyecto</span>
+                                <span class="text-text-secondary text-sm">Muestra una nueva aplicación o biblioteca que
+                                    construiste.</span>
                             </div>
                             <div
                                 class="hidden sm:block ml-auto opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-[-10px] group-hover:translate-x-0">
@@ -105,20 +105,20 @@
                 <!-- Recent Activity Table -->
                 <section class="flex flex-col gap-6 pb-10">
                     <div class="flex items-center justify-between">
-                        <h2 class="text-white text-xl font-bold tracking-tight">Recent Content</h2>
+                        <h2 class="text-white text-xl font-bold tracking-tight">Contenido Reciente</h2>
                         <a class="text-sm font-medium text-primary hover:text-white transition-colors"
-                            href="#">View All</a>
+                            href="#">Ver Todo</a>
                     </div>
                     <div class="w-full overflow-hidden rounded-xl border border-border-dark bg-surface-dark shadow-sm">
                         <div class="overflow-x-auto">
                             <table class="w-full text-left text-sm">
                                 <thead class="bg-[#25253a] text-xs uppercase text-text-secondary font-semibold">
                                     <tr>
-                                        <th class="px-6 py-4">Title</th>
-                                        <th class="px-6 py-4">Category</th>
-                                        <th class="px-6 py-4">Last Modified</th>
-                                        <th class="px-6 py-4">Status</th>
-                                        <th class="px-6 py-4 text-right">Action</th>
+                                        <th class="px-6 py-4">Título</th>
+                                        <th class="px-6 py-4">Categoría</th>
+                                        <th class="px-6 py-4">Última Modificación</th>
+                                        <th class="px-6 py-4">Estado</th>
+                                        <th class="px-6 py-4 text-right">Acción</th>
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y divide-border-dark text-white">
@@ -137,11 +137,11 @@
                                         <td class="px-6 py-4">
                                             @if($content['status'] === 'published')
                                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/20 text-primary-light text-blue-300 border border-primary/20">
-                                                    Published
+                                                    Publicado
                                                 </span>
                                             @else
                                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-700/50 text-gray-300 border border-gray-600/30">
-                                                    Draft
+                                                    Borrador
                                                 </span>
                                             @endif
                                         </td>
@@ -154,7 +154,7 @@
                                     @empty
                                     <tr>
                                         <td colspan="5" class="px-6 py-8 text-center text-text-secondary">
-                                            No recent content found. Start creating your first project or blog post!
+                                            ¡No se encontró contenido reciente! Comienza creando tu primer proyecto o publicación de blog.
                                         </td>
                                     </tr>
                                     @endforelse

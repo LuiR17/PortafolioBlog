@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="en">
+<html class="dark" lang="es">
 
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Projects List - Developer Portfolio</title>
+    <title>Lista de Proyectos - Portafolio de Desarrollador</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
@@ -65,10 +65,10 @@
                     <div class="flex flex-wrap justify-between gap-3 p-4 mb-2">
                         <div class="flex min-w-72 flex-col gap-3">
                             <h1 class="text-white text-4xl md:text-5xl font-black leading-tight tracking-[-0.033em]">
-                                Selected Works</h1>
-                            <p class="text-[#9d9db9] text-base md:text-lg font-normal leading-normal max-w-2xl">A
-                                curated collection of web applications, open source tools, and technical experiments
-                                built with modern technologies.</p>
+                                Trabajos Seleccionados</h1>
+                            <p class="text-[#9d9db9] text-base md:text-lg font-normal leading-normal max-w-2xl">
+                                Una colección curada de aplicaciones web, herramientas de código abierto y experimentos técnicos
+                                construidos con tecnologías modernas.</p>
                         </div>
                     </div>
                     <!-- Search and Controls Row -->
@@ -83,7 +83,7 @@
                                     </div>
                                     <input
                                         class="flex w-full min-w-0 flex-1 bg-transparent text-white focus:outline-0 placeholder:text-[#9d9db9] px-2 text-base font-normal leading-normal"
-                                        placeholder="Search projects by name, stack, or tag..." value="" />
+                                        placeholder="Buscar proyectos por nombre, stack o etiqueta..." value="" />
                                 </div>
                             </label>
                         </div>
@@ -92,9 +92,9 @@
                             <div class="relative">
                                 <select
                                     class="appearance-none flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 border border-[#282839] bg-[#1c1c27] h-12 px-4 pr-10 text-base font-normal leading-normal cursor-pointer hover:bg-[#282839] transition-colors">
-                                    <option value="newest">Newest First</option>
-                                    <option value="oldest">Oldest First</option>
-                                    <option value="relevant">Most Relevant</option>
+                                    <option value="newest">Más Recientes Primero</option>
+                                    <option value="oldest">Más Antiguos Primero</option>
+                                    <option value="relevant">Más Relevantes</option>
                                 </select>
                                 <div
                                     class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-[#9d9db9]">
@@ -107,7 +107,7 @@
                     <div class="flex gap-3 px-4 pb-6 flex-wrap">
                         <button
                             class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary text-white pl-4 pr-4 transition-colors hover:opacity-90">
-                            <span class="text-sm font-bold leading-normal">All</span>
+                            <span class="text-sm font-bold leading-normal">Todos</span>
                         </button>
                         <button
                             class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#282839] hover:bg-[#3b3b54] text-[#9d9db9] hover:text-white pl-4 pr-4 transition-all">
@@ -176,7 +176,7 @@
                                 </div>
                                 <div class="mt-auto pt-4 flex items-center text-primary font-bold text-sm">
                                     <a href="{{ route('public.projects.show', $project->slug) }}" class="flex items-center gap-2">
-                                        <span>Read Project</span>
+                                        <span>Leer Proyecto</span>
                                         <span class="material-symbols-outlined text-[18px] ml-1 transition-transform group-hover:translate-x-1">arrow_forward</span>
                                     </a>
                                 </div>
@@ -184,7 +184,7 @@
                         </div>
                         @empty
                         <div class="col-span-full text-center py-12">
-                            <p class="text-[#9d9db9]">No projects available yet. Check back soon!</p>
+                            <p class="text-[#9d9db9]">¡No hay proyectos disponibles aún! Vuelve pronto.</p>
                         </div>
                         @endforelse
                     </div>

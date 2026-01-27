@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html class="dark" lang="en">
+<html class="dark" lang="es">
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DevPortfolio // Admin Login</title>
+    <title>DevPortfolio // Inicio de Sesión</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"
         rel="stylesheet" />
@@ -80,7 +80,7 @@
                         class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-slate-100 dark:bg-[#1c1c27]">
                         <span class="material-symbols-outlined text-3xl text-primary">lock</span>
                     </div>
-                    <h1 class="mb-2 text-3xl font-black">Login</h1>
+                    <h1 class="mb-2 text-3xl font-black">Inicio de Sesión</h1>
                     <p class="text-sm text-slate-500">Inicia sesión para administrar</p>
                 </div>
 
@@ -97,7 +97,7 @@
 
                     <!-- Email -->
                     <div class="flex flex-col gap-2">
-                        <label class="text-sm font-semibold">Email</label>
+                        <label class="text-sm font-semibold">Correo Electrónico</label>
                         <div class="relative group">
                             <span
                                 class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary">
@@ -111,7 +111,7 @@
 
                     <!-- Password -->
                     <div class="flex flex-col gap-2">
-                        <label class="text-sm font-semibold">Password</label>
+                        <label class="text-sm font-semibold">Contraseña</label>
                         <div class="relative group">
                             <span
                                 class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary">

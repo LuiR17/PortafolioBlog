@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="en">
+<html class="dark" lang="es">
 
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Developer Portfolio</title>
+    <title>Portafolio de Desarrollador</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
@@ -57,15 +57,14 @@
                             <span
                                 class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold w-fit border border-primary/20">
                                 <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-                                Available for hire
+                                Disponible para contratación
                             </span>
                             <h1
                                 class="text-white text-4xl font-black leading-tight tracking-[-0.033em] sm:text-5xl md:text-6xl">
-                                Full-Stack Developer &amp; UI Enthusiast
+                                Desarrollador Full Stack
                             </h1>
                             <h2 class="text-text-secondary text-base font-normal leading-relaxed max-w-lg">
-                                I build scalable web applications and intuitive user experiences. Passionate about clean
-                                code, modern architecture, and solving complex problems with simple solutions.
+                                Construyo aplicaciones web escalables y experiencias de usuario intuitivas. Apasionado por el código limpio, la arquitectura moderna y la resolución de problemas complejos con soluciones simples.
                             </h2>
                         </div>
                         <div class="flex gap-4 mt-2">
@@ -73,17 +72,17 @@
                             <a href="{{ route('curriculum.download') }}" 
                                class="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary hover:bg-blue-700 transition-all text-white text-base font-bold leading-normal tracking-[0.015em]">
                                 <span class="material-symbols-outlined mr-2 text-[20px]">download</span>
-                                <span>Download CV</span>
+                                <span>Descargar CV</span>
                             </a>
                             @else
                             <button disabled class="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-gray-600 text-white text-base font-bold leading-normal tracking-[0.015em] opacity-50">
                                 <span class="material-symbols-outlined mr-2 text-[20px]">download</span>
-                                <span>CV Coming Soon</span>
+                                <span>CV Próximamente</span>
                             </button>
                             @endif
                             <a href="{{ route('public.projects.index') }}" 
                                class="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-[#282839] hover:bg-[#32324a] transition-all text-white text-base font-medium leading-normal tracking-[0.015em]">
-                                View Projects
+                                Ver Proyectos
                             </a>
                         </div>
                         <div class="flex gap-4 mt-4">
@@ -116,8 +115,8 @@
         <section class="w-full px-4 sm:px-10 py-10 max-w-[1080px]">
             <div class="flex flex-col gap-8">
                 <div class="flex flex-col gap-2">
-                    <h2 class="text-white text-3xl font-bold leading-tight tracking-[-0.015em]">Technical Arsenal</h2>
-                    <p class="text-text-secondary">The tools and technologies I use to bring ideas to life.</p>
+                    <h2 class="text-white text-3xl font-bold leading-tight tracking-[-0.015em]">Arsenal Técnico</h2>
+                    <p class="text-text-secondary">Las herramientas y tecnologías que uso para dar vida a las ideas.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <!-- Languages -->
@@ -128,7 +127,7 @@
                             <span class="material-symbols-outlined text-[28px]">code</span>
                         </div>
                         <div class="flex flex-col gap-3">
-                            <h3 class="text-white text-xl font-bold">Languages</h3>
+                            <h3 class="text-white text-xl font-bold">Lenguajes</h3>
                             <div class="flex flex-wrap gap-2">
                                 <span
                                     class="px-3 py-1 rounded-md bg-[#282839] text-xs text-text-secondary font-medium">JavaScript</span>
@@ -175,7 +174,7 @@
                             <span class="material-symbols-outlined text-[28px]">build</span>
                         </div>
                         <div class="flex flex-col gap-3">
-                            <h3 class="text-white text-xl font-bold">Tools</h3>
+                            <h3 class="text-white text-xl font-bold">Herramientas</h3>
                             <div class="flex flex-wrap gap-2">
                                 <span
                                     class="px-3 py-1 rounded-md bg-[#282839] text-xs text-text-secondary font-medium">Git
@@ -198,10 +197,10 @@
         <!-- Projects Preview Section -->
         <section class="w-full px-4 sm:px-10 py-10 max-w-[1080px]">
                     <div class="flex items-center justify-between mb-8">
-                        <h2 class="text-white text-3xl font-bold leading-tight tracking-[-0.015em]">Featured Projects</h2>
+                        <h2 class="text-white text-3xl font-bold leading-tight tracking-[-0.015em]">Proyectos Destacados</h2>
                         <a class="hidden sm:flex items-center gap-1 text-primary text-sm font-bold hover:gap-2 transition-all"
                            href="{{ route('public.projects.index') }}">
-                            View all projects <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                            Ver todos los proyectos <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
                         </a>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -245,20 +244,20 @@
                         </div>
                         @empty
                         <div class="col-span-full text-center py-12">
-                            <p class="text-text-secondary">No projects available yet. Check back soon!</p>
+                            <p class="text-text-secondary">¡No hay proyectos disponibles aún! Vuelve pronto.</p>
                         </div>
                         @endforelse
                     </div>
             <div class="sm:hidden mt-6 flex justify-center">
                 <a class="flex items-center gap-1 text-primary text-sm font-bold hover:gap-2 transition-all"
                     href="#">
-                    View all projects <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                    Ver todos los proyectos <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
                 </a>
             </div>
         </section>
         <!-- Education & Certification Section -->
         <section class="w-full px-4 sm:px-10 py-10 max-w-[1080px] mb-10">
-            <h2 class="text-white text-3xl font-bold leading-tight tracking-[-0.015em] mb-8">Education</h2>
+            <h2 class="text-white text-3xl font-bold leading-tight tracking-[-0.015em] mb-8">Educación</h2>
             <div class="relative pl-8 border-l border-[#282839] space-y-10">
                 @forelse($education as $edu)
                 <div class="relative">
@@ -274,7 +273,7 @@
                             @endif
                         </div>
                         <span class="text-sm font-mono text-text-secondary px-3 py-1 bg-[#282839] rounded w-fit">
-                            {{ $edu->start_year }}{{ $edu->end_year ? ' - ' . $edu->end_year : ' - Present' }}
+                            {{ $edu->start_year }}{{ $edu->end_year ? ' - ' . $edu->end_year : ' - Presente' }}
                         </span>
                     </div>
                     @if($edu->description)
@@ -283,7 +282,7 @@
                 </div>
                 @empty
                 <div class="text-center py-8">
-                    <p class="text-text-secondary">Education information coming soon!</p>
+                    <p class="text-text-secondary">¡Información educativa próximamente!</p>
                 </div>
                 @endforelse
             </div>

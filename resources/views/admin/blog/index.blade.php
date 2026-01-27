@@ -26,13 +26,13 @@
             <!-- Page Heading -->
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
                 <div>
-                    <h1 class="text-white text-3xl font-bold tracking-tight">Blog Posts</h1>
-                    <p class="text-[#9ea7b7] mt-1 text-sm">Manage, edit, and publish your content.</p>
+                    <h1 class="text-white text-3xl font-bold tracking-tight">Publicaciones del Blog</h1>
+                    <p class="text-[#9ea7b7] mt-1 text-sm">Gestiona, edita y publica tu contenido.</p>
                 </div>
                 <a href="{{ route('admin.blog.create') }}"
                     class="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-5 py-2.5 rounded-lg font-medium transition-colors shadow-lg shadow-primary/20">
                     <span class="material-symbols-outlined text-[20px]">add</span>
-                    <span>New Post</span>
+                    <span>Nueva Publicación</span>
                 </a>
             </div>
             <!-- Filters & Search Toolbar -->
@@ -44,16 +44,16 @@
                     </div>
                     <input name="search"
                         class="block w-full rounded-lg border-none bg-[#292e38] py-2.5 pl-10 pr-4 text-white placeholder-[#9ea7b7] focus:ring-2 focus:ring-primary sm:text-sm"
-                        placeholder="Search posts by title..." type="text" value="{{ request('search') }}" />
+                        placeholder="Buscar publicaciones por título..." type="text" value="{{ request('search') }}" />
                 </div>
                 <!-- Filters -->
                 <div class="flex gap-3 overflow-x-auto pb-1 md:pb-0">
                     <div class="relative min-w-[140px]">
                         <select name="status"
                             class="appearance-none block w-full rounded-lg border-none bg-[#292e38] py-2.5 pl-4 pr-10 text-white focus:ring-2 focus:ring-primary sm:text-sm cursor-pointer">
-                            <option value="">All Statuses</option>
-                            <option value="published" {{ request('status') == 'published' ? 'selected' : '' }}>Published</option>
-                            <option value="draft" {{ request('status') == 'draft' ? 'selected' : '' }}>Draft</option>
+                            <option value="">Todos los Estados</option>
+                            <option value="published" {{ request('status') == 'published' ? 'selected' : '' }}>Publicado</option>
+                            <option value="draft" {{ request('status') == 'draft' ? 'selected' : '' }}>Borrador</option>
                         </select>
                         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-[#9ea7b7]">
                             <span class="material-symbols-outlined text-[20px]">expand_more</span>
@@ -62,7 +62,7 @@
                     <button type="submit"
                         class="flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-[#292e38] hover:bg-[#343a46] text-white transition-colors border border-transparent hover:border-[#4a5568]">
                         <span class="material-symbols-outlined text-[20px]">filter_list</span>
-                        <span class="text-sm font-medium">Apply Filters</span>
+                        <span class="text-sm font-medium">Aplicar Filtros</span>
                     </button>
                 </div>
             </form>

@@ -7,14 +7,14 @@
             <!-- Page Heading -->
             <div class="flex flex-wrap justify-between items-end gap-4 mb-8">
                 <div class="flex flex-col gap-2">
-                    <h1 class="text-white text-3xl font-black leading-tight tracking-tight">Projects Directory</h1>
-                    <p class="text-text-secondary text-base font-normal leading-normal">Manage, update, and organize your
-                        portfolio content.</p>
+                    <h1 class="text-white text-3xl font-black leading-tight tracking-tight">Directorio de Proyectos</h1>
+                    <p class="text-text-secondary text-base font-normal leading-normal">Gestiona, actualiza y organiza tu
+                        contenido del portafolio.</p>
                 </div>
                 <a href="{{ route('admin.projects.create') }}"
                     class="flex cursor-pointer items-center gap-2 justify-center overflow-hidden rounded-lg h-10 px-5 bg-primary hover:bg-blue-600 text-white shadow-lg shadow-blue-900/20 transition-all text-sm font-bold leading-normal tracking-[0.015em]">
                     <span class="material-symbols-outlined text-lg">add</span>
-                    <span class="truncate">New Project</span>
+                    <span class="truncate">Nuevo Proyecto</span>
                 </a>
             </div>
             <!-- Search and Filter Bar -->
@@ -27,7 +27,7 @@
                         </div>
                         <input
                             class="flex w-full flex-1 bg-transparent text-white focus:outline-0 border-none h-full placeholder:text-text-secondary/50 px-2 text-sm font-normal leading-normal"
-                            placeholder="Search projects by name, tech stack..." value="" />
+                            placeholder="Buscar proyectos por nombre, tecnología..." value="" />
                     </div>
                 </label>
             </div>
@@ -37,18 +37,18 @@
                     <thead>
                         <tr class="bg-[#242a35] border-b border-border-dark">
                             <th class="px-6 py-4 text-xs font-semibold uppercase tracking-wider text-text-secondary w-16">
-                                Preview</th>
-                            <th class="px-6 py-4 text-xs font-semibold uppercase tracking-wider text-text-secondary">Project
-                                Name</th>
+                                Vista Previa</th>
+                            <th class="px-6 py-4 text-xs font-semibold uppercase tracking-wider text-text-secondary">Nombre
+                                del Proyecto</th>
                             <th class="px-6 py-4 text-xs font-semibold uppercase tracking-wider text-text-secondary">
                                 Plataforma</th>
                             <th class="px-6 py-4 text-xs font-semibold uppercase tracking-wider text-text-secondary w-32">
-                                Status</th>
+                                Estado</th>
                             <th class="px-6 py-4 text-xs font-semibold uppercase tracking-wider text-text-secondary w-40">
-                                Date Added</th>
+                                Fecha Agregado</th>
                             <th
                                 class="px-6 py-4 text-xs font-semibold uppercase tracking-wider text-text-secondary text-right w-28">
-                                Actions</th>
+                                Acciones</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-border-dark">

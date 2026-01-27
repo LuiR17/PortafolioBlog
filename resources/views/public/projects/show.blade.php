@@ -194,13 +194,7 @@
                                 </p>
                             </div>
                             <!-- Card 3 (Spans full on mobile, normal on md) -->
-                            <div
-                                class="p-5 rounded-xl border border-border-dark bg-surface-dark hover:border-primary/50 transition-colors group md:col-span-2">
-                                <div
-                                    class="mb-4 size-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
-                                    <span class="material-symbols-outlined">stars</span>
-                                </div>
-                                <h3 class="text-lg font-bold text-white mb-2 font-display">Key Features</h3>
+                            <div class="p-5 rounded-xl border border-border-dark bg-surface-dark hover:border-primary/50 transition-colors group md:col-span-2">
                                 <div class="text-sm text-text-secondary leading-normal font-body">
                                     {!! $project->content ?? '<p>No additional features description available.</p>' !!}
                                 </div>

@@ -10,17 +10,17 @@
         <div class="flex items-center gap-8">
             <nav class="hidden md:flex items-center gap-9">
                 <a class="{{ request()->routeIs('public.home') ? 'text-white text-sm font-medium hover:text-primary transition-colors leading-normal' : 'text-text-secondary text-sm font-medium hover:text-primary transition-colors leading-normal' }}"
-                    href="{{ route('public.home') }}">Home</a>
+                    href="{{ route('public.home') }}">Inicio</a>
                 <a class="{{ request()->routeIs('public.blog.index') ? 'text-white text-sm font-medium hover:text-primary transition-colors leading-normal' : 'text-text-secondary text-sm font-medium hover:text-primary transition-colors leading-normal' }}"
                     href="{{ route('public.blog.index') }}">Blog</a>
                 <a class="{{ request()->routeIs('public.projects.index') ? 'text-white text-sm font-medium hover:text-primary transition-colors leading-normal' : 'text-text-secondary text-sm font-medium hover:text-primary transition-colors leading-normal' }}"
-                    href="{{ route('public.projects.index') }}">Projects</a>
+                    href="{{ route('public.projects.index') }}">Proyectos</a>
             </nav>
             <div class="flex items-center gap-4">
                 <a href="{{ route('contact') }}">
                     <button
                         class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary hover:bg-blue-700 transition-colors text-white text-sm font-bold leading-normal tracking-[0.015em]">
-                        <span class="truncate">Contact Me</span>
+                        <span class="truncate">Contáctame</span>
                     </button>
                 </a>
             </div>

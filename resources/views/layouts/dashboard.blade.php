@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="en">
+<html class="dark" lang="es">
 
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Admin Dashboard</title>
+    <title>Panel de Administración</title>
     <!-- Material Symbols -->
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
@@ -83,7 +83,7 @@
                 </div>
                 <div class="flex flex-col hidden lg:flex">
                     <h1 class="text-white text-base font-bold leading-tight">{{ auth()->user()->name }}</h1>
-                    <p class="text-text-secondary text-xs font-normal">Admin Panel</p>
+                    <p class="text-text-secondary text-xs font-normal">Panel de Administración</p>
                 </div>
             </div>
             <!-- Navigation -->
@@ -91,12 +91,12 @@
                 <a class="{{ request()->routeIs('admin.dashboard') ? 'bg-primary text-white flex items-center gap-3 px-3 py-3 rounded-lg bg-primary transition-colors group' : 'text-text-secondary flex items-center gap-3 px-3 py-3 rounded-lg transition-colors group' }}"
                     href="{{ route('admin.dashboard') }}">
                     <span class="material-symbols-outlined shrink-0" style="font-size: 24px;">dashboard</span>
-                    <span class="text-sm font-medium hidden lg:block">Dashboard</span>
+                    <span class="text-sm font-medium hidden lg:block">Panel</span>
                 </a>
                 <a class="{{ request()->routeIs('admin.projects.index') ? 'bg-primary text-white flex items-center gap-3 px-3 py-3 rounded-lg bg-primary transition-colors group' : 'text-text-secondary flex items-center gap-3 px-3 py-3 rounded-lg transition-colors group' }}"
                     href="{{ route('admin.projects.index') }}">
                     <span class="material-symbols-outlined shrink-0" style="font-size: 24px;">folder_open</span>
-                    <span class="text-sm font-medium hidden lg:block">Projects</span>
+                    <span class="text-sm font-medium hidden lg:block">Proyectos</span>
                 </a>
                 <a class="{{ request()->routeIs('admin.blog.index') ? 'bg-primary text-white flex items-center gap-3 px-3 py-3 rounded-lg bg-primary transition-colors group' : 'text-text-secondary flex items-center gap-3 px-3 py-3 rounded-lg transition-colors group' }}"
                     href="{{ route('admin.blog.index') }}">
@@ -106,27 +106,27 @@
                  <a class="{{ request()->routeIs('admin.skills.index') ? 'bg-primary text-white flex items-center gap-3 px-3 py-3 rounded-lg bg-primary transition-colors group' : 'text-text-secondary flex items-center gap-3 px-3 py-3 rounded-lg transition-colors group' }}"
                     href="{{ route('admin.skills.index') }}">
                     <span class="material-symbols-outlined shrink-0" style="font-size: 24px;">handyman</span>
-                    <span class="text-sm font-medium hidden lg:block">skills</span>
+                    <span class="text-sm font-medium hidden lg:block">Habilidades</span>
                 </a>
                 <a class="{{ request()->routeIs('admin.education.index') ? 'bg-primary text-white flex items-center gap-3 px-3 py-3 rounded-lg bg-primary transition-colors group' : 'text-text-secondary flex items-center gap-3 px-3 py-3 rounded-lg transition-colors group' }}"
                     href="{{ route('admin.education.index') }}">
                     <span class="material-symbols-outlined shrink-0" style="font-size: 24px;">school</span>
-                    <span class="text-sm font-medium hidden lg:block">Education</span>
+                    <span class="text-sm font-medium hidden lg:block">Educación</span>
                 </a>
                 <a class="{{ request()->routeIs('admin.curriculum.edit') ? 'bg-primary text-white flex items-center gap-3 px-3 py-3 rounded-lg bg-primary transition-colors group' : 'text-text-secondary flex items-center gap-3 px-3 py-3 rounded-lg transition-colors group' }}"
                     href="{{ route('admin.curriculum.edit') }}">
                     <span class="material-symbols-outlined shrink-0" style="font-size: 24px;">description</span>
-                    <span class="text-sm font-medium hidden lg:block">Curriculum vitae</span>
+                    <span class="text-sm font-medium hidden lg:block">Currículum</span>
                 </a>
                  <a class="{{ request()->routeIs('admin.profile.index') ? 'bg-primary text-white flex items-center gap-3 px-3 py-3 rounded-lg bg-primary transition-colors group' : 'text-text-secondary flex items-center gap-3 px-3 py-3 rounded-lg transition-colors group' }}"
                     href="{{ route('admin.profile.index') }}">
                     <span class="material-symbols-outlined shrink-0" style="font-size: 24px;">person</span>
-                    <span class="text-sm font-medium hidden lg:block">about me</span>
+                    <span class="text-sm font-medium hidden lg:block">Acerca de mí</span>
                 </a>
                 <a class="{{ request()->routeIs('') ? 'bg-primary text-white flex items-center gap-3 px-3 py-3 rounded-lg bg-primary transition-colors group' : 'text-text-secondary flex items-center gap-3 px-3 py-3 rounded-lg transition-colors group' }}"
                     href="#">
                     <span class="material-symbols-outlined shrink-0" style="font-size: 24px;">settings</span>
-                    <span class="text-sm font-medium hidden lg:block">Settings</span>
+                    <span class="text-sm font-medium hidden lg:block">Configuración</span>
                 </a>
             </nav>
         </div>
@@ -140,7 +140,7 @@
                     onclick="event.preventDefault(); this.closest('form').submit();">
 
                     <span class="material-symbols-outlined shrink-0" style="font-size: 24px;">logout</span>
-                    <span class="text-sm font-medium hidden lg:block">Logout</span>
+                    <span class="text-sm font-medium hidden lg:block">Cerrar Sesión</span>
                 </a>
             </form>
 

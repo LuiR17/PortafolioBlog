@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="en">
+<html class="dark" lang="es">
 
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Contact Me - DevPortfolio</title>
+    <title>Contacto - DevPortfolio</title>
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap"
@@ -60,11 +60,11 @@
             <div class="text-center mb-10 space-y-4 px-4">
                 <h1
                     class="text-slate-900 dark:text-white text-4xl md:text-5xl font-black leading-tight tracking-[-0.033em]">
-                    Let's build something together.
+                    Construyamos algo juntos.
                 </h1>
                 <p class="text-slate-500 dark:text-[#9da6b8] text-lg font-normal max-w-2xl mx-auto">
-                    Have a project in mind or just want to say hi? Fill out the form below and I'll get back to you
-                    within 24 hours.
+                    ¿Tienes un proyecto en mente o solo quieres saludar? Completa el formulario a continuación y te responderé
+                    dentro de 24 horas.
                 </p>
             </div>
             <div class="flex flex-col md:flex-row gap-8 items-start justify-center">
@@ -75,14 +75,14 @@
                         <!-- Name & Email Row -->
                         <div class="flex flex-col md:flex-row gap-6">
                             <label class="flex flex-col flex-1">
-                                <span class="text-slate-900 dark:text-white text-sm font-medium pb-2">Name</span>
+                                <span class="text-slate-900 dark:text-white text-sm font-medium pb-2">Nombre</span>
                                 <input
                                     class="w-full rounded-lg border border-slate-300 dark:border-[#3c4453] bg-slate-50 dark:bg-[#111621] text-slate-900 dark:text-white h-12 px-4 placeholder:text-slate-400 dark:placeholder:text-[#64748b] focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all"
                                     placeholder="Jane Doe" required="" type="text" />
                             </label>
                             <label class="flex flex-col flex-1">
-                                <span class="text-slate-900 dark:text-white text-sm font-medium pb-2">Email
-                                    Address</span>
+                                <span class="text-slate-900 dark:text-white text-sm font-medium pb-2">Correo
+                                    Electrónico</span>
                                 <input
                                     class="w-full rounded-lg border border-slate-300 dark:border-[#3c4453] bg-slate-50 dark:bg-[#111621] text-slate-900 dark:text-white h-12 px-4 placeholder:text-slate-400 dark:placeholder:text-[#64748b] focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all"
                                     placeholder="jane@example.com" required="" type="email" />
@@ -90,14 +90,14 @@
                         </div>
                         <!-- Subject -->
                         <label class="flex flex-col w-full">
-                            <span class="text-slate-900 dark:text-white text-sm font-medium pb-2">Subject</span>
+                            <span class="text-slate-900 dark:text-white text-sm font-medium pb-2">Asunto</span>
                             <div class="relative">
                                 <select
                                     class="w-full appearance-none rounded-lg border border-slate-300 dark:border-[#3c4453] bg-slate-50 dark:bg-[#111621] text-slate-900 dark:text-white h-12 px-4 pr-10 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all cursor-pointer">
-                                    <option>Project Inquiry</option>
-                                    <option>Collaboration Request</option>
-                                    <option>Job Opportunity</option>
-                                    <option>General Question</option>
+                                    <option>Consulta de Proyecto</option>
+                                    <option>Solicitud de Colaboración</option>
+                                    <option>Oportunidad Laboral</option>
+                                    <option>Pregunta General</option>
                                 </select>
                                 <div
                                     class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500">
@@ -107,16 +107,16 @@
                         </label>
                         <!-- Message -->
                         <label class="flex flex-col w-full">
-                            <span class="text-slate-900 dark:text-white text-sm font-medium pb-2">Your Message</span>
+                            <span class="text-slate-900 dark:text-white text-sm font-medium pb-2">Tu Mensaje</span>
                             <textarea
                                 class="w-full rounded-lg border border-slate-300 dark:border-[#3c4453] bg-slate-50 dark:bg-[#111621] text-slate-900 dark:text-white min-h-[160px] p-4 placeholder:text-slate-400 dark:placeholder:text-[#64748b] focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all resize-y"
-                                placeholder="Tell me about your project context, timeline, and goals..."></textarea>
+                                placeholder="Cuéntame sobre el contexto de tu proyecto, cronograma y objetivos..."></textarea>
                         </label>
                         <!-- Submit Button -->
                         <button
                             class="group flex w-full items-center justify-center gap-2 rounded-lg bg-primary hover:bg-blue-600 h-12 px-6 text-white font-bold transition-all shadow-lg shadow-blue-500/20 active:scale-[0.98]"
                             type="submit">
-                            <span>Send Message</span>
+                            <span>Enviar Mensaje</span>
                             <span
                                 class="material-symbols-outlined text-[20px] group-hover:translate-x-1 transition-transform">send</span>
                         </button>
@@ -129,10 +129,10 @@
                         class="rounded-xl bg-white dark:bg-[#1c212e] border border-slate-200 dark:border-[#2e3545] p-6 shadow-sm">
                         <h3 class="text-slate-900 dark:text-white font-bold mb-4 flex items-center gap-2">
                             <span class="material-symbols-outlined text-primary">alternate_email</span>
-                            Direct Contact
+                            Contacto Directo
                         </h3>
                         <p class="text-slate-500 dark:text-slate-400 text-sm mb-4">
-                            Prefer email? You can reach me directly at:
+                            ¿Prefieres email? Puedes contactarme directamente en:
                         </p>
                         <a class="text-slate-900 dark:text-white font-medium hover:text-primary dark:hover:text-primary transition-colors block mb-6"
                             href="mailto:hello@devportfolio.com">
@@ -140,7 +140,7 @@
                         </a>
                         <h3 class="text-slate-900 dark:text-white font-bold mb-4 flex items-center gap-2">
                             <span class="material-symbols-outlined text-primary">share</span>
-                            Connect
+                            Conectar
                         </h3>
                         <div class="flex gap-3">
                             <a aria-label="Github"
@@ -168,11 +168,11 @@
                                     class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                                 <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
                             </span>
-                            <span class="text-slate-900 dark:text-white font-bold text-sm">Available for work</span>
+                            <span class="text-slate-900 dark:text-white font-bold text-sm">Disponible para trabajar</span>
                         </div>
                         <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">
-                            I am currently accepting new projects starting next month. Let's discuss your requirements
-                            today.
+                            Actualmente estoy aceptando nuevos proyectos a partir del próximo mes. Hablemos sobre tus requisitos
+                            hoy.
                         </p>
                     </div>
                 </div>
