@@ -79,12 +79,12 @@ class PublicController extends Controller
         return view('public.projects.index', compact('projects'));
     }
 
-    public function projectShow(Project $project)
+    public function projectShow($slug)
     {
-        // Verify project is published (Route Model Binding already gets the project by slug)
-        if (!$project->isPublished()) {
-            abort(404);
-        }
+        // Search for project by slug like blog does
+        $project = Project::published()
+            ->where('slug', $slug)
+            ->firstOrFail();
 
         // Get related projects
         $relatedProjects = Project::published()
