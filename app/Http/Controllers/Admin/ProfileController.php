@@ -63,7 +63,7 @@ class ProfileController extends Controller
             $request->validated()
         );
 
-        return back()->with('succes', 'Perfil actualizado correctamente');
+        return back()->with('success', 'Perfil actualizado correctamente');
     }
 
     /**
