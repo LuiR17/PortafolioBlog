@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Skill;
 
 class HomeController extends Controller
 {
@@ -11,7 +12,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('public.home');
+        // Obtener habilidades agrupadas por categoría
+        $skills = Skill::orderBy('order', 'asc')->get()->groupBy('category');
+        
+        return view('public.home', compact('skills'));
     }
 
     /**

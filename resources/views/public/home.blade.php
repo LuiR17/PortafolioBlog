@@ -119,78 +119,53 @@
                     <p class="text-text-secondary">Las herramientas y tecnologías que uso para dar vida a las ideas.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <!-- Languages -->
-                    <div
-                        class="flex flex-col gap-4 p-6 rounded-xl border border-[#282839] bg-card-dark hover:border-primary/50 transition-colors group">
-                        <div
-                            class="p-3 bg-background-dark rounded-lg w-fit text-primary group-hover:scale-110 transition-transform">
-                            <span class="material-symbols-outlined text-[28px]">code</span>
-                        </div>
-                        <div class="flex flex-col gap-3">
-                            <h3 class="text-white text-xl font-bold">Lenguajes</h3>
-                            <div class="flex flex-wrap gap-2">
-                                <span
-                                    class="px-3 py-1 rounded-md bg-[#282839] text-xs text-text-secondary font-medium">JavaScript</span>
-                                <span
-                                    class="px-3 py-1 rounded-md bg-[#282839] text-xs text-text-secondary font-medium">TypeScript</span>
-                                <span
-                                    class="px-3 py-1 rounded-md bg-[#282839] text-xs text-text-secondary font-medium">Python</span>
-                                <span
-                                    class="px-3 py-1 rounded-md bg-[#282839] text-xs text-text-secondary font-medium">HTML/CSS</span>
-                                <span
-                                    class="px-3 py-1 rounded-md bg-[#282839] text-xs text-text-secondary font-medium">SQL</span>
+                    @forelse($skills as $category => $categorySkills)
+                        <div class="flex flex-col gap-4 p-6 rounded-xl border border-[#282839] bg-card-dark hover:border-primary/50 transition-colors group">
+                            <div class="p-3 bg-background-dark rounded-lg w-fit text-primary group-hover:scale-110 transition-transform">
+                                @switch($category)
+                                    @case('languages')
+                                        <span class="material-symbols-outlined text-[28px]">code</span>
+                                        @break
+                                    @case('frameworks')
+                                        <span class="material-symbols-outlined text-[28px]">layers</span>
+                                        @break
+                                    @case('tools')
+                                        <span class="material-symbols-outlined text-[28px]">build</span>
+                                        @break
+                                    @default
+                                        <span class="material-symbols-outlined text-[28px]">star</span>
+                                @endswitch
+                            </div>
+                            <div class="flex flex-col gap-3">
+                                <h3 class="text-white text-xl font-bold">
+                                    @switch($category)
+                                        @case('languages')
+                                            Lenguajes
+                                            @break
+                                        @case('frameworks')
+                                            Frameworks
+                                            @break
+                                        @case('tools')
+                                            Herramientas
+                                            @break
+                                        @default
+                                            {{ ucfirst($category) }}
+                                    @endswitch
+                                </h3>
+                                <div class="flex flex-wrap gap-2">
+                                    @foreach($categorySkills as $skill)
+                                        <span class="px-3 py-1 rounded-md bg-[#282839] text-xs text-text-secondary font-medium">
+                                            {{ $skill->name }}
+                                        </span>
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- Frameworks -->
-                    <div
-                        class="flex flex-col gap-4 p-6 rounded-xl border border-[#282839] bg-card-dark hover:border-primary/50 transition-colors group">
-                        <div
-                            class="p-3 bg-background-dark rounded-lg w-fit text-primary group-hover:scale-110 transition-transform">
-                            <span class="material-symbols-outlined text-[28px]">layers</span>
+                    @empty
+                        <div class="col-span-full text-center py-12">
+                            <p class="text-text-secondary">No hay habilidades disponibles aún. ¡Pronto agregaré mis tecnologías!</p>
                         </div>
-                        <div class="flex flex-col gap-3">
-                            <h3 class="text-white text-xl font-bold">Frameworks</h3>
-                            <div class="flex flex-wrap gap-2">
-                                <span
-                                    class="px-3 py-1 rounded-md bg-[#282839] text-xs text-text-secondary font-medium">React</span>
-                                <span
-                                    class="px-3 py-1 rounded-md bg-[#282839] text-xs text-text-secondary font-medium">Next.js</span>
-                                <span
-                                    class="px-3 py-1 rounded-md bg-[#282839] text-xs text-text-secondary font-medium">Node.js</span>
-                                <span
-                                    class="px-3 py-1 rounded-md bg-[#282839] text-xs text-text-secondary font-medium">Tailwind
-                                    CSS</span>
-                                <span
-                                    class="px-3 py-1 rounded-md bg-[#282839] text-xs text-text-secondary font-medium">Express</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Tools -->
-                    <div
-                        class="flex flex-col gap-4 p-6 rounded-xl border border-[#282839] bg-card-dark hover:border-primary/50 transition-colors group">
-                        <div
-                            class="p-3 bg-background-dark rounded-lg w-fit text-primary group-hover:scale-110 transition-transform">
-                            <span class="material-symbols-outlined text-[28px]">build</span>
-                        </div>
-                        <div class="flex flex-col gap-3">
-                            <h3 class="text-white text-xl font-bold">Herramientas</h3>
-                            <div class="flex flex-wrap gap-2">
-                                <span
-                                    class="px-3 py-1 rounded-md bg-[#282839] text-xs text-text-secondary font-medium">Git
-                                    &amp; GitHub</span>
-                                <span
-                                    class="px-3 py-1 rounded-md bg-[#282839] text-xs text-text-secondary font-medium">Docker</span>
-                                <span
-                                    class="px-3 py-1 rounded-md bg-[#282839] text-xs text-text-secondary font-medium">AWS</span>
-                                <span
-                                    class="px-3 py-1 rounded-md bg-[#282839] text-xs text-text-secondary font-medium">Figma</span>
-                                <span
-                                    class="px-3 py-1 rounded-md bg-[#282839] text-xs text-text-secondary font-medium">VS
-                                    Code</span>
-                            </div>
-                        </div>
-                    </div>
+                    @endforelse
                 </div>
             </div>
         </section>
