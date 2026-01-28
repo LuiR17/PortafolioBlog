@@ -123,29 +123,29 @@
                         <div class="flex flex-col gap-4 p-6 rounded-xl border border-[#282839] bg-card-dark hover:border-primary/50 transition-colors group">
                             <div class="p-3 bg-background-dark rounded-lg w-fit text-primary group-hover:scale-110 transition-transform">
                                 @switch($category)
-                                    @case('languages')
+                                    @case('language')
                                         <span class="material-symbols-outlined text-[28px]">code</span>
                                         @break
-                                    @case('frameworks')
+                                    @case('framework')
                                         <span class="material-symbols-outlined text-[28px]">layers</span>
                                         @break
-                                    @case('tools')
+                                    @case('tool')
                                         <span class="material-symbols-outlined text-[28px]">build</span>
                                         @break
                                     @default
-                                        <span class="material-symbols-outlined text-[28px]">star</span>
+                                        <span class="material-symbols-outlined text-[28px]">code</span>
                                 @endswitch
                             </div>
                             <div class="flex flex-col gap-3">
                                 <h3 class="text-white text-xl font-bold">
                                     @switch($category)
-                                        @case('languages')
+                                        @case('language')
                                             Lenguajes
                                             @break
-                                        @case('frameworks')
+                                        @case('framework')
                                             Frameworks
                                             @break
-                                        @case('tools')
+                                        @case('tool')
                                             Herramientas
                                             @break
                                         @default
