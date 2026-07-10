@@ -78,14 +78,14 @@
                                 <span class="text-slate-900 dark:text-white text-sm font-medium pb-2">Nombre</span>
                                 <input
                                     class="w-full rounded-lg border border-slate-300 dark:border-[#3c4453] bg-slate-50 dark:bg-[#111621] text-slate-900 dark:text-white h-12 px-4 placeholder:text-slate-400 dark:placeholder:text-[#64748b] focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all"
-                                    placeholder="Jane Doe" required="" type="text" />
+                                    placeholder="" required="" type="text" />
                             </label>
                             <label class="flex flex-col flex-1">
                                 <span class="text-slate-900 dark:text-white text-sm font-medium pb-2">Correo
                                     Electrónico</span>
                                 <input
                                     class="w-full rounded-lg border border-slate-300 dark:border-[#3c4453] bg-slate-50 dark:bg-[#111621] text-slate-900 dark:text-white h-12 px-4 placeholder:text-slate-400 dark:placeholder:text-[#64748b] focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all"
-                                    placeholder="jane@example.com" required="" type="email" />
+                                    placeholder="" required="" type="email" />
                             </label>
                         </div>
                         <!-- Subject -->
@@ -110,7 +110,7 @@
                             <span class="text-slate-900 dark:text-white text-sm font-medium pb-2">Tu Mensaje</span>
                             <textarea
                                 class="w-full rounded-lg border border-slate-300 dark:border-[#3c4453] bg-slate-50 dark:bg-[#111621] text-slate-900 dark:text-white min-h-[160px] p-4 placeholder:text-slate-400 dark:placeholder:text-[#64748b] focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all resize-y"
-                                placeholder="Cuéntame sobre el contexto de tu proyecto, cronograma y objetivos..."></textarea>
+                                placeholder="Cuéntame que tienes en mente."></textarea>
                         </label>
                         <!-- Submit Button -->
                         <button
@@ -136,29 +136,10 @@
                         </p>
                         <a class="text-slate-900 dark:text-white font-medium hover:text-primary dark:hover:text-primary transition-colors block mb-6"
                             href="mailto:hello@devportfolio.com">
-                            hello@devportfolio.com
+                            luiseduardoromero2002@gmail
                         </a>
-                        <h3 class="text-slate-900 dark:text-white font-bold mb-4 flex items-center gap-2">
-                            <span class="material-symbols-outlined text-primary">share</span>
-                            Conectar
-                        </h3>
-                        <div class="flex gap-3">
-                            <a aria-label="Github"
-                                class="size-10 rounded-lg bg-slate-100 dark:bg-[#2e3545] hover:bg-slate-200 dark:hover:bg-[#3c4453] flex items-center justify-center text-slate-600 dark:text-slate-300 transition-colors"
-                                href="#">
-                                <span class="material-symbols-outlined">code</span>
-                            </a>
-                            <a aria-label="LinkedIn"
-                                class="size-10 rounded-lg bg-slate-100 dark:bg-[#2e3545] hover:bg-slate-200 dark:hover:bg-[#3c4453] flex items-center justify-center text-slate-600 dark:text-slate-300 transition-colors"
-                                href="#">
-                                <span class="material-symbols-outlined">work</span>
-                            </a>
-                            <a aria-label="Twitter"
-                                class="size-10 rounded-lg bg-slate-100 dark:bg-[#2e3545] hover:bg-slate-200 dark:hover:bg-[#3c4453] flex items-center justify-center text-slate-600 dark:text-slate-300 transition-colors"
-                                href="#">
-                                <span class="material-symbols-outlined">flutter_dash</span>
-                            </a>
-                        </div>
+                       
+                       
                     </div>
                     <!-- Availability Card -->
                     <div class="rounded-xl bg-primary/10 border border-primary/20 p-6 shadow-sm">

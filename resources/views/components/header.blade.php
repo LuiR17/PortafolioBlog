@@ -2,10 +2,8 @@
     class="sticky top-0 z-50 w-full border-b border-solid border-b-[#282839] bg-background-dark/80 backdrop-blur-md px-4 sm:px-10 py-3">
     <div class="max-w-[1280px] mx-auto flex items-center justify-between whitespace-nowrap">
         <div class="flex items-center gap-4 text-white">
-            <div class="size-8 text-primary">
-                <span class="material-symbols-outlined text-[32px]">terminal</span>
-            </div>
-            <h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">DevPortfolio</h2>
+           
+            <h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">LuisDevPortafolio</h2>
         </div>
         <div class="flex items-center gap-8">
             <nav class="hidden md:flex items-center gap-9">

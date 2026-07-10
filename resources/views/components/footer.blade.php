@@ -14,9 +14,5 @@
                  href="{{ route('public.projects.index') }}">Proyectos</a>
          </div>
      </div>
-     <div
-         class="max-w-[1080px] mx-auto mt-12 pt-8 border-t border-[#282839] flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-[#585870]">
-         <p>© 2023 DevPortfolio. Todos los derechos reservados.</p>
-         <p>Diseñado con Space Grotesk</p>
-     </div>
+    
  </footer>

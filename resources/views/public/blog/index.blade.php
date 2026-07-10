@@ -54,132 +54,62 @@
     <!-- Top Navigation Bar -->
     <x-header />
 
-    <main class="flex-1 w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col gap-10">
-        <!-- Hero Section -->
-        <section class="relative rounded-2xl overflow-hidden min-h-[400px] flex flex-col justify-end p-8 md:p-12">
-            <!-- Background Image with Gradient Overlay -->
-            <div class="absolute inset-0 z-0 bg-cover bg-center"
-                data-alt="Abstract dark blue and purple digital waves representing technology and data flow"
-                style='background-image: linear-gradient(180deg, rgba(17, 17, 24, 0.4) 0%, rgba(17, 17, 24, 0.9) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuCYERvtqkIG4-37hsCTL3u06ESjdPm5cNSTWvPr5aB5G1KliMHQHdEspCe1h_g3hA6nDb_GcDwTia0RdXA5Z7HYm5QSIJNGz9FpCjg2TeaJNYqz8kbrV23MN9XdEyfhflYXOOe6GunrIX6rgE9LYskMMMd0zu9erx1d6R4txQ3rUyZ0BeAf9PYT_e1ELSPIJbgKeMuUiZY26gY5WbjPY-p9LYUXhzqn1smORJ2kRjHBMJyLWm4sCPWHFHNMa1Q6DHI6ZwXLzLU_Z86X");'>
-            </div>
-            <div class="relative z-10 w-full max-w-3xl">
-                <div class="flex flex-col gap-4 text-left mb-8">
-                    <h1
-                        class="text-white text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-[-0.033em]">
-                        Pensamientos y Tutoriales
-                    </h1>
-                    <h2 class="text-gray-200 text-lg md:text-xl font-normal leading-relaxed max-w-2xl">
-                        Una colección de pensamientos sobre arquitectura de software, desarrollo frontend y las herramientas que uso
-                        para construir productos escalables.
-                    </h2>
-                </div>
-                <!-- Search Bar -->
-                <div class="w-full max-w-[560px]">
-                    <div class="flex w-full items-stretch rounded-lg h-12 md:h-14 shadow-xl shadow-black/20">
-                        <div
-                            class="flex items-center justify-center pl-4 bg-surface-dark rounded-l-lg border border-r-0 border-border-dark">
-                            <span class="material-symbols-outlined text-gray-400">search</span>
-                        </div>
-                        <input
-                            class="flex w-full min-w-0 flex-1 bg-surface-dark text-white placeholder:text-gray-500 border-y border-border-dark focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary px-3 text-base"
-                            placeholder="Buscar artículos, temas o palabras clave..." />
-                        <div
-                            class="flex items-center justify-center rounded-r-lg border border-l-0 border-border-dark bg-surface-dark pr-2 pl-1">
-                            <button
-                                class="h-9 md:h-10 px-5 rounded-md bg-primary hover:bg-primary/90 text-white text-sm font-bold transition-colors">
-                                Buscar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Filters Section -->
-        <section class="flex flex-col gap-4">
-            <div class="flex items-center justify-between">
-                <h3 class="text-gray-900 dark:text-white text-xl font-bold">Últimas Publicaciones</h3>
-                <div class="hidden sm:flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
-                    <span>Ordenar por:</span>
-                    <select
-                        class="bg-transparent border-none text-gray-900 dark:text-white font-medium focus:ring-0 cursor-pointer p-0 pr-6">
-                        <option>Más Recientes Primero</option>
-                        <option>Más Antiguos Primero</option>
-                        <option>Más Populares</option>
-                    </select>
-                </div>
-            </div>
-            <div class="flex gap-3 flex-wrap">
-                <button
-                    class="flex h-9 items-center justify-center px-4 rounded-full bg-primary text-white text-sm font-medium transition-transform hover:scale-105">
-                    Todos
-                </button>
-                <button
-                    class="flex h-9 items-center justify-center px-4 rounded-full bg-white dark:bg-surface-dark border border-gray-200 dark:border-border-dark text-gray-700 dark:text-gray-300 hover:border-primary/50 hover:text-primary dark:hover:text-primary text-sm font-medium transition-all hover:scale-105">
-                    React
-                </button>
-                <button
-                    class="flex h-9 items-center justify-center px-4 rounded-full bg-white dark:bg-surface-dark border border-gray-200 dark:border-border-dark text-gray-700 dark:text-gray-300 hover:border-primary/50 hover:text-primary dark:hover:text-primary text-sm font-medium transition-all hover:scale-105">
-                    Backend
-                </button>
-                <button
-                    class="flex h-9 items-center justify-center px-4 rounded-full bg-white dark:bg-surface-dark border border-gray-200 dark:border-border-dark text-gray-700 dark:text-gray-300 hover:border-primary/50 hover:text-primary dark:hover:text-primary text-sm font-medium transition-all hover:scale-105">
-                    UI/UX
-                </button>
-                <button
-                    class="flex h-9 items-center justify-center px-4 rounded-full bg-white dark:bg-surface-dark border border-gray-200 dark:border-border-dark text-gray-700 dark:text-gray-300 hover:border-primary/50 hover:text-primary dark:hover:text-primary text-sm font-medium transition-all hover:scale-105">
-                    DevOps
-                </button>
-                <button
-                    class="flex h-9 items-center justify-center px-4 rounded-full bg-white dark:bg-surface-dark border border-gray-200 dark:border-border-dark text-gray-700 dark:text-gray-300 hover:border-primary/50 hover:text-primary dark:hover:text-primary text-sm font-medium transition-all hover:scale-105">
-                    Career
-                </button>
-            </div>
-        </section>
+    <main class="flex-1 w-full max-w-[960px] mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col gap-10">
+        <div class="flex min-w-72 flex-col">
+            <h1 class="text-white text-4xl md:text-5xl font-black leading-tight tracking-[-0.033em] mb-3">
+                Consejos Sobre Desarrollo y más...</h1>
+            <p class="text-[#9d9db9] text-base md:text-lg font-normal leading-normal max-w-2xl">
+                Aquí publico .</p>
+        </div>
         <!-- Blog Grid -->
         <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 pb-12">
+
             @forelse($posts as $post)
-            <article class="group flex flex-col bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-border-dark overflow-hidden hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 hover:shadow-xl dark:hover:shadow-primary/5 hover:-translate-y-1">
-                <div class="h-48 overflow-hidden relative">
-                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                         @if($post->preview_image)
-                         style="background-image: url('{{ Storage::url($post->preview_image) }}')">
+                <article
+                    class="group flex flex-col bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-border-dark overflow-hidden hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 hover:shadow-xl dark:hover:shadow-primary/5 hover:-translate-y-1">
+                    <div class="h-48 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                            @if ($post->preview_image) style="background-image: url('{{ Storage::url($post->preview_image) }}')">
                          @else
-                         style="background-image: url('https://via.placeholder.com/400x225/1c1c27/ffffff?text={{ urlencode($post->title) }}')">
-                         @endif>
+                         style="background-image: url('https://via.placeholder.com/400x225/1c1c27/ffffff?text={{ urlencode($post->title) }}')"> @endif>
+                        </div>
+                        <div class="absolute top-4 left-4">
+                            @if ($post->tags && $post->tags->first())
+                                <span
+                                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/90 text-white backdrop-blur-sm">
+                                    {{ $post->tags->first()->name }}
+                                </span>
+                            @endif
+                        </div>
                     </div>
-                    <div class="absolute top-4 left-4">
-                        @if($post->tags && $post->tags->first())
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/90 text-white backdrop-blur-sm">
-                            {{ $post->tags->first()->name }}
-                        </span>
-                        @endif
+                    <div class="flex flex-col flex-1 p-5 gap-3">
+                        <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 font-mono gap-2">
+                            <span class="material-symbols-outlined text-[16px]">calendar_today</span>
+                            <span>{{ \Carbon\Carbon::parse($post->published_at ?? $post->updated_at)->format('M d, Y') }}</span>
+                            <span class="w-1 h-1 rounded-full bg-gray-500"></span>
+                            <span>{{ Str::wordCount(strip_tags($post->content)) }} min lectura</span>
+                        </div>
+                        <h3
+                            class="text-xl font-bold text-gray-900 dark:text-white leading-tight group-hover:text-primary transition-colors">
+                            {{ $post->title }}
+                        </h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-3">
+                            {{ $post->excerpt }}
+                        </p>
+                        <div class="mt-auto pt-4 flex items-center text-primary font-bold text-sm">
+                            <a href="{{ route('public.blog.show', $post->slug) }}" class="flex items-center gap-2">
+                                <span>Leer Artículo</span>
+                                <span
+                                    class="material-symbols-outlined text-[18px] ml-1 transition-transform group-hover:translate-x-1">arrow_forward</span>
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div class="flex flex-col flex-1 p-5 gap-3">
-                    <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 font-mono gap-2">
-                        <span class="material-symbols-outlined text-[16px]">calendar_today</span>
-                        <span>{{ \Carbon\Carbon::parse($post->published_at ?? $post->updated_at)->format('M d, Y') }}</span>
-                        <span class="w-1 h-1 rounded-full bg-gray-500"></span>
-                        <span>{{ Str::wordCount(strip_tags($post->content)) }} min lectura</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 dark:text-white leading-tight group-hover:text-primary transition-colors">
-                        {{ $post->title }}
-                    </h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-3">
-                        {{ $post->excerpt }}
-                    </p>
-                    <div class="mt-auto pt-4 flex items-center text-primary font-bold text-sm">
-                        <a href="{{ route('public.blog.show', $post->slug) }}" class="flex items-center gap-2">
-                            <span>Leer Artículo</span>
-                            <span class="material-symbols-outlined text-[18px] ml-1 transition-transform group-hover:translate-x-1">arrow_forward</span>
-                        </a>
-                    </div>
-                </div>
-            </article>
+                </article>
             @empty
-            <div class="col-span-full text-center py-12">
-                <p class="text-gray-500 dark:text-gray-400">¡No hay publicaciones de blog disponibles aún! Vuelve pronto.</p>
-            </div>
+                <div class="col-span-full text-center py-12">
+                    <p class="text-gray-500 dark:text-gray-400">¡No hay publicaciones de blog disponibles aún! Vuelve
+                        pronto.</p>
+                </div>
             @endforelse
         </section>
         <!-- Pagination -->

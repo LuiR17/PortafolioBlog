@@ -52,8 +52,8 @@
         <section class="w-full px-4 sm:px-10 py-12 md:py-20 max-w-[1080px]">
             <div class="@container">
                 <div class="flex flex-col-reverse gap-8 md:gap-12 md:flex-row items-center">
-                    <div class="flex flex-col gap-6 md:w-1/2 justify-center text-left">
-                        <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-6 md:w-2/2 justify-center items-center text-center mx-auto">
+                        <div class="flex flex-col items-center gap-4">
                             <span
                                 class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold w-fit border border-primary/20">
                                 <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
@@ -85,29 +85,9 @@
                                 Ver Proyectos
                             </a>
                         </div>
-                        <div class="flex gap-4 mt-4">
-                            <a class="text-text-secondary hover:text-white transition-colors" href="#">
-                                <span class="material-symbols-outlined">code</span> <!-- Placeholder for GitHub -->
-                            </a>
-                            <a class="text-text-secondary hover:text-white transition-colors" href="#">
-                                <span class="material-symbols-outlined">work</span> <!-- Placeholder for LinkedIn -->
-                            </a>
-                            <a class="text-text-secondary hover:text-white transition-colors" href="#">
-                                <span class="material-symbols-outlined">alternate_email</span>
-                                <!-- Placeholder for Twitter/X -->
-                            </a>
-                        </div>
+                        
                     </div>
-                    <div class="w-full md:w-1/2 flex justify-center md:justify-end">
-                        <div
-                            class="relative w-full max-w-[400px] aspect-square rounded-2xl overflow-hidden border border-[#282839] bg-card-dark shadow-2xl shadow-primary/10">
-                            <div class="w-full h-full bg-center bg-cover"
-                                data-alt="Portrait of a developer coding in a dark modern office environment"
-                                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAPfYczeECUTWWEBnl0_N7-tc6PqVQ_bVSM8k82qRuwUB-qYERAdZ4FnaYA5igF_RjTaHPg2Kh5S_nejAQHQOZSEEVBKaY-XBKm5crXGW-q2cg_6ezft7slmUwSpTo0TLdwsHh8-ioxdW2AafwepP4WyPzBbWl5wr1muZJYDeudOfCNsLBcDhU-1UtA_6RJ5vmh7KdBxqfHHzCjjJ4YVL7Ud57xZsskLCBO3a_O87PH3EFoBCLko3q33pZIPQxk4v37XQx_npiH9uj5");'>
-                            </div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-background-dark/80 to-transparent"></div>
-                        </div>
-                    </div>
+                   
                 </div>
             </div>
         </section>
@@ -116,7 +96,7 @@
             <div class="flex flex-col gap-8">
                 <div class="flex flex-col gap-2">
                     <h2 class="text-white text-3xl font-bold leading-tight tracking-[-0.015em]">Arsenal Técnico</h2>
-                    <p class="text-text-secondary">Las herramientas y tecnologías que uso para dar vida a las ideas.</p>
+                    <p class="text-text-secondary">Las herramientas y tecnologías que uso para programar.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     @forelse($skills as $category => $categorySkills)
