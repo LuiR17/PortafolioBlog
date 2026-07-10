@@ -3,7 +3,7 @@
     <div class="max-w-[1280px] mx-auto flex items-center justify-between whitespace-nowrap">
         <div class="flex items-center gap-4 text-white">
            
-            <h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">LuisDevPortafolio</h2>
+            <a href="{{ route('public.home') }}"><h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">LuisDevPortafolio</h2></a>
         </div>
         <div class="flex items-center gap-8">
             <nav class="hidden md:flex items-center gap-9">
