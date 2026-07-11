@@ -89,8 +89,6 @@
                                     <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 font-mono gap-2">
                                         <span class="material-symbols-outlined text-[16px]">calendar_today</span>
                                         <span>{{ \Carbon\Carbon::parse($post->published_at ?? $post->updated_at)->format('M d, Y') }}</span>
-                                        <span class="w-1 h-1 rounded-full bg-gray-500"></span>
-                                        <span>{{ Str::wordCount(strip_tags($post->content)) }} min lectura</span>
                                     </div>
                                     <h3
                                         class="text-xl font-bold text-gray-900 dark:text-white leading-tight group-hover:text-primary transition-colors">

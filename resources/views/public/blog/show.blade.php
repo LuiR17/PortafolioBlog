@@ -270,7 +270,7 @@
                     </article>
                 @empty
                     <div class="col-span-full text-center py-12">
-                        <p class="text-gray-500">No related posts available.</p>
+                        <p class="text-gray-500">No hay más publicaciones de momento.</p>
                     </div>
                 @endforelse
             </div>
