@@ -173,7 +173,7 @@
                         <div class="flex items-center gap-4">
                             <div class="relative h-12 w-12 rounded-full overflow-hidden ring-2 ring-[#282839]">
                                 <img alt="Foto de perfil" class="h-full w-full object-cover"
-                                    src="{{ Storage::url($user->profile_image) }}" />
+                                    src="{{ Storage::url(auth()->user()->profile_photo) }}" />
                             </div>
                             <div>
                                 <p class="text-sm font-bold text-white">{{ $user ? $user->name : 'Alex Dev' }}</p>
@@ -215,7 +215,7 @@
                         <img alt="Foto de perfil"
                             class="w-full h-full rounded-full object-cover ring-2 ring-primary"
                             data-alt="Foto de perfil"
-                            src="{{ Storage::url($user->profile_image) }}" />
+                            src="{{ Storage::url(auth()->user()->profile_photo) }}" />
                         <div
                             class="absolute bottom-0 right-0 h-5 w-5 bg-green-500 border-2 border-surface-dark rounded-full">
                         </div>
