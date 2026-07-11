@@ -38,7 +38,7 @@ class PublicController extends Controller
 
         return view('public.home', compact(
             'featuredProjects',
-            'latestPosts', 
+            'latestPosts',
             'education',
             'skills',
             'curriculum'
@@ -67,7 +67,9 @@ class PublicController extends Controller
             ->take(3)
             ->get();
 
-        return view('public.blog.show', compact('post', 'relatedPosts'));
+        $user = \App\Models\User::first();
+
+        return view('public.blog.show', compact('post', 'relatedPosts', 'user'));
     }
 
     public function projectsIndex()
