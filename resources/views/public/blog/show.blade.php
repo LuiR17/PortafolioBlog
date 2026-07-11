@@ -173,12 +173,13 @@
                         <div class="flex items-center gap-4">
                             <div class="relative h-12 w-12 rounded-full overflow-hidden ring-2 ring-[#282839]">
                                 <img alt="Foto de perfil" class="h-full w-full object-cover"
-                                    src="{{ Storage::url(auth()->user()->profile_photo) }}" />
+                                    src="{{ $user && $user->profile_photo ? Storage::url($user->profile_photo) : 'https://via.placeholder.com/48x48/1c1c27/ffffff?text=AD' }}" />
                             </div>
                             <div>
                                 <p class="text-sm font-bold text-white">{{ $user ? $user->name : 'Alex Dev' }}</p>
                                 <p class="text-xs text-gray-500">
-                                    {{ $user ? $user->title : 'Desarrollador de Software' }}</p>
+                                    {{ $user ? $user->title : 'Desarrollador de Software' }}
+                                </p>
                             </div>
                         </div>
                         <div class="flex items-center gap-4 text-sm text-gray-500">
@@ -212,10 +213,9 @@
                 <div
                     class="bg-surface-dark border border-[#282839] rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center md:items-start gap-6">
                     <div class="relative w-20 h-20 shrink-0">
-                        <img alt="Foto de perfil"
-                            class="w-full h-full rounded-full object-cover ring-2 ring-primary"
+                        <img alt="Foto de perfil" class="w-full h-full rounded-full object-cover ring-2 ring-primary"
                             data-alt="Foto de perfil"
-                            src="{{ Storage::url(auth()->user()->profile_photo) }}" />
+                            src="{{ $user && $user->profile_photo ? Storage::url($user->profile_photo) : 'https://via.placeholder.com/80x80/1c1c27/ffffff?text=AD' }}" />
                         <div
                             class="absolute bottom-0 right-0 h-5 w-5 bg-green-500 border-2 border-surface-dark rounded-full">
                         </div>
